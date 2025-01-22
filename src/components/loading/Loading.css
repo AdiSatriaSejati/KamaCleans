@@ -1,0 +1,37 @@
+/* src/components/loading/Loading.css */
+.loader {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+    font-size: 12px;
+  }
+  
+  .progress {
+    position: absolute;
+    top: 80%; /* Posisi dari atas */
+    width: 50%; /* Lebar progress bar */
+    height: 1px; /* Tinggi progress bar */
+    background: #000;
+    transform: scaleX(0); /* Mulai dari 0 */
+    transition: transform 1s; /* Transisi saat mengubah skala */
+    transform-origin: left; /* Asal transformasi dari kiri */
+    z-index: 10;
+    margin: 0 5%;
+  }
+  
+  /* Animasi untuk progress bar */
+  @keyframes loading {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+  }
+  
+  /* Menjalankan animasi loading */
+  .loader .progress {
+    animation: loading 2s infinite; /* Animasi loading */
+  }
