@@ -1,7 +1,6 @@
-// src/components/loading/Loading.jsx
 import React from 'react';
-import './Loading.css'; // Pastikan untuk membuat file CSS jika diperlukan
-import logo from '../../../public/images/logo.svg'; // Import logo.svg
+import './Loading.css';
+import logo from '../../../public/images/logo.svg';
 
 const Loading = () => {
   return (
