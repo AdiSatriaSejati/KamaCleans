@@ -1,4 +1,3 @@
-/* src/components/navbar/Navbar.css */
 .navbar {
   position: fixed;
   width: 100%;
@@ -43,6 +42,7 @@
   width: 52px;
   height: 52px;
   object-fit: contain;
+  transition: all 0.3s ease;
 }
 
 @media (min-width: 640px) {
@@ -106,13 +106,13 @@
   justify-content: flex-start;
   cursor: pointer;
   z-index: 51;
-  margin-left: -8px;
   position: relative;
 }
 
 @media (min-width: 768px) {
   .hamburger {
     display: none;
+    stroke: var(--text-primary);
   }
 }
 
@@ -122,6 +122,7 @@
   stroke: var(--text-primary);
   stroke-width: 2;
   fill: none;
+  transition: all 0.3s ease;
 }
 
 .ham-icon:active {
@@ -176,7 +177,7 @@
     padding-top: 64px;
   }
   .theme-switch {
-    margin-right: 2rem;
+    margin-right: 3rem;
   }
 }
 

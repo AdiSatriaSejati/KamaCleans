@@ -1,4 +1,3 @@
-// src/utils/utils.js
 export const navigationRoutes = [
   "Home",
   "About",

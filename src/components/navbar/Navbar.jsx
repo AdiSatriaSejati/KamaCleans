@@ -1,4 +1,3 @@
-// src/components/navbar/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +10,8 @@ import {
   popUp,
 } from '../../utils/FramerMotionVariants';
 import './Navbar.css';
-import logo from '/images/logo.svg'; // Sesuaikan path logo
+import logoDark from '/images/logo-dark.png';
+import logoLight from '/images/logo-light.png';
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -46,7 +46,11 @@ const Navbar = () => {
 
         {/* Logo */}
         <Link to="/" className="logo-container">
-          <img src={logo} alt="Logo" className="nav-logo" />
+          <img 
+          src={navOpen ? (isDarkMode ? logoLight : logoDark) : (isDarkMode ? logoLight : logoDark)} 
+          alt="Logo" 
+          className="nav-logo" 
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -86,6 +90,8 @@ const Navbar = () => {
             checked={isDarkMode}
             onChange={toggleDarkMode}
             size={24}
+            moonColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
+            sunColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
           />
         </motion.div>
       </div>

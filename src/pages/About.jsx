@@ -1,4 +1,3 @@
-// src/pages/About.jsx
 import React from 'react';
 
 const About = () => {
@@ -10,5 +9,3 @@ const About = () => {
 };
 
 export default About;
-
-// Buat file serupa untuk Services.jsx, Portfolio.jsx, Blog.jsx, dan Contact.jsx

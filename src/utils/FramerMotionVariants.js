@@ -1,4 +1,3 @@
-// src/utils/FramerMotionVariants.js
 export const FadeContainer = {
   hidden: { opacity: 0 },
   visible: {
