@@ -4,57 +4,73 @@ import canAutoplay from 'can-autoplay';
 
 const MusicBox = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(new Audio('/music/music_loop.mp3')); // Pastikan path benar
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const audioRef = useRef(new Audio('/music/music_loop.mp3'));
 
   useEffect(() => {
     const audio = audioRef.current;
-
-    // Set audio muted untuk autoplay
-    audio.muted = true;
-
-    // Cek apakah autoplay diizinkan
-    const checkAutoplay = async () => {
-      const { result } = await canAutoplay.audio({ muted: true });
-      if (result) {
+    audio.loop = true; // Pastikan audio akan berulang
+    
+    // Event listener untuk klik di mana saja
+    const handleFirstInteraction = async () => {
+      if (!hasInteracted) {
         try {
+          setHasInteracted(true);
+          audio.muted = false;
+          audio.volume = 1.0; // Pastikan volume maksimal
           await audio.play();
           setIsPlaying(true);
+          
+          // Hapus event listener setelah interaksi pertama berhasil
+          document.removeEventListener('click', handleFirstInteraction);
         } catch (error) {
-          console.warn('Autoplay failed:', error);
+          console.warn('Playback failed:', error);
         }
-      } else {
-        console.warn('Autoplay is not allowed');
       }
     };
 
-    checkAutoplay();
+    // Tambahkan event listener untuk klik di mana saja
+    document.addEventListener('click', handleFirstInteraction);
 
-    // Event listener untuk autoplay
-    const handleCanPlayThrough = () => {
-      if (!isPlaying) {
-        audio.play();
-        setIsPlaying(true);
+    // Cek dan siapkan autoplay
+    const prepareAutoplay = async () => {
+      try {
+        const { result } = await canAutoplay.audio();
+        if (result) {
+          audio.muted = true;
+          audio.volume = 0; // Start with volume 0
+          await audio.play();
+          setIsPlaying(true);
+        }
+      } catch (error) {
+        console.warn('Autoplay preparation failed:', error);
       }
     };
 
-    audio.addEventListener('canplaythrough', handleCanPlayThrough);
+    prepareAutoplay();
 
+    // Cleanup
     return () => {
-      audio.removeEventListener('canplaythrough', handleCanPlayThrough);
+      document.removeEventListener('click', handleFirstInteraction);
       audio.pause();
-      audio.currentTime = 0; // Reset audio saat komponen dibongkar
+      audio.currentTime = 0;
     };
-  }, []);
+  }, [hasInteracted]);
 
-  const togglePlay = () => {
+  const togglePlay = (e) => {
+    e.stopPropagation();
     const audio = audioRef.current;
+    
     if (isPlaying) {
       audio.pause();
+      setIsPlaying(false);
     } else {
-      audio.muted = false; // Matikan audio saat pengguna mengklik
-      audio.play();
+      audio.muted = false;
+      audio.volume = 1.0; // Pastikan volume maksimal saat toggle
+      audio.play()
+        .then(() => setIsPlaying(true))
+        .catch(error => console.warn('Toggle playback failed:', error));
     }
-    setIsPlaying((prev) => !prev);
   };
 
   return (
