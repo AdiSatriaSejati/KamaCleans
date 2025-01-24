@@ -1,22 +1,27 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './MusicBox.css';
-import canAutoplay from 'can-autoplay';
 
 const MusicBox = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef(new Audio('./music/music_loop.mp3')); // Ganti dengan path yang sesuai
+  const audioRef = useRef(new Audio('/music/music_loop.mp3')); // Ganti dengan path yang sesuai
 
   useEffect(() => {
     const audio = audioRef.current;
-    audio.muted = true; // Set audio muted untuk autoplay
+
+    // Set audio muted untuk autoplay
+    audio.muted = true;
 
     // Cek apakah autoplay diizinkan
-    canAutoplay.audio({ muted: true }).then(({ result }) => {
-      if (result) {
-        audio.play();
+    const checkAutoplay = async () => {
+      try {
+        await audio.play();
         setIsPlaying(true);
+      } catch (error) {
+        console.warn('Autoplay failed:', error);
       }
-    });
+    };
+
+    checkAutoplay();
 
     // Event listener untuk autoplay
     const handleCanPlayThrough = () => {
@@ -37,15 +42,13 @@ const MusicBox = () => {
 
   const togglePlay = () => {
     const audio = audioRef.current;
-    audio.muted = false; // Matikan audio saat pengguna mengklik
-    setIsPlaying((prev) => {
-      if (!prev) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-      return !prev;
-    });
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.muted = false; // Matikan audio saat pengguna mengklik
+      audio.play();
+    }
+    setIsPlaying((prev) => !prev);
   };
 
   return (
