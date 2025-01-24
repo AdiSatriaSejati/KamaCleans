@@ -1,0 +1,24 @@
+body, html {
+  scroll-behavior: smooth;
+}
+
+.main-content {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-top: 0;
+}
+
+.main-content > section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-top: 0;
+  }
+}

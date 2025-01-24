@@ -14,18 +14,22 @@ body {
   background-color: var(--background);
   color: var(--text-primary);
   transition: background-color 0.3s ease;
+  scroll-behavior: smooth;
 }
 
 .main-content {
-  padding-top: 80px;
-  margin: 0 auto;
-  max-width: 1200px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-top: 0;
+  height: 100vh;
 }
-
+.main-content > section {
+  scroll-snap-align: start;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (max-width: 768px) {
   .main-content {
-    padding-top: 64px;
+    padding-top: 0;
   }
 }

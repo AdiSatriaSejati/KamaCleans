@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { navigationRoutes } from '../../utils/utils';
+import { navigationRoutes, sectionIds } from '../../utils/utils';
 import {
   FadeContainer,
   hamFastFadeContainer,
@@ -17,7 +16,6 @@ import MusicBox from '../music/MusicBox';
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const location = useLocation();
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -27,6 +25,21 @@ const Navbar = () => {
   const handleClick = () => {
     setNavOpen(!navOpen);
     document.body.classList.toggle('lock-scroll');
+  };
+
+  const scrollToSection = (route) => {
+    const sectionId = sectionIds[route];
+    const section = document.getElementById(sectionId);
+    
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      
+      // Close mobile menu if open
+      if (navOpen) {
+        setNavOpen(false);
+        document.body.classList.remove('lock-scroll');
+      }
+    }
   };
 
   return (
@@ -46,13 +59,13 @@ const Navbar = () => {
         </div>
 
         {/* Logo */}
-        <Link to="/" className="logo-container">
+        <div onClick={() => scrollToSection('Home')} className="logo-container" style={{cursor: 'pointer'}}>
           <img 
             src={navOpen ? (isDarkMode ? logoLight : logoDark) : (isDarkMode ? logoLight : logoDark)} 
             alt="Logo" 
             className="nav-logo" 
           />
-        </Link>
+        </div>
 
         {/* Desktop Navigation */}
         <div className="nav-links">
@@ -63,19 +76,16 @@ const Navbar = () => {
             className="nav-items"
           >
             {navigationRoutes.map((route, index) => (
-              <Link
+              <div
                 key={index}
-                to={route === 'home' ? '/' : `/${route}`}
-                className={`nav-item ${
-                  location.pathname === (route === 'home' ? '/' : `/${route}`)
-                    ? 'active'
-                    : ''
-                }`}
+                onClick={() => scrollToSection(route)}
+                className="nav-item"
+                style={{cursor: 'pointer'}}
               >
                 <motion.span variants={popUp} className="capitalize">
                   {route}
                 </motion.span>
-              </Link>
+              </div>
             ))}
           </motion.div>
         </div>
@@ -92,16 +102,15 @@ const Navbar = () => {
             >
               <div className="mobile-nav">
                 {navigationRoutes.map((route, index) => (
-                  <Link
+                  <div
                     key={index}
-                    to={route === 'home' ? '/' : `/${route}`}
+                    onClick={() => scrollToSection(route)}
                     className="mobile-nav-item"
-                    onClick={handleClick}
                   >
                     <motion.span variants={mobileNavItemSideways}>
                       {route}
                     </motion.span>
-                  </Link>
+                  </div>
                 ))}
               </div>
             </motion.div>

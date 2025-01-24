@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
 import Loading from './components/loading/Loading';
@@ -7,8 +7,6 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import Blog from './pages/Blog';
-import { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
@@ -30,15 +28,11 @@ function App() {
       <div className="App">
         <Navbar />
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-          </Routes>
+          <section id="home-section"><Home /></section>
+          <section id="about-section"><About /></section>
+          <section id="services-section"><Services /></section>
+          <section id="portfolio-section"><Portfolio /></section>
+          <section id="contact-section"><Contact /></section>
         </main>
       </div>
     </DarkModeProvider>
