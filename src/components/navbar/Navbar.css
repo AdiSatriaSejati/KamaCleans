@@ -2,7 +2,6 @@
   position: fixed;
   width: 100%;
   top: 0;
-  
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -34,10 +33,15 @@
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1.5rem;
   text-decoration: none;
 }
-
+.controls-container {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem; /* Ubah gap untuk menambah jarak */
+  z-index: 51;
+}
 .nav-logo {
   width: 52px;
   height: 52px;
@@ -53,14 +57,6 @@
 
 .nav-links {
   display: none;
-}
-
-@media (min-width: 768px) {
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
 }
 
 .nav-items {
@@ -114,6 +110,12 @@
     display: none;
     stroke: var(--text-primary);
   }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
 }
 
 .ham-icon {
@@ -169,15 +171,21 @@
   margin: 0 auto;
   max-width: 1200px;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 2rem;
 }
 
 @media (max-width: 768px) {
   .main-content {
     padding-top: 64px;
   }
+  .logo-container {
+    margin-left: 50px;
+  }
   .theme-switch {
     margin-right: 3rem;
+  }
+  .controls-container {
+    margin-right: 2rem;
   }
 }
 
@@ -196,6 +204,5 @@
 /* Hamburger Menu */
 .hamburger.open {
   position: fixed;
-  top: 16px;
-  left: 16px;
+
 }

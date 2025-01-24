@@ -12,6 +12,7 @@ import {
 import './Navbar.css';
 import logoDark from '/images/logo-dark.png';
 import logoLight from '/images/logo-light.png';
+import MusicBox from '../music/MusicBox';
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -32,7 +33,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="nav-container">
         {/* Hamburger Menu */}
-        <div className="hamburger" onClick={handleClick}>
+        <div className={`hamburger ${navOpen ? 'open' : ''}`} onClick={handleClick}>
           {!navOpen ? (
             <svg className="ham-icon" viewBox="0 0 24 24">
               <path d="M4 6h16M4 12h16M4 18h16" />
@@ -47,9 +48,9 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="logo-container">
           <img 
-          src={navOpen ? (isDarkMode ? logoLight : logoDark) : (isDarkMode ? logoLight : logoDark)} 
-          alt="Logo" 
-          className="nav-logo" 
+            src={navOpen ? (isDarkMode ? logoLight : logoDark) : (isDarkMode ? logoLight : logoDark)} 
+            alt="Logo" 
+            className="nav-logo" 
           />
         </Link>
 
@@ -79,13 +80,37 @@ const Navbar = () => {
           </motion.div>
         </div>
 
-        {/* Dark Mode Toggle */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={popUp}
-          className="theme-switch"
-        >
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {navOpen && (
+            <motion.div
+              className="mobile-menu"
+              variants={hamFastFadeContainer}
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+            >
+              <div className="mobile-nav">
+                {navigationRoutes.map((route, index) => (
+                  <Link
+                    key={index}
+                    to={route === 'home' ? '/' : `/${route}`}
+                    className="mobile-nav-item"
+                    onClick={handleClick}
+                  >
+                    <motion.span variants={mobileNavItemSideways}>
+                      {route}
+                    </motion.span>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Controls Container */}
+        <div className="controls-container">
+          <MusicBox />
           <DarkModeSwitch
             checked={isDarkMode}
             onChange={toggleDarkMode}
@@ -93,36 +118,8 @@ const Navbar = () => {
             moonColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
             sunColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
           />
-        </motion.div>
+        </div>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {navOpen && (
-          <motion.div
-            className="mobile-menu"
-            variants={hamFastFadeContainer}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-          >
-            <div className="mobile-nav">
-              {navigationRoutes.map((route, index) => (
-                <Link
-                  key={index}
-                  to={route === 'home' ? '/' : `/${route}`}
-                  className="mobile-nav-item"
-                  onClick={handleClick}
-                >
-                  <motion.span variants={mobileNavItemSideways}>
-                    {route}
-                  </motion.span>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </nav>
   );
 };
