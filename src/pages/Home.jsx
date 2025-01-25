@@ -1,12 +1,11 @@
 import React from 'react';
 
-const Beranda = () => {
+const Home = () => {
   return (
-    <div className="home-container">
-      <h1>Welcome to KamaCleans</h1>
-      <p>Your trusted cleaning service partner</p>
+    <div className="page-container">
+      <h1>Home Page </h1>
     </div>
   );
 };
 
-export default Beranda;
+export default Home;

@@ -5,7 +5,8 @@ import Loading from './components/loading/Loading';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
-import Portfolio from './pages/Portfolio';
+import Location from './pages/Location';
+import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import './App.css';
 
@@ -31,7 +32,8 @@ function App() {
           <section id="home-section"><Home /></section>
           <section id="about-section"><About /></section>
           <section id="services-section"><Services /></section>
-          <section id="portfolio-section"><Portfolio /></section>
+          <section id="location-section"><Location /></section>
+          <section id="gallery-section"><Gallery /></section>
           <section id="contact-section"><Contact /></section>
         </main>
       </div>

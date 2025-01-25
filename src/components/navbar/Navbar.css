@@ -67,7 +67,7 @@
   text-decoration: none;
   color: var(--text-primary);
   border-radius: 0.375rem;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
 }
 .nav-item:hover {
   background-color: rgba(0, 0, 0, 0.05);
@@ -179,7 +179,7 @@
   .controls-container {
     margin-right: 2rem;
   }
-  a.mobile-nav-item {
+  div.mobile-nav-item {
     padding: 16px;
     font-size: 1.1rem; /* Responsif font size */
   }

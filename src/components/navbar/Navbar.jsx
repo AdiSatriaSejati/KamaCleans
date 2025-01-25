@@ -105,7 +105,7 @@ const Navbar = () => {
                   <div
                     key={index}
                     onClick={() => scrollToSection(route)}
-                    className="mobile-nav-item"
+                    className="mobile-nav"
                   >
                     <motion.span variants={mobileNavItemSideways}>
                       {route}

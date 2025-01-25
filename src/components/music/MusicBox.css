@@ -1,56 +1,56 @@
 .mhMusicBars {
-    position: relative;
-    height: 1.5em;
-    width: 4em;
-    margin: auto;
-    overflow: hidden;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: flex-end;
-    cursor: pointer;
-  }
-  
-  .mhMusicBars span {
-    width: 3px;
-    display: block;
-    margin-right: 2px;
-    background: currentColor;
-    opacity: 0.5;
-    transform: translateY(50%);
-  }
-  
-  .mhMusicBars span:nth-child(1) { height: 0.9em; }
-  .mhMusicBars span:nth-child(2) { height: 0.9em; }
-  .mhMusicBars span:nth-child(3) { height: 0.9em; }
-  .mhMusicBars span:nth-child(4) { height: 0.9em; }
-  
-  .mhMusicBars.active span {
-    opacity: 1;
-  }
-  
-  .mhMusicBars.active span:nth-child(1) {
-    height: 0.9em;
-    animation: musicBars 0.47s 0.6s ease-in infinite;
-  }
-  
-  .mhMusicBars.active span:nth-child(2) {
-    height: 1.1em;
-    animation: musicBars 0.53s 0.91s ease-in infinite;
-  }
-  
-  .mhMusicBars.active span:nth-child(3) {
-    height: 1.4em;
-    animation: musicBars 0.52s 0.02s ease-in infinite;
-  }
-  
-  .mhMusicBars.active span:nth-child(4) {
-    height: 1.05em;
-    animation: musicBars 0.65s 0.35s ease-in infinite;
-  }
-  
-  @keyframes musicBars {
-    0% { transform: translateY(50%); }
-    50% { transform: translateY(5%); }
-    100% { transform: translateY(50%); }
-  }
+  position: relative;
+  height: 1.5em;
+  width: 4em;
+  margin: auto;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.mhMusicBars span {
+  width: 3px;
+  display: block;
+  margin-right: 2px;
+  background: currentColor;
+  opacity: 0.5;
+  transform: translateY(50%);
+}
+
+.mhMusicBars span:nth-child(1) { height: 0.9em; }
+.mhMusicBars span:nth-child(2) { height: 0.9em; }
+.mhMusicBars span:nth-child(3) { height: 0.9em; }
+.mhMusicBars span:nth-child(4) { height: 0.9em; }
+
+.mhMusicBars.active span {
+  opacity: 1;
+}
+
+.mhMusicBars.active span:nth-child(1) {
+  height: 0.9em;
+  animation: musicBars 0.47s 0.6s ease-in infinite;
+}
+
+.mhMusicBars.active span:nth-child(2) {
+  height: 1.1em;
+  animation: musicBars 0.53s 0.91s ease-in infinite;
+}
+
+.mhMusicBars.active span:nth-child(3) {
+  height: 1.4em;
+  animation: musicBars 0.52s 0.02s ease-in infinite;
+}
+
+.mhMusicBars.active span:nth-child(4) {
+  height: 1.05em;
+  animation: musicBars 0.65s 0.35s ease-in infinite;
+}
+
+@keyframes musicBars {
+  0% { transform: translateY(50%); }
+  50% { transform: translateY(5%); }
+  100% { transform: translateY(50%); }
+}
