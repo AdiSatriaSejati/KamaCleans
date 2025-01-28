@@ -83,7 +83,7 @@ const Navbar = () => {
         {/* Logo */}
         <motion.img 
           src={isDarkMode ? logoLight : logoDark} 
-          alt="Logo" 
+          alt="KamaCleans" 
           className="nav-logo"
           onClick={() => scrollToSection('Home')}
           whileHover={{ scale: 1.05 }}

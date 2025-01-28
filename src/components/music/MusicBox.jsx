@@ -67,7 +67,6 @@ const MusicBox = () => {
         gainNodeRef.current.gain.value = 0.45;
         setIsPlaying(true);
         
-        // Hapus event listener setelah musik mulai
         document.removeEventListener('click', handleGlobalClick);
       }
     };

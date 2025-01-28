@@ -71,12 +71,10 @@
   transition: all 0.3s ease;
 }
 
-/* Styling untuk nav-controls saat di hero */
 .navbar.on-hero .nav-controls {
   color: #fff;
 }
 
-/* Mobile Navigation */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -208,7 +206,6 @@
   padding-right: 2rem;
 }
 
-/* Utility Classes */
 .capitalize {
   text-transform: capitalize;
 }
@@ -220,7 +217,6 @@
   height: 100%;
 }
 
-/* Styling khusus untuk dark mode toggle */
 .Mode {
   color: var(--text-primary) !important;
   transition: all 0.3s ease;

@@ -24,13 +24,11 @@
     margin: 0 5%;
   }
   
-  /* Animasi untuk progress bar */
   @keyframes loading {
     0% { transform: scaleX(0); }
     100% { transform: scaleX(1); }
   }
   
-  /* Menjalankan animasi loading */
   .loader .progress {
     animation: loading 2s infinite;
   }
