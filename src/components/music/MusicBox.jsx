@@ -10,7 +10,6 @@ const MusicBox = () => {
   const analyserRef = useRef(null);
 
   useEffect(() => {
-    // Inisialisasi Audio Context
     const initAudio = async () => {
       try {
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();

@@ -15,21 +15,42 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s ease;
   scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.main-content {
+.App {
   padding-top: 0;
   height: 100vh;
 }
-.main-content > section {
-  scroll-snap-align: start;
+
+.App > section {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  scroll-snap-align: start;
+  position: relative;
 }
+
+
 @media (max-width: 768px) {
-  .main-content {
+  .App {
     padding-top: 0;
   }
+}
+
+.page-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+}
+
+#about-section,
+#services-section,
+#location-section,
+#gallery-section,
+#contact-section {
+  background-color: var(--background);
+  z-index: 2;
+  position: relative;
 }

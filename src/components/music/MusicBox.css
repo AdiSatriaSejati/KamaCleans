@@ -20,6 +20,7 @@
   transform: translateY(50%);
 }
 
+
 .mhMusicBars span:nth-child(1) { height: 0.9em; }
 .mhMusicBars span:nth-child(2) { height: 0.9em; }
 .mhMusicBars span:nth-child(3) { height: 0.9em; }

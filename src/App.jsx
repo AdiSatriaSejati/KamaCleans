@@ -28,14 +28,12 @@ function App() {
     <DarkModeProvider>
       <div className="App">
         <Navbar />
-        <main className="main-content">
           <section id="home-section"><Home /></section>
           <section id="about-section"><About /></section>
           <section id="services-section"><Services /></section>
           <section id="location-section"><Location /></section>
           <section id="gallery-section"><Gallery /></section>
           <section id="contact-section"><Contact /></section>
-        </main>
       </div>
     </DarkModeProvider>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { navigationRoutes, sectionIds } from '../../utils/utils';
@@ -12,17 +12,34 @@ import './Navbar.css';
 import logoDark from '/images/logo-dark.png';
 import logoLight from '/images/logo-light.png';
 import MusicBox from '../music/MusicBox';
+import { useDarkMode } from '../../context/darkModeContext';
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home-section');
+  const { isDarkMode, changeDarkMode } = useDarkMode();
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      
+      // Mendeteksi section yang aktif
+      const sections = document.querySelectorAll('section[id]');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.scrollY >= (sectionTop - sectionHeight/3)) {
+          setActiveSection(section.getAttribute('id'));
+        }
+      });
+    };
 
-  const handleClick = () => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleNav = () => {
     setNavOpen(!navOpen);
     document.body.classList.toggle('lock-scroll');
   };
@@ -34,7 +51,6 @@ const Navbar = () => {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
       
-      // Close mobile menu if open
       if (navOpen) {
         setNavOpen(false);
         document.body.classList.remove('lock-scroll');
@@ -43,86 +59,71 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        {/* Hamburger Menu */}
-        <div className={`hamburger ${navOpen ? 'open' : ''}`} onClick={handleClick}>
-          {!navOpen ? (
-            <svg className="ham-icon" viewBox="0 0 24 24">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          ) : (
-            <svg className="ham-icon" viewBox="0 0 24 24">
-              <path d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          )}
-        </div>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${activeSection === 'home-section' ? 'on-hero' : ''}`}>
+      <div className="nav-content">
+         {/* Mobile Navigation Toggle */}
+         <button 
+          className={`hamburger ${navOpen ? 'active' : ''}`} 
+          onClick={toggleNav}
+          aria-label="Toggle navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
-        {/* Logo */}
-        <div onClick={() => scrollToSection('Home')} className="logo-container" style={{cursor: 'pointer'}}>
-          <img 
-            src={navOpen ? (isDarkMode ? logoLight : logoDark) : (isDarkMode ? logoLight : logoDark)} 
-            alt="Logo" 
-            className="nav-logo" 
-          />
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="nav-links">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={FadeContainer}
-            className="nav-items"
-          >
-            {navigationRoutes.map((route, index) => (
-              <div
-                key={index}
-                onClick={() => scrollToSection(route)}
-                className="nav-item"
-                style={{cursor: 'pointer'}}
-              >
-                <motion.span variants={popUp} className="capitalize">
-                  {route}
-                </motion.span>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-
-        {/* Mobile Menu */}
+        {/* Mobile Navigation Menu */}
         <AnimatePresence>
           {navOpen && (
             <motion.div
-              className="mobile-menu"
-              variants={hamFastFadeContainer}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
+              className="mobile-nav"
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'tween' }}
             >
-              <div className="mobile-nav">
-                {navigationRoutes.map((route, index) => (
-                  <div
-                    key={index}
+              <div className="mobile-nav-links">
+                {navigationRoutes.map(route => (
+                  <motion.button
+                    key={route}
                     onClick={() => scrollToSection(route)}
-                    className="mobile-nav"
+                    className={`nav-item ${sectionIds[route] === activeSection ? 'active' : ''}`}
+                    variants={mobileNavItemSideways}
                   >
-                    <motion.span variants={mobileNavItemSideways}>
-                      {route}
-                    </motion.span>
-                  </div>
+                    {route}
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+        <img 
+          src={isDarkMode ? logoLight : logoDark} 
+          alt="Logo" 
+          className="nav-logo"
+          onClick={() => scrollToSection('Home')}
+        />
 
-        {/* Controls Container */}
-        <div className="controls-container">
+        {/* Desktop Navigation */}
+        <div className="nav-links desktop">
+          {navigationRoutes.map(route => (
+            <button
+              key={route}
+              onClick={() => scrollToSection(route)}
+              className={`nav-item ${sectionIds[route] === activeSection ? 'active' : ''}`}
+            >
+              {route}
+            </button>
+          ))}
+        </div>
+
+        {/* Controls */}
+        <div className="nav-controls">
           <MusicBox />
           <DarkModeSwitch
+            className='Mode'
             checked={isDarkMode}
-            onChange={toggleDarkMode}
+            onChange={changeDarkMode}
             size={24}
             moonColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
             sunColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
