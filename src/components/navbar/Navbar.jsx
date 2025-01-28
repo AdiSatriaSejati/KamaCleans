@@ -9,8 +9,8 @@ import {
   popUp,
 } from '../../utils/FramerMotionVariants';
 import './Navbar.css';
-import logoDark from '/images/logo-dark.png';
-import logoLight from '/images/logo-light.png';
+import logoDark from '/images/logo-dark.webp';
+import logoLight from '/images/logo-light.webp';
 import MusicBox from '../music/MusicBox';
 import { useDarkMode } from '../../context/darkModeContext';
 

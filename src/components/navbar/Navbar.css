@@ -225,3 +225,31 @@
   color: var(--text-primary) !important;
   transition: all 0.3s ease;
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-content {
+    margin: 0 1.5rem;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .logo-container {
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .controls-container {
+    margin-right: 1.5rem;
+  }
+}

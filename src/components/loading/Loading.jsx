@@ -1,6 +1,6 @@
 import React from 'react';
 import './Loading.css';
-import logo from '../../../public/images/logo-dark.png';
+import logo from '../../../public/images/logo-dark.webp';
 
 const Loading = () => {
   return (

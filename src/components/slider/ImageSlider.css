@@ -29,16 +29,16 @@
   }
   
   .page-view .project:nth-child(odd).hide {
-    -webkit-mask: url(/images/building-sprite.png);
-    mask: url(/images/building-sprite.png);
+    -webkit-mask: url(/images/effect-sprite.png);
+    mask: url(/images/effect-sprite.png);
     -webkit-mask-size: 7500% 100%;
     mask-size: 7500% 100%;
     animation: mask-play 1.4s steps(74) forwards;
   }
   
   .page-view .project:nth-child(even).hide {
-    -webkit-mask: url(/images/building-sprite-2.png);
-    mask: url(/images/building-sprite-2.png);
+    -webkit-mask: url(/images/effect-sprite-2.png);
+    mask: url(/images/effect-sprite-2.png);
     -webkit-mask-size: 8400% 100%;
     mask-size: 8400% 100%;
     animation: mask-play 1.4s steps(83) forwards;
@@ -104,23 +104,6 @@
     background: rgba(0, 0, 0, 0.4);
   }
   
-  @media screen and (max-width: 768px) {
-    .bullets {
-      bottom: 2vh;
-      gap: 5rem;
-    }
-    
-    .arrow {
-      width: 40px;
-      height: 40px;
-    }
-    
-    .arrow svg {
-      height: 20px;
-      width: 20px;
-    }
-  }
-  
   /* Fallback untuk browser yang tidak mendukung mask */
   .outdated .project.hide {
     opacity: 0;
@@ -163,8 +146,52 @@
   }
 
   /* Responsive */
+
+   @media screen and (max-width: 768px) {
+    .bullets {
+      bottom: 2vh;
+      gap: 5rem;
+    }
+    
+    .arrow {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .arrow svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
   @media screen and (max-width: 768px) {
     .slide-content h1 {
       letter-spacing: clamp(0.25rem, 1vw, 0.5rem);
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .slide-content {
+      width: 90%;
+    }
+  
+    .slide-content h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: clamp(0.35rem, 1.5vw, 0.75rem);
+    }
+  
+    .bullets {
+      bottom: 0;
+      gap: 3rem;
+      padding: 2rem;
+    }
+  
+    .arrow {
+      width: 45px;
+      height: 45px;
+    }
+  
+    .arrow svg {
+      height: 22px;
+      width: 22px;
     }
   }

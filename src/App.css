@@ -39,10 +39,14 @@ body {
   position: relative;
 }
 
-
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .App {
     padding-top: 0;
+  }
+
+  .App > section {
+    min-height: 100vh;
+    height: auto;
   }
 }
 
