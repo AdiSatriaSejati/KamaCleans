@@ -19,18 +19,24 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home-section');
   const { isDarkMode, changeDarkMode } = useDarkMode();
+  const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
+      // Scroll detection
       setIsScrolled(window.scrollY > 50);
       
-      // Mendeteksi section yang aktif
+      // Active section detection with Intersection Observer
       const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
       sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
-        if (window.scrollY >= (sectionTop - sectionHeight/3)) {
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
           setActiveSection(section.getAttribute('id'));
+          setIsHeroVisible(section.getAttribute('id') === 'home-section');
         }
       });
     };
@@ -58,11 +64,13 @@ const Navbar = () => {
     }
   };
 
+  const navClassName = `navbar ${isScrolled ? 'scrolled' : ''} ${isHeroVisible ? 'on-hero' : ''}`;
+
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${activeSection === 'home-section' ? 'on-hero' : ''}`}>
+    <nav className={navClassName}>
       <div className="nav-content">
-         {/* Mobile Navigation Toggle */}
-         <button 
+        {/* Hamburger Menu */}
+        <button 
           className={`hamburger ${navOpen ? 'active' : ''}`} 
           onClick={toggleNav}
           aria-label="Toggle navigation"
@@ -72,7 +80,38 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        {/* Mobile Navigation Menu */}
+        {/* Logo */}
+        <motion.img 
+          src={isDarkMode ? logoLight : logoDark} 
+          alt="Logo" 
+          className="nav-logo"
+          onClick={() => scrollToSection('Home')}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        />
+
+        {/* Desktop Navigation */}
+        <motion.div 
+          className="nav-links desktop"
+          initial="hidden"
+          animate="visible"
+          variants={FadeContainer}
+        >
+          {navigationRoutes.map((route, index) => (
+            <motion.button
+              key={route}
+              onClick={() => scrollToSection(route)}
+              className={`nav-item ${sectionIds[route] === activeSection ? 'active' : ''}`}
+              variants={popUp}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {route}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        {/* Mobile Navigation */}
         <AnimatePresence>
           {navOpen && (
             <motion.div
@@ -80,15 +119,17 @@ const Navbar = () => {
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'tween' }}
+              transition={{ type: 'tween', duration: 0.3 }}
             >
               <div className="mobile-nav-links">
-                {navigationRoutes.map(route => (
+                {navigationRoutes.map((route, index) => (
                   <motion.button
                     key={route}
                     onClick={() => scrollToSection(route)}
                     className={`nav-item ${sectionIds[route] === activeSection ? 'active' : ''}`}
                     variants={mobileNavItemSideways}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {route}
                   </motion.button>
@@ -97,36 +138,17 @@ const Navbar = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        <img 
-          src={isDarkMode ? logoLight : logoDark} 
-          alt="Logo" 
-          className="nav-logo"
-          onClick={() => scrollToSection('Home')}
-        />
-
-        {/* Desktop Navigation */}
-        <div className="nav-links desktop">
-          {navigationRoutes.map(route => (
-            <button
-              key={route}
-              onClick={() => scrollToSection(route)}
-              className={`nav-item ${sectionIds[route] === activeSection ? 'active' : ''}`}
-            >
-              {route}
-            </button>
-          ))}
-        </div>
 
         {/* Controls */}
         <div className="nav-controls">
           <MusicBox />
           <DarkModeSwitch
-            className='Mode'
+            className="Mode"
             checked={isDarkMode}
             onChange={changeDarkMode}
             size={24}
-            moonColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
-            sunColor={navOpen ? (isDarkMode ? "#fff" : "#000") : (isDarkMode ? "#fff" : "#000")}
+            moonColor={isHeroVisible ? "#fff" : (isDarkMode ? "#fff" : "#000")}
+            sunColor={isHeroVisible ? "#fff" : (isDarkMode ? "#fff" : "#000")}
           />
         </div>
       </div>
