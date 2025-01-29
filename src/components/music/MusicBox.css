@@ -55,6 +55,18 @@
   100% { transform: translateY(50%); }
 }
 
+@media screen and (max-width: 768px) {
+  .mhMusicBars {
+    height: 1.2em;
+    width: 3em;
+  }
+
+  .mhMusicBars span {
+    width: 2px;
+    margin-right: 1.5px;
+  }
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .mhMusicBars {
     height: 1.25em;

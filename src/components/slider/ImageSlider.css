@@ -142,27 +142,37 @@
     }
   }
 
-   @media screen and (max-width: 768px) {
-    .bullets {
-      bottom: 2vh;
-      gap: 5rem;
-    }
-    
-    .arrow {
-      width: 40px;
-      height: 40px;
-    }
-    
-    .arrow svg {
-      height: 20px;
-      width: 20px;
-    }
-  }
   @media screen and (max-width: 768px) {
-    .slide-content h1 {
-      letter-spacing: clamp(0.25rem, 1vw, 0.5rem);
-    }
+  .page-view {
+    height: 100vh;
   }
+
+  .bullets {
+    bottom: 5vh;
+    gap: 3rem;
+    padding: 1rem;
+  }
+
+  .arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .arrow svg {
+    height: 18px;
+    width: 18px;
+  }
+
+  .slide-content {
+    width: 90%;
+  }
+
+  .slide-content h1 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    letter-spacing: clamp(0.2rem, 1vw, 0.5rem);
+  }
+}
 
   @media (min-width: 768px) and (max-width: 1024px) {
     .slide-content {

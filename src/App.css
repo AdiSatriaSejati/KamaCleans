@@ -37,6 +37,12 @@ body {
   position: relative;
 }
 
+@media screen and (max-width: 768px) {
+  .App > section {
+    min-height: 100vh;
+    height: auto;
+  }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
   .App {
     padding-top: 0;
@@ -65,4 +71,10 @@ body {
   background-color: var(--background);
   z-index: 2;
   position: relative;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-primary) var(--background);
 }

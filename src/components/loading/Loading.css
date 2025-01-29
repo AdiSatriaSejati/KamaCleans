@@ -32,7 +32,22 @@
   .loader .progress {
     animation: loading 2s infinite;
   }
-
+  
+  @media screen and (max-width: 768px) {
+    .loader img {
+      width: 128px;
+      height: 128px;
+    }
+  
+    .progress {
+      width: 80%;
+    }
+  
+    .loader p {
+      font-size: 0.9rem;
+    }
+  }
+  
   @media (min-width: 768px) and (max-width: 1024px) {
     .loader img {
       width: 156px;

@@ -61,7 +61,7 @@
 
 .nav-item:hover::after,
 .nav-item.active::after {
-  width: 100%;
+  width: 50%;
 }
 
 .nav-controls {
@@ -128,23 +128,6 @@
   padding: 2rem;
 }
 
-@media screen and (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
-  .nav-content {
-    margin: 0 1rem;
-  }
-
-  .mobile-nav {
-    display: block;
-  }
-
-  .navbar.on-hero .hamburger span {
-    background: #ffffff;
-  }
-  
-}
 
 .nav-shadow {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -188,16 +171,6 @@
   filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
-@media (min-width: 768px) {
-  
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-}
-
 .main-content {
   padding-top: 80px;
   margin: 0 auto;
@@ -222,22 +195,52 @@
   transition: all 0.3s ease;
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  .nav-content {
-    margin: 0 1.5rem;
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
   }
 
   .nav-links {
-    gap: 0.5rem;
+    display: flex;
+  }
+
+  .mobile-nav {
+    display: none;
+  }
+
+  .nav-content {
+    margin: 0 2rem;
   }
 
   .nav-item {
     padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
-  .logo-container {
-    gap: 1rem;
+  .nav-controls {
+    margin-left: 1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .navbar {
+    padding: 0.25em 0;
+  }
+
+  .nav-content {
+    margin: 0 0.75rem;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-right: 1rem;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .hamburger span {
+    width: 1.75rem;
+    height: 0.2rem;
   }
 
   .nav-logo {
@@ -245,7 +248,46 @@
     height: 42px;
   }
 
-  .controls-container {
-    margin-right: 1.5rem;
+  .mobile-nav {
+    padding: 4rem 0;
+  }
+
+  .mobile-nav-links {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .nav-controls {
+    gap: 0.75rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar.on-hero .hamburger span {
+    background: #ffffff;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-content {
+    margin: 0 4rem;
+  }
+
+  .nav-item {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .nav-controls {
+    gap: 1rem;
   }
 }
