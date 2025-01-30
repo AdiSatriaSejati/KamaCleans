@@ -16,10 +16,10 @@ const ParticleText = () => {
   // Function to calculate point count based on screen width
   const calculatePointCount = () => {
     const width = window.innerWidth;
-    if (width <= 480) return 2000; // Mobile
-    if (width <= 768) return 3000; // Tablet
-    if (width <= 1024) return 3000; // Small desktop
-    return 3000; // Large desktop
+    if (width <= 480) return 600; // Mobile
+    if (width <= 768) return 800; // Tablet
+    if (width <= 1024) return 1000; // Small desktop
+    return 1200; // Large desktop
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const ParticleText = () => {
       const particleSize = window.innerWidth <= 768 ? 0.5 : 1;
       const lineWidthNear = window.innerWidth <= 768 ? 0.1 : 0.2;
       const lineWidthFar = window.innerWidth <= 768 ? 0.05 : 0.1;
-      const connectionDistanceNear = window.innerWidth <= 768 ? 3 : 5;
+      const connectionDistanceNear = window.innerWidth <= 768 ? 3 : 10;
       const connectionDistanceFar = window.innerWidth <= 768 ? 15 : 20;
 
       ctx.beginPath();
@@ -88,7 +88,7 @@ const ParticleText = () => {
         const d = Math.sqrt(Math.pow(this.x - points[k].x, 2) + Math.pow(this.y - points[k].y, 2));
         if (d < connectionDistanceNear) {
           ctx.lineWidth = lineWidthNear;
-          ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
           ctx.beginPath();
           ctx.moveTo(this.x, this.y);
           ctx.lineTo(points[k].x, points[k].y);
@@ -191,7 +191,6 @@ const ParticleText = () => {
       style={{
         position: 'absolute',
         top: '45%',
-        left: '50%',
         transform: 'translate(-50%, -50%)',
         zIndex: 40,
         maxWidth: '90vw'
