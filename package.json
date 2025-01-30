@@ -13,6 +13,8 @@
   "dependencies": {
     "@react-three/drei": "^9.121.3",
     "@react-three/fiber": "^8.17.12",
+    "@tabler/icons": "^3.29.0",
+    "@tabler/icons-react": "^3.29.0",
     "can-autoplay": "^3.0.2",
     "framer-motion": "^12.0.1",
     "gsap": "^3.12.7",
