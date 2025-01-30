@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './ImageSlider.css';
 
+
 const ImageSlider = () => {
   const [current, setCurrent] = useState(0);
   const [next, setNext] = useState(1);
