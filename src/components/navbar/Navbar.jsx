@@ -21,63 +21,86 @@ const Navbar = () => {
   const { isDarkMode, changeDarkMode } = useDarkMode();
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
+  // Fungsi untuk mengecek apakah elemen berada dalam viewport
+  const isElementInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight / 2) &&
+      rect.bottom >= (window.innerHeight / 2)
+    );
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      // Scroll detection
+      // Update scroll state
       setIsScrolled(window.scrollY > 50);
       
-      // Active section detection with Intersection Observer
+      // Check each section
       const sections = document.querySelectorAll('section[id]');
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
+      let foundActive = false;
 
       sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          setActiveSection(section.getAttribute('id'));
-          setIsHeroVisible(section.getAttribute('id') === 'home-section');
+        if (isElementInViewport(section)) {
+          const sectionId = section.getAttribute('id');
+          setActiveSection(sectionId);
+          setIsHeroVisible(sectionId === 'home-section');
+          foundActive = true;
         }
       });
+
+      // If no section is in viewport, default to last active section
+      if (!foundActive) {
+        const lastSection = Array.from(sections).reduce((prev, current) => {
+          return (prev.offsetTop > current.offsetTop) ? prev : current;
+        });
+        setActiveSection(lastSection.getAttribute('id'));
+        setIsHeroVisible(lastSection.getAttribute('id') === 'home-section');
+      }
     };
 
+    // Add scroll listener
     window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleNav = () => {
-    setNavOpen(!navOpen);
-    document.body.classList.toggle('lock-scroll');
-  };
 
   const scrollToSection = (route) => {
     const sectionId = sectionIds[route];
     const section = document.getElementById(sectionId);
     
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      
       if (navOpen) {
         setNavOpen(false);
-        document.body.classList.remove('lock-scroll');
       }
+      
+      const yOffset = -50;
+      const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
+
+      // Update active section immediately
+      setActiveSection(sectionId);
+      setIsHeroVisible(sectionId === 'home-section');
     }
   };
 
-  const navClassName = `navbar ${isScrolled ? 'scrolled' : ''} ${isHeroVisible ? 'on-hero' : ''}`;
-
   return (
-    <nav className={navClassName}>
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isHeroVisible ? 'on-hero' : ''}`}>
       <div className="nav-content">
         {/* Hamburger Menu */}
         <button 
           className={`hamburger ${navOpen ? 'active' : ''}`} 
-          onClick={toggleNav}
+          onClick={() => setNavOpen(!navOpen)}
           aria-label="Toggle navigation"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span className={isHeroVisible ? 'light-span' : 'dark-span'}></span>
+          <span className={isHeroVisible ? 'light-span' : 'dark-span'}></span>
+          <span className={isHeroVisible ? 'light-span' : 'dark-span'}></span>
         </button>
 
         {/* Logo */}
@@ -90,14 +113,14 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
         />
 
-        {/* Desktop Navigation */}
+        {/* Navigation Links */}
         <motion.div 
-          className="nav-links desktop"
+          className="nav-links"
           initial="hidden"
           animate="visible"
           variants={FadeContainer}
         >
-          {navigationRoutes.map((route, index) => (
+          {navigationRoutes.map((route) => (
             <motion.button
               key={route}
               onClick={() => scrollToSection(route)}
@@ -115,14 +138,19 @@ const Navbar = () => {
         <AnimatePresence>
           {navOpen && (
             <motion.div
-              className="mobile-nav"
+              className={`mobile-nav ${isHeroVisible ? 'hero-visible' : ''}`}
               initial={{ opacity: 0, x: '100%' }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
             >
-              <div className="mobile-nav-links">
-                {navigationRoutes.map((route, index) => (
+              <motion.div 
+                className="mobile-nav-links"
+                variants={hamFastFadeContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                {navigationRoutes.map((route) => (
                   <motion.button
                     key={route}
                     onClick={() => scrollToSection(route)}
@@ -134,7 +162,7 @@ const Navbar = () => {
                     {route}
                   </motion.button>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
