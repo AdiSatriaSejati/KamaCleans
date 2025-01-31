@@ -1,0 +1,16 @@
+# https://www.robotstxt.org/robotstxt.html
+# Konfigurasi robots.txt untuk website portfolio
+
+# Izinkan semua robot pencari untuk mengakses seluruh situs
+User-agent: *
+Allow: /
+
+# Larang akses ke folder atau file tertentu jika diperlukan
+# Disallow: /private/
+# Disallow: /drafts/
+
+# Tentukan lokasi sitemap
+Sitemap: https://kamacleans.vercel.app/robots.txt
+
+# Atur crawl-delay jika diperlukan (opsional)
+# Crawl-delay: 10
