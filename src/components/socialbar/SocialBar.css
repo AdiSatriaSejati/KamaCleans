@@ -2,7 +2,7 @@
 .social-bar {
     position: fixed;
     right: -15px;
-    top: 20%;
+    top: 30%;
     transform: translateY(-50%);
     z-index: 40;
     border-radius: 8px 0 0 8px;
@@ -33,4 +33,10 @@
   .social-bar__whatsapp {
     background-color: #25D366;
     border-radius: 8px 0 0 8px;
+}
+
+@media (min-width: 162px) and (max-width: 197px) {
+  .social-bar {
+    display: none;
+  }
 }

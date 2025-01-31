@@ -64,6 +64,7 @@
   
   @media (min-width: 768px) and (max-width: 1024px) {
     .animated-text-container svg {
-        font: 800 6em/1 'Open Sans', Impact;
+        font: 800 10em/1 'Open Sans', Impact;
+        font-size: clamp(2em, 8.5vw, 10em);
     }
   }
