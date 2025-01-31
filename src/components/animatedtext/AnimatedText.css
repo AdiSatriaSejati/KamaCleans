@@ -1,0 +1,69 @@
+.animated-text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    z-index: 35;
+  }
+  
+  .animated-text-container svg {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+    text-transform: uppercase;
+    font: 200 5em/1 'Open Sans', Impact;
+  }
+  
+  .text-copy--stroke {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 4;
+  }
+  
+  .text-copy--shadow {
+    fill: rgba(0, 0, 0, 0.25);
+    transform: translate(0.06em, 0.06em);
+  }
+  
+  .r-fill {
+    fill: url("#p-circles");
+    transform-origin: 300px 150px;
+    animation: rotate 30s infinite linear;
+  }
+  
+  .c-ring {
+    fill: none;
+    stroke-width: 2;
+    stroke: white;
+  }
+  
+  .c-ring--fill {
+    fill: white;
+    stroke-width: 0;
+    animation: stroke 5s infinite;
+  }
+  
+  @keyframes stroke {
+    50% {
+      stroke-width: 15;
+    }
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .animated-text-container svg {
+        font: 800 5em/1 'Open Sans', Impact;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .animated-text-container svg {
+        font: 800 6em/1 'Open Sans', Impact;
+    }
+  }
