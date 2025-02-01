@@ -29,16 +29,16 @@
   }
   
   .page-view .project:nth-child(odd).hide {
-    -webkit-mask: url(/images/effect-sprite.png);
-    mask: url(/images/effect-sprite.png);
+    -webkit-mask: url(/images/slider/effect-sprite.png);
+    mask: url(/images/slider/effect-sprite.png);
     -webkit-mask-size: 7500% 100%;
     mask-size: 7500% 100%;
     animation: mask-play 1.4s steps(74) forwards;
   }
   
   .page-view .project:nth-child(even).hide {
-    -webkit-mask: url(/images/effect-sprite-2.png);
-    mask: url(/images/effect-sprite-2.png);
+    -webkit-mask: url(/images/slider/effect-sprite-2.png);
+    mask: url(/images/slider/effect-sprite-2.png);
     -webkit-mask-size: 8400% 100%;
     mask-size: 8400% 100%;
     animation: mask-play 1.4s steps(83) forwards;

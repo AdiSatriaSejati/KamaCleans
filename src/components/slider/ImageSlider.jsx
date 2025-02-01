@@ -11,15 +11,15 @@ const ImageSlider = () => {
 
   const slides = [
     {
-      image: '/images/1.webp',
+      image: '/images/slider/1.webp',
       heading: 'FRESH FOR MORE MOVE'
     },
     {
-      image: '/images/2.webp',
+      image: '/images/slider/2.webp',
       heading: 'FRESH FOR MORE CHILL'
     },
     {
-      image: '/images/3.webp',
+      image: '/images/slider/3.webp',
       heading: 'FRESH FOR MORE MILES'
     }
   ];
