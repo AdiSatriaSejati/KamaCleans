@@ -2,8 +2,8 @@ export const navigationRoutes = [
   "Home",
   "About",
   "Services",
-  "Location",
   "Gallery",
+  "Testimonials",
   "Contact"
 ];
 
@@ -11,7 +11,7 @@ export const sectionIds = {
   "Home": "home-section",
   "About": "about-section", 
   "Services": "services-section",
-  "Location": "location-section",
   "Gallery": "gallery-section",
+  "Testimonials": "testimonials-section",
   "Contact": "contact-section"
 };

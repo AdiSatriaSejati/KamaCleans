@@ -13,23 +13,30 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
     "@react-three/drei": "^9.121.3",
     "@react-three/fiber": "^8.17.12",
     "@tabler/icons": "^3.29.0",
     "@tabler/icons-react": "^3.29.0",
+    "bootstrap": "^5.3.3",
     "can-autoplay": "^3.0.2",
     "framer-motion": "^12.0.1",
     "gsap": "^3.12.7",
+    "i18next": "^24.2.2",
     "jquery": "^3.7.1",
     "lucide-react": "^0.474.0",
     "ogl": "^1.0.11",
+    "owl.carousel": "^2.3.4",
     "react": "^18.3.1",
     "react-awesome-button": "^7.0.5",
     "react-dom": "^18.3.1",
+    "react-i18next": "^15.4.0",
+    "react-owl-carousel": "^2.3.3",
     "react-router-dom": "^7.1.3",
     "react-scroll": "^1.9.0",
     "react-toggle-dark-mode": "^1.1.1",
     "react-use": "^17.6.0",
+    "swiper": "^11.2.2",
     "three": "^0.172.0"
   },
   "devDependencies": {
@@ -48,15 +55,15 @@
     "vite": "^6.0.5"
   },
   "browserslist": {
-  "production": [
-    ">0.2%",
-    "not dead",
-    "not op_mini all"
-  ],
-  "development": [
-    "last 1 chrome version",
-    "last 1 firefox version",
-    "last 1 safari version"
-  ]
-}
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

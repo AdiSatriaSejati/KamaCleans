@@ -1,0 +1,193 @@
+.section-title {
+    font-size: 28px;
+    top: 2.5rem;
+    padding-bottom: 20px;
+    margin: auto;
+    font-weight: 400;
+    display: inline-block;
+    position: relative;
+}
+
+.section-title:after,
+.section-title:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+}
+
+.section-title:after {
+    height: 2px;
+    background-color: rgba(252, 92, 15, 0.46);
+    left: 25%;
+    right: 25%;
+}
+
+.section-title:before {
+    width: 15px;
+    height: 15px;
+    border: 3px solid #fff;
+    background-color: #fc5c0f;
+    left: 50%;
+    transform: translatex(-50%);
+    bottom: -9px;
+    z-index: 9;
+    border-radius: 50%;
+}
+
+.testimonials-container {
+    padding: 4px 0;
+    background: var(--background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.shadow-effect {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid #ECECEC;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.10), 0 15px 12px rgba(0,0,0,0.02);
+}
+
+#customers-testimonials .shadow-effect p {
+    font-family: inherit;
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 0 0 17px 0;
+    font-weight: 300;
+    color: #333;
+}
+
+.testimonial-name {
+    margin: -17px auto 0;
+    display: table;
+    width: auto;
+    background: #fc5c0f;
+    padding: 9px 35px;
+    border-radius: 12px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 9px 18px rgba(0,0,0,0.12), 0 5px 7px rgba(0,0,0,0.05);
+}
+
+#customers-testimonials .item {
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 80px;
+    opacity: .2;
+    transform: scale3d(0.8, 0.8, 1);
+    transition: all 0.3s ease-in-out;
+}
+
+#customers-testimonials .owl-item.active.center .item {
+    opacity: 1;
+    transform: scale3d(1.0, 1.0, 1);
+}
+
+.owl-carousel .owl-item img {
+    transform-style: preserve-3d;
+    max-width: 90px;
+    margin: 0 auto 17px;
+    border-radius: 50%;
+}
+
+#customers-testimonials.owl-carousel .owl-dots .owl-dot.active span,
+#customers-testimonials.owl-carousel .owl-dots .owl-dot:hover span {
+    background: #3190E7;
+    transform: translate3d(0px, -50%, 0px) scale(0.7);
+}
+
+#customers-testimonials.owl-carousel .owl-dots {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+    bottom: 5rem;
+    left: 12.5%;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+#customers-testimonials.owl-carousel .owl-dots .owl-dot {
+    display: inline-block;
+}
+
+#customers-testimonials.owl-carousel .owl-dots .owl-dot span {
+    background: #fc5c0f;
+    display: block;         /* Changed from inline-block */
+    height: 20px;
+    width: 20px;
+    margin: 0;             /* Reset margin */
+    border-radius: 50%;    /* Added for circular dots */
+    transform: translate3d(0px, -50%, 0px) scale(0.3);
+    transform-origin: 50% 50% 0;
+    transition: all 250ms ease-out 0s;
+}
+@media screen and (max-width: 320px){
+    .section-title {
+        top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+}
+/* Mobile Styles */
+@media screen and (max-width: 767px) {
+    .section-title {
+        font-size: 24px;
+        padding-bottom: 15px;
+    }
+
+    .testimonials-container {
+        padding: 1rem;
+    }
+
+    #customers-testimonials .item {
+        padding: 20px 15px;
+    }
+}
+
+/* Tablet Styles */
+@media screen and (min-width: 768px) and (max-width: 1114px) {
+    .section-title {
+        bottom: auto;
+        padding-bottom: 15px;
+        text-align: center;
+    }
+    .testimonials-container {
+        padding: 2rem 0;
+        max-width: fit-content;
+        max-height:fit-content;
+    }
+
+    #customers-testimonials .item {
+        padding: 35px;
+        max-width: fit-content;
+        max-height: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #customers-testimonials .shadow-effect {
+        padding: 25px;
+    }
+
+    #customers-testimonials .shadow-effect p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .testimonial-name {
+        font-size: 16px;
+        padding: 10px 35px;
+        margin-top: -20px;
+    }
+
+    .owl-carousel .owl-item img {
+        max-width: 85px;
+    }
+
+    #customers-testimonials.owl-carousel .owl-dots {
+        left: 8.25%;
+    }
+}

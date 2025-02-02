@@ -67,6 +67,7 @@ body {
 #services-section,
 #location-section,
 #gallery-section,
+#testimonials-section,
 #contact-section {
   background-color: var(--background);
   z-index: 2;
