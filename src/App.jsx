@@ -6,7 +6,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Gallery from './pages/Gallery';
-import Testimonials from './pages/Testimonials'
 import Contact from './pages/Contact';
 import './App.css';
 
@@ -32,7 +31,6 @@ function App() {
           <section id="about-section"><About /></section>
           <section id="services-section"><Services /></section>
           <section id="gallery-section"><Gallery /></section>
-          <section id="testimonials-section"><Testimonials /></section>
           <section id="contact-section"><Contact /></section>
       </div>
     </DarkModeProvider>

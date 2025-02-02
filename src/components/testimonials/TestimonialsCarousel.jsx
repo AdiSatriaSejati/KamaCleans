@@ -28,6 +28,7 @@ const TestimonialsCarousel = () => {
   };
 
   return (
+    
     <div className="testimonials-container">
       <div className="container">
         <div className="row">
