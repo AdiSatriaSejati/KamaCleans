@@ -1,0 +1,236 @@
+.about-container {
+  background: var(--background);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(74, 144, 226, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+}
+
+.about-text-section {
+  flex: 1;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.glowing-line {
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  margin: 0 0 2rem 0;
+  position: relative;
+}
+
+.glowing-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--accent-color);
+  filter: blur(4px);
+  animation: glow 2s infinite;
+}
+
+.about-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 3rem;
+}
+
+.stat-item {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-5px);
+}
+
+.stat-number {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: var(--text-secondary);
+}
+
+.about-wrapper {
+  flex: 1;
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-md);
+}
+
+/* Slicebox Style */
+.sb-slider {
+  margin: clamp(5px, 1.5vw, 10px) auto;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.sb-slider li {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+.sb-slider li > a {
+  outline: none;
+}
+
+.sb-slider li > a img {
+  border: none;
+}
+
+.sb-slider img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.sb-slider li.sb-current {
+  opacity: 1;
+}
+
+.sb-perspective {
+  position: relative;
+}
+
+.sb-perspective > div {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.sb-side {
+  margin: 0;
+  display: block;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+@media (max-width: 968px) {
+  .about-content {
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .about-text-section {
+    text-align: center;
+  }
+
+  .glowing-line {
+    margin: 0 auto 2rem;
+  }
+
+  .about-wrapper {
+    max-width: min(90%, 420px);
+  }
+
+  .stats-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .stat-item {
+    width: calc(50% - 1.5rem);
+    min-width: 140px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stat-item {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (min-width: 481px) and (max-width: 768px) {
+  .about-wrapper {
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-content {
+    padding: 1.5rem;
+  }
+}

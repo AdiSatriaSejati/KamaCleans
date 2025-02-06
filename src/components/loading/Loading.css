@@ -3,34 +3,39 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    z-index: 1000;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2em;
-    font-size: 12px;
+    gap: clamp(1em, 2vw, 2em);
+    background-color: var(--background);
+  }
+  
+  .loader img {
+    width: clamp(128px, 20vw, 208px);
+    height: auto;
+    aspect-ratio: 1;
+  }
+  
+  .loader p {
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    color: var(--text-primary);
   }
   
   .progress {
     position: absolute;
-    top: 80%; 
-    width: 50%;
+    bottom: 20%;
+    width: clamp(200px, 50vw, 400px);
     height: 1px;
-    background: #000;
+    background: var(--text-primary);
     transform: scaleX(0);
-    transition: transform 1s;
     transform-origin: left;
-    z-index: 10;
-    margin: 0 5%;
+    animation: loading 2s infinite;
   }
   
   @keyframes loading {
     0% { transform: scaleX(0); }
     100% { transform: scaleX(1); }
-  }
-  
-  .loader .progress {
-    animation: loading 2s infinite;
   }
   
   @media screen and (max-width: 768px) {

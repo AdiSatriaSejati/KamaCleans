@@ -3,7 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
+    width: min(90%, 1200px);
     z-index: 35;
   }
   
@@ -12,13 +12,13 @@
     margin: 0 auto;
     display: block;
     text-transform: uppercase;
-    font: 200 5em/1 'Open Sans', Impact;
+    font: 100 clamp(2em, 8vw, 5em)/1 'Open Sans', Impact;
   }
   
   .text-copy--stroke {
     fill: transparent;
     stroke: white;
-    stroke-width: 4;
+    stroke-width: clamp(2px, 0.4vw, 4px);
   }
   
   .text-copy--shadow {
@@ -28,13 +28,13 @@
   
   .r-fill {
     fill: url("#p-circles");
-    transform-origin: 300px 150px;
+    transform-origin: 50% 50%;
     animation: rotate 30s infinite linear;
   }
   
   .c-ring {
     fill: none;
-    stroke-width: 2;
+    stroke-width: clamp(1px, 0.2vw, 2px);
     stroke: white;
   }
   
@@ -46,7 +46,7 @@
   
   @keyframes stroke {
     50% {
-      stroke-width: 15;
+      stroke-width: clamp(8px, 1.5vw, 15px);
     }
   }
   

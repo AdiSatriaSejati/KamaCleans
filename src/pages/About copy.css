@@ -1,0 +1,69 @@
+.about-wrapper {
+  position: relative;
+  max-width: 840px;
+  width: 100%;
+  padding: 0 50px;
+  margin: 0 auto;
+}
+
+/* Slicebox Style */
+.sb-slider {
+  margin: 10px auto;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.sb-slider li {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+
+.sb-slider li > a {
+  outline: none;
+}
+
+.sb-slider li > a img {
+  border: none;
+}
+
+.sb-slider img {
+  max-width: 100%;
+  display: block;
+}
+
+.sb-slider li.sb-current {
+  opacity: 1;
+}
+
+.sb-perspective {
+  position: relative;
+}
+
+.sb-perspective > div {
+  position: absolute;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.sb-side {
+  margin: 0;
+  display: block;
+  position: absolute;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.shadow {
+  width: 100%;
+  height: 168px;
+  position: relative;
+  margin-top: -110px;
+  background: transparent url('/images/about/shadow.png') no-repeat bottom center;
+  background-size: 100% 100%;
+  z-index: -1;
+  display: none;
+} 
