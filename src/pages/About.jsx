@@ -1,42 +1,61 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import './About.css';
 
 const About = () => {
   const sliderRef = useRef(null);
+  const [isSliceboxInitialized, setIsSliceboxInitialized] = useState(false);
 
   useEffect(() => {
+    let slicebox = null;
+    
     const initSlicebox = async () => {
       try {
         const $ = window.jQuery;
-        // Import Slicebox
         await import('../utils/jquery.slicebox');
         
-        const slicebox = $(sliderRef.current).slicebox({
-          orientation: 'r',
-          cuboidsRandom: true,
-          disperseFactor: 30,
-          autoplay: true,
-          interval: 3000
-        });
+        if (sliderRef.current && !isSliceboxInitialized) {
+          // Destroy existing instance if any
+          if (slicebox) {
+            $(sliderRef.current).slicebox('destroy');
+          }
+
+          // Initialize new instance with more stable options
+          slicebox = $(sliderRef.current).slicebox({
+            orientation: 'r',
+            cuboidsRandom: true,
+            disperseFactor: 30,
+            autoplay: true,
+            interval: 4000, // Lebih lama untuk stabilitas
+            speed: 800, // Lebih cepat untuk transisi
+            fallbackFadeSpeed: 300,
+            perspective: 1200,
+            colorHiddenSides: '#333',
+            easing: 'ease', // Gunakan easing yang lebih smooth
+          });
+          
+          setIsSliceboxInitialized(true);
+        }
       } catch (error) {
         console.error('Error initializing Slicebox:', error);
       }
     };
 
-    // Tunggu sampai jQuery tersedia
-    const checkJQuery = setInterval(() => {
+    // Tambahkan delay kecil sebelum inisialisasi
+    const timer = setTimeout(() => {
       if (window.jQuery) {
-        clearInterval(checkJQuery);
         initSlicebox();
       }
     }, 100);
 
     return () => {
-      clearInterval(checkJQuery);
+      clearTimeout(timer);
+      if (window.jQuery && slicebox) {
+        window.jQuery(sliderRef.current).slicebox('destroy');
+      }
     };
-  }, []);
+  }, [isSliceboxInitialized]);
 
   return (
     <div className="page-container about-container">
