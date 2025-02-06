@@ -21,48 +21,46 @@ const Navbar = () => {
   const { isDarkMode, changeDarkMode } = useDarkMode();
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
-  // Fungsi untuk mengecek apakah elemen berada dalam viewport
   const isElementInViewport = (el) => {
+    if (!el) return false;
     const rect = el.getBoundingClientRect();
     return (
-      rect.top <= (window.innerHeight / 2) &&
-      rect.bottom >= (window.innerHeight / 2)
+      rect.top <= 100 &&
+      rect.bottom >= 100
     );
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update scroll state
-      setIsScrolled(window.scrollY > 50);
-      
-      // Check each section
-      const sections = document.querySelectorAll('section[id]');
-      let foundActive = false;
+      // Cek scroll untuk navbar background
+      setIsScrolled(window.scrollY > 20);
 
-      sections.forEach(section => {
+      // Cek visibilitas hero section
+      const heroSection = document.getElementById('home-section');
+      setIsHeroVisible(heroSection && window.scrollY < heroSection.offsetHeight);
+
+      // Cek section mana yang aktif
+      const sections = Object.values(sectionIds)
+        .map(id => document.getElementById(id))
+        .filter(Boolean); // Filter elemen yang ada
+
+      if (sections.length === 0) return; // Jika tidak ada section, return
+
+      const visibleSection = sections.reduce((acc, section) => {
         if (isElementInViewport(section)) {
-          const sectionId = section.getAttribute('id');
-          setActiveSection(sectionId);
-          setIsHeroVisible(sectionId === 'home-section');
-          foundActive = true;
+          return section;
         }
-      });
+        return acc;
+      }, sections[0]); // Gunakan sections[0] sebagai nilai awal
 
-      // If no section is in viewport, default to last active section
-      if (!foundActive) {
-        const lastSection = Array.from(sections).reduce((prev, current) => {
-          return (prev.offsetTop > current.offsetTop) ? prev : current;
-        });
-        setActiveSection(lastSection.getAttribute('id'));
-        setIsHeroVisible(lastSection.getAttribute('id') === 'home-section');
+      if (visibleSection) {
+        setActiveSection(visibleSection.id);
       }
     };
 
-    // Add scroll listener
     window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
-    
+    handleScroll(); // Panggil sekali saat mount
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

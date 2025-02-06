@@ -80,18 +80,25 @@
 .stats-container {
   display: flex;
   justify-content: center;
-  gap: clamp(2rem, 5vw, 4rem);
-  margin-top: 3rem;
+  gap: clamp(1rem, 3vw, 4rem);
+  margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .stat-item {
   background: var(--card-bg);
-  padding: 1.5rem;
-  border-radius: 15px;
+  padding: 1rem;
+  border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease;
+  width: clamp(100px, calc(33% - 1rem), 150px);
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .stat-item:hover {
@@ -99,15 +106,18 @@
 }
 
 .stat-number {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
   font-weight: bold;
   color: var(--accent-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
 }
 
 .stat-label {
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 1.2vw, 0.9rem);
   color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.2;
 }
 
 .about-wrapper {
@@ -117,16 +127,22 @@
   width: 100%;
   margin: 0;
   padding: var(--spacing-md);
+  transform: translateZ(0);
+  will-change: transform;
+  z-index: 1;
 }
 
 /* Slicebox Style */
 .sb-slider {
-  margin: clamp(5px, 1.5vw, 10px) auto;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  list-style-type: none;
+  margin: 0 !important;
   padding: 0;
+  list-style-type: none;
+  position: relative;
+  height: auto !important;
+}
+
+.sb-slider > li {
+  transform-origin: 50% 50%;
 }
 
 .sb-slider li {
@@ -181,39 +197,60 @@
 
   .about-text-section {
     text-align: center;
+    max-width: 100%;
   }
 
   .glowing-line {
     margin: 0 auto 2rem;
   }
 
-  .about-wrapper {
-    max-width: min(90%, 420px);
-  }
-
   .stats-container {
-    flex-direction: row;
-    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
     justify-content: center;
-    gap: 1.5rem;
   }
 
   .stat-item {
-    width: calc(50% - 1.5rem);
-    min-width: 140px;
-    max-width: 200px;
+    width: calc(33% - 1rem);
+    min-width: 90px;
+    max-width: 120px;
+    padding: 0.75rem;
+    min-height: 70px;
+  }
+
+  .about-wrapper {
+    max-width: min(90%, 380px);
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
   }
 }
 
 @media (max-width: 480px) {
   .stats-container {
-    flex-direction: column;
-    align-items: center;
+    gap: 0.75rem;
   }
 
   .stat-item {
-    width: 100%;
-    max-width: 300px;
+    width: calc(50% - 0.75rem);
+    min-width: 80px;
+    max-width: 100px;
+    padding: 0.5rem;
+    min-height: 60px;
+  }
+
+  .stat-number {
+    font-size: 1.1rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .about-title {
+    min-height: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
   }
 }
 
