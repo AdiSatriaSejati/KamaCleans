@@ -25,7 +25,6 @@
 body {
   margin: 0;
   padding: 0;
-  
   box-sizing: border-box;
   background-color: var(--background);
   color: var(--text-primary);
@@ -40,16 +39,14 @@ body {
 }
 
 .App > section {
-  height: 100vh;
+  height: auto;
   scroll-snap-align: start;
   position: relative;
 }
 
 @media screen and (max-width: 767px) {
   .App > section {
-    min-height: 100vh;
     position: relative;
-    height: auto;
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {

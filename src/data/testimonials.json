@@ -1,0 +1,84 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Breezy Breeze",
+      "rating": 5,
+      "comment": "Overall puas dengan pelayanan disini. Hasil cuci bersih, waktu pengerjaan cepat, pelayanan ramah, dan yang penting affordable price. Good job, keep it up. 🔥",
+      "image": "https://lh3.googleusercontent.com/a-/ALV-UjW0yGspFNUsiCtWyU4VUx1VWOhsHs6o7fGLsLQKP8S70G9K_tWx=w60-h60-p-rp-mo-br100",
+      "googleMapLink": "https://maps.app.goo.gl/Bvyd2yMiQ5jMSzBf8"
+    },
+    {
+      "id": 2,
+      "name": "ucokwfs",
+      "rating": 5,
+      "comment": "Bersih ... cepat like a new... Recommended banget siii 👍",
+      "image": "https://lh3.googleusercontent.com/a-/ALV-UjWo290LTcN_XTCbpsdzQ44zOuPjms9Yf_suPSgZ8lXWr0KX3Fo=w60-h60-p-rp-mo-br100",
+      "googleMapLink": "https://maps.app.goo.gl/6ypvevCgtkYvhCfAA"
+    },
+    {
+        "id": 3,
+       "name": "Ariestantriya Handayani",
+       "rating": 5,
+       "comment": "Pertama kali laundry disini. Fast respon, ramah, bersih, keren. Thankyou ya. Sukses selalu",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjUT0EcIqIjrraDGUp3J2FF3IGCBPUF6uaBxdTn8p8wZuu9Vc7I=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/wKJGPu9SKyETGCCc9"
+    },
+    {
+        "id": 4,
+       "name": "putut widodo",
+       "rating": 5,
+       "comment": "Pelayanan ramah, hasil cuci sepatunya oke punya juga.",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjVO-eaVpKDs7n3Rvi6U6PdtcYorYHKOli4mZLV1ez_PXiGN5C1w=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/rFYGxRCfrusBFSSPA"
+    },
+    {
+        "id": 5,
+       "name": "Adi SatriaSejati",
+       "rating": 5,
+       "comment": "Cucinya bersih banget, pelayanannya ramah, harga terjangkau. Pokok'e Poll!",
+       "image": "https://lh3.googleusercontent.com/a/ACg8ocJMBvW12CqkbN3R4LPW8wjCR_HGtMiWRxsFDQs3n5emRZX27eJQ=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/Ft2GjLmEmiqKBqfbA"
+    },
+    {
+        "id": 6,
+       "name": "Tanzalla Azzahra",
+       "rating": 5,
+       "comment": "Selalu jadi langganan sih disini, hasilnya bersih bgt seperti baru dan tidak merusak sepatu❤️ Thank you Kamacleans🤝",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjUmri0gHhD_Myaex6bUviv3zPKYfAeRTUfVTjtlXQK51DlBZUQvjQ=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://g.co/kgs/bfXZcEW"
+    },
+    {
+        "id": 7,
+       "name": "Sherin Putri Najwa Velisa",
+       "rating": 5,
+       "comment": "pelayanan ramah poll, super bersih dan wangiii,  recommended pokonya👍🏻",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjVJuVnSDS-5DG9xqO0JGQeBeK0VTPB5lrrt6ZHD933EHJ0KdIip=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/AS8JE1iRpFN5o6DX6"
+    },
+    {
+        "id": 8,
+       "name": "Hanindya pratiwi",
+       "rating": 5,
+       "comment": "awalnya coba coba aja karna lg mager nyuci sepatu biasanya selalu nyuci sepatu sendiri, terus ketemu kamacleans the best decision i've ever made😍 sepatu jauh lebih bersih abis dari kamacleans dan affordable bgt harganya kacau💯",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjUL0D-PrXw2LZWfYfQn9-gII5lWos9xKqfnr3acWHweTvjTto6s=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/thGr32ddTzWf7nCa9"
+    },
+    {
+        "id": 9,
+       "name": "Irwan Satryawan",
+       "rating": 5,
+       "comment": "Bersih bangettttt, recommended banget guysss kamacleans the best",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjUNmrwLz-q4NFeQeYBU1nHjz-fBHO1RaZW5IowK_KpRMOLt0N7c=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://maps.app.goo.gl/qsMtynXdQSihwCpJ9"
+    },
+    {
+        "id": 10,
+       "name": "Nabila Febriyanti",
+       "rating": 5,
+       "comment": "Pelayanannya oke, ramah, cepet juga dan bersih juga. Jasa cuci sepatu yang ngoke",
+       "image": "https://lh3.googleusercontent.com/a-/ALV-UjX1vK5ZqzwqN4VTO_Q2KZ2jQNHTwhZ76-i_wyST8d87UI7A-SY=w60-h60-p-rp-mo-br100",
+       "googleMapLink": "https://g.co/kgs/Y9P5AfM"
+    }
+  ]
+} 

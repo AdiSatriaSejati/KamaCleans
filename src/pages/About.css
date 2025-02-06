@@ -1,10 +1,8 @@
 .about-container {
   background: var(--background);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+  min-height: auto;
+  flex-direction: column;
+  overflow: visible;
   position: relative;
 }
 
@@ -43,8 +41,8 @@
 .glowing-line {
   height: 2px;
   width: 100px;
+  top: 1.5rem;
   background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-  margin: 0 0 2rem 0;
   position: relative;
 }
 
@@ -61,8 +59,7 @@
 }
 
 .about-title {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 2rem;
+  font-size: clamp(2rem, 3vw, 3.5rem);
   background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -87,7 +84,7 @@
 
 .stat-item {
   background: var(--card-bg);
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
@@ -123,9 +120,8 @@
 .about-wrapper {
   flex: 1;
   position: relative;
-  max-width: 420px;
+  max-width: 380px;
   width: 100%;
-  margin: 0;
   padding: var(--spacing-md);
   transform: translateZ(0);
   will-change: transform;
@@ -248,8 +244,6 @@
   }
 
   .about-title {
-    min-height: 3.5rem;
-    margin-bottom: 1.5rem;
     font-size: 1.75rem;
   }
 }
@@ -270,4 +264,13 @@
   .about-content {
     padding: 1.5rem;
   }
+}
+
+/* Tambahkan styles untuk section containers */
+.about-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
