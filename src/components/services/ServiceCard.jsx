@@ -39,7 +39,7 @@ const ServiceCard = ({ title, price, description, modelPath, index }) => {
     <motion.div 
       ref={cardRef}
       className="service-card"
-      whileHover={{ scale: 1.02 }}
+      whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="model-container">
@@ -54,9 +54,9 @@ const ServiceCard = ({ title, price, description, modelPath, index }) => {
           <PresentationControls
             global
             zoom={0.8}
-            rotation={[0, -Math.PI / 4, 0]}
-            polar={[-Math.PI / 4, Math.PI / 4]}
-            azimuth={[-Math.PI / 4, Math.PI / 4]}>
+            rotation={[0, -Math.PI / 0.1, 0]}
+            polar={[-Math.PI / 0.1, Math.PI / 0.1]}
+            azimuth={[-Math.PI / 0.1, Math.PI / 0.1]}>
             <Stage environment="city" intensity={0.6}>
               <Suspense fallback={null}>
                 <Model 
