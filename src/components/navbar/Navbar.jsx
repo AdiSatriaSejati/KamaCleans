@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { navigationRoutes, sectionIds } from '../../utils/utils';
@@ -11,8 +11,15 @@ import {
 import './Navbar.css';
 import logoDark from '/images/logo-dark.webp';
 import logoLight from '/images/logo-light.webp';
-import MusicBox from '../music/MusicBox';
 import { useDarkMode } from '../../context/darkModeContext';
+
+// Lazy load MusicBox karena tidak selalu dibutuhkan segera
+const MusicBox = lazy(() => import('../music/MusicBox'));
+
+// Loading placeholder untuk MusicBox
+const MusicBoxPlaceholder = () => (
+  <div className="music-box-placeholder" style={{ width: '24px', height: '24px' }}></div>
+);
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -167,9 +174,11 @@ const Navbar = () => {
           )}
         </AnimatePresence>
 
-        {/* Controls */}
+        {/* Controls dengan Suspense untuk MusicBox */}
         <div className="nav-controls">
-          <MusicBox />
+          <Suspense fallback={<MusicBoxPlaceholder />}>
+            <MusicBox />
+          </Suspense>
           <DarkModeSwitch
             className="Mode"
             checked={isDarkMode}

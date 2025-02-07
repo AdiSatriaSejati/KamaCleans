@@ -1,9 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import './MusicBox.css';
+
+// Lazy load audio file
+const audioURL = '/music/music_loop.mp3';
+
+// Loading placeholder
+const LoadingPlaceholder = () => (
+  <div className="mhMusicBars">
+    <span className="loading"></span>
+    <span className="loading"></span>
+    <span className="loading"></span>
+    <span className="loading"></span>
+  </div>
+);
 
 const MusicBox = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const audioContextRef = useRef(null);
   const sourceRef = useRef(null);
   const gainNodeRef = useRef(null);
@@ -12,6 +26,7 @@ const MusicBox = () => {
   useEffect(() => {
     const initAudio = async () => {
       try {
+        setIsLoading(true);
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
         
         // Buat nodes
@@ -29,8 +44,8 @@ const MusicBox = () => {
         gainNodeRef.current.connect(analyserRef.current);
         analyserRef.current.connect(audioContextRef.current.destination);
 
-        // Load audio file
-        const response = await fetch('/music/music_loop.mp3');
+        // Lazy load audio file
+        const response = await fetch(audioURL);
         const arrayBuffer = await response.arrayBuffer();
         const audioBuffer = await audioContextRef.current.decodeAudioData(arrayBuffer);
 
@@ -41,21 +56,18 @@ const MusicBox = () => {
         sourceRef.current.connect(gainNodeRef.current);
 
         setIsReady(true);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error initializing audio:', error);
+        setIsLoading(false);
       }
     };
 
     initAudio();
 
-    // Cleanup
     return () => {
-      if (sourceRef.current) {
-        sourceRef.current.stop();
-      }
-      if (audioContextRef.current) {
-        audioContextRef.current.close();
-      }
+      if (sourceRef.current) sourceRef.current.stop();
+      if (audioContextRef.current) audioContextRef.current.close();
     };
   }, []);
 
@@ -93,15 +105,21 @@ const MusicBox = () => {
   };
 
   return (
-    <div 
-      className={`mhMusicBars ${isPlaying ? 'active' : ''}`} 
-      onClick={togglePlay}
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <Suspense fallback={<LoadingPlaceholder />}>
+      {isLoading ? (
+        <LoadingPlaceholder />
+      ) : (
+        <div 
+          className={`mhMusicBars ${isPlaying ? 'active' : ''}`} 
+          onClick={togglePlay}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      )}
+    </Suspense>
   );
 };
 

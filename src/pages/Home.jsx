@@ -1,6 +1,6 @@
-import React from 'react';
-import ImageSlider from '../components/slider/ImageSlider';
-import SocialBar from '../components/socialbar/SocialBar';
+import React, { lazy } from 'react';
+const ImageSlider = lazy(() => import('../components/slider/ImageSlider'));
+const SocialBar = lazy(() => import('../components/socialbar/SocialBar'));
 
 
 const Home = () => {

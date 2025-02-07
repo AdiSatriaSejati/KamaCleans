@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { motion } from 'framer-motion';
-import ServiceCard from '../components/services/ServiceCard';
 import './Services.css';
+
+const ServiceCard = lazy(() => import('../components/services/ServiceCard'));
 
 const services = [
   {

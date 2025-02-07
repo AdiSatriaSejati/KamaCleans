@@ -1,17 +1,16 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { Canvas } from '@react-three/fiber';
-import { useGLTF, Stage, PresentationControls } from '@react-three/drei';
+import { Stage, PresentationControls } from '@react-three/drei';
 import './ServiceCard.css';
 
-function Model({ path }) {
-  const { scene } = useGLTF(path);
-  return <primitive object={scene} />;
-}
+// Lazy load Model component
+const Model = lazy(() => import('./Model'));
 
 const ServiceCard = ({ title, price, description, modelPath, index }) => {
   const cardRef = useRef();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -44,6 +43,13 @@ const ServiceCard = ({ title, price, description, modelPath, index }) => {
       transition={{ type: "spring", stiffness: 300 }}
     >
       <div className="model-container">
+        {isLoading && (
+          <div className="loading-placeholder">
+            <div className="spinner"></div>
+            <span>Loading 3D Model...</span>
+          </div>
+        )}
+        
         <Canvas dpr={[1, 2]} camera={{ fov: 45 }}>
           <PresentationControls
             global
@@ -52,7 +58,12 @@ const ServiceCard = ({ title, price, description, modelPath, index }) => {
             polar={[-Math.PI / 4, Math.PI / 4]}
             azimuth={[-Math.PI / 4, Math.PI / 4]}>
             <Stage environment="city" intensity={0.6}>
-              <Model path={modelPath} />
+              <Suspense fallback={null}>
+                <Model 
+                  path={modelPath} 
+                  onLoad={() => setIsLoading(false)}
+                />
+              </Suspense>
             </Stage>
           </PresentationControls>
         </Canvas>

@@ -1,11 +1,22 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import Testimonials from '../components/testimonials/Testimonials';
 import './About.css';
+
+// Lazy load components
+const Testimonials = lazy(() => import('../components/testimonials/Testimonials'));
+
+// Loading placeholder component
+const LoadingPlaceholder = () => (
+  <div className="loading-placeholder">
+    <div className="spinner"></div>
+    <span>Loading...</span>
+  </div>
+);
 
 const About = () => {
   const sliderRef = useRef(null);
+  const [isSliderLoading, setIsSliderLoading] = useState(true);
 
   useEffect(() => {
     const initSlicebox = async () => {
@@ -20,6 +31,8 @@ const About = () => {
           autoplay: true,
           interval: 3000
         });
+        
+        setIsSliderLoading(false);
       } catch (error) {
         console.error('Error initializing Slicebox:', error);
       }
@@ -109,15 +122,27 @@ const About = () => {
               paddingTop: '100%', 
               position: 'relative', 
               background: 'var(--background)',
-              borderRadius: '20px', // Added border radius
-              overflow: 'hidden' // Ensures child elements respect border radius
+              borderRadius: '20px',
+              overflow: 'hidden'
             }}>
+              {isSliderLoading && (
+                <div className="loading-placeholder" style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)'
+                }}>
+                  <div className="spinner"></div>
+                  <span>Loading Slider...</span>
+                </div>
+              )}
               <ul ref={sliderRef} className="sb-slider" style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                opacity: isSliderLoading ? 0 : 1
               }}>
                 <li><img src="/images/about.jpg" alt="image1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
                 <li><img src="/images/about.jpg" alt="image2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
@@ -131,7 +156,9 @@ const About = () => {
       </section>
 
       <section className="testimonials-section">
-        <Testimonials />
+        <Suspense fallback={<LoadingPlaceholder />}>
+          <Testimonials />
+        </Suspense>
       </section>
     </div>
   );
