@@ -11,7 +11,6 @@ const About = () => {
     const initSlicebox = async () => {
       try {
         const $ = window.jQuery;
-        // Import Slicebox
         await import('../utils/jquery.slicebox');
         
         const slicebox = $(sliderRef.current).slicebox({
@@ -26,7 +25,6 @@ const About = () => {
       }
     };
 
-    // Tunggu sampai jQuery tersedia
     const checkJQuery = setInterval(() => {
       if (window.jQuery) {
         clearInterval(checkJQuery);
@@ -41,7 +39,6 @@ const About = () => {
 
   return (
     <div className="page-container about-container">
-      {/* About Section */}
       <section className="about-section">
         <div className="about-content">
           <motion.div 
@@ -111,7 +108,9 @@ const About = () => {
               width: '100%', 
               paddingTop: '100%', 
               position: 'relative', 
-              background: 'var(--background)' 
+              background: 'var(--background)',
+              borderRadius: '20px', // Added border radius
+              overflow: 'hidden' // Ensures child elements respect border radius
             }}>
               <ul ref={sliderRef} className="sb-slider" style={{
                 position: 'absolute',
@@ -131,7 +130,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
       <section className="testimonials-section">
         <Testimonials />
       </section>
