@@ -107,13 +107,26 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <ul ref={sliderRef} className="sb-slider">
-              <li><img src="/images/about.jpg" alt="image1"/></li>
-              <li><img src="/images/about.jpg" alt="image2"/></li>
-              <li><img src="/images/about.jpg" alt="image3"/></li>
-              <li><img src="/images/about.jpg" alt="image4"/></li>
-              <li><img src="/images/about.jpg" alt="image5"/></li>
-            </ul>
+            <div className="slider-placeholder" style={{ 
+              width: '100%', 
+              paddingTop: '100%', 
+              position: 'relative', 
+              background: 'var(--background)' 
+            }}>
+              <ul ref={sliderRef} className="sb-slider" style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%'
+              }}>
+                <li><img src="/images/about.jpg" alt="image1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="/images/about.jpg" alt="image2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="/images/about.jpg" alt="image3" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="/images/about.jpg" alt="image4" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="/images/about.jpg" alt="image5" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+              </ul>
+            </div>
           </motion.div>
         </div>
       </section>
