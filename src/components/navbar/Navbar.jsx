@@ -25,7 +25,7 @@ const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home-section');
-  const { isDarkMode, changeDarkMode } = useDarkMode();
+  const { isDarkMode, changeDarkMode, resetToSystemPreference } = useDarkMode();
   const [isHeroVisible, setIsHeroVisible] = useState(true);
 
   // Fungsi untuk mengecek apakah elemen berada dalam viewport
@@ -93,6 +93,15 @@ const Navbar = () => {
       // Update active section immediately
       setActiveSection(sectionId);
       setIsHeroVisible(sectionId === 'home-section');
+    }
+  };
+
+  // Tambahkan handler untuk double click pada toggle
+  const handleDarkModeToggle = (e) => {
+    if (e.detail === 2) { // Double click
+      resetToSystemPreference();
+    } else {
+      changeDarkMode(!isDarkMode);
     }
   };
 
@@ -182,7 +191,7 @@ const Navbar = () => {
           <DarkModeSwitch
             className="Mode"
             checked={isDarkMode}
-            onChange={changeDarkMode}
+            onChange={handleDarkModeToggle}
             size={24}
             moonColor={isHeroVisible ? "#fff" : (isDarkMode ? "#fff" : "#000")}
             sunColor={isHeroVisible ? "#fff" : (isDarkMode ? "#fff" : "#000")}

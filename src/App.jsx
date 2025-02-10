@@ -21,28 +21,51 @@ function App() {
 
     // Favicon dan title changer
     const updateFaviconAndTitle = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      
       if (document.visibilityState === "visible") {
         document.title = "KamaCleans";
-        document.querySelector("link[rel='icon']").href = "/favicon.ico";
-        document.querySelector("link[rel='icon'][sizes='16x16']").href = "/favicon-16x16.png";
-        document.querySelector("link[rel='icon'][sizes='32x32']").href = "/favicon-32x32.png";
-        document.querySelector("link[rel='apple-touch-icon']").href = "/apple-touch-icon.png";
+        // Menggunakan favicon sesuai mode
+        document.querySelector("link[rel='icon']").href = isDark ? "/favicon-dark.ico" : "/favicon-light.ico";
+        document.querySelector("link[rel='icon'][sizes='16x16']").href = isDark ? "/favicon-dark-16x16.png" : "/favicon-light-16x16.png";
+        document.querySelector("link[rel='icon'][sizes='32x32']").href = isDark ? "/favicon-dark-32x32.png" : "/favicon-light-32x32.png";
+        document.querySelector("link[rel='apple-touch-icon']").href = isDark ? "/apple-touch-icon-dark.png" : "/apple-touch-icon-light.png";
       } else {
         document.title = "Come Back";
         document.querySelector("link[rel='icon']").href = "/folded.ico";
-        document.querySelector("link[rel='icon'][sizes='16x16']").href = "/folded-16x16.png";
-        document.querySelector("link[rel='icon'][sizes='32x32']").href = "/folded-32x32.png";
-        document.querySelector("link[rel='apple-touch-icon']").href = "/folded-180x180.png";
       }
     };
 
-    // Add visibility change listener
+    // Tambahkan event listener untuk perubahan mode dan visibility
     document.addEventListener('visibilitychange', updateFaviconAndTitle);
+    document.documentElement.addEventListener('change-theme', updateFaviconAndTitle);
+    
+    // Initial update
+    updateFaviconAndTitle();
+
+    // Tambahkan preload untuk gambar kritikal
+    const preloadImages = [
+      '/images/logo-dark.webp',
+      '/images/logo-light.webp',
+      '/images/slider/1.webp',
+      '/images/slider/2.webp',
+      '/images/slider/3.webp',
+      '/images/slider/effect-sprite-2.png',
+      '/images/slider/effect-sprite.png',
+      ,'/images/about.jpg'
+      // ... gambar kritikal lainnya
+    ];
+    
+    preloadImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
 
     // Cleanup
     return () => {
       clearTimeout(timer);
       document.removeEventListener('visibilitychange', updateFaviconAndTitle);
+      document.documentElement.removeEventListener('change-theme', updateFaviconAndTitle);
     };
   }, []);
 
