@@ -30,14 +30,12 @@
     transform: translateX(-50%);
     background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
     position: relative;
-  }
-.glowing-line-2::after {
-  content: '';
-  position: absolute;
-  height: 1px;
-  background: var(--accent-color);
-  filter: blur(4px);
-  animation: glow 2s infinite;
+    border-radius: 4px;
+  box-shadow: 0 0 10px var(--accent-color),
+              0 0 20px var(--accent-color),
+              0 0 30px var(--accent-color),
+              0 0 40px var(--accent-color);
+  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 .services-grid {

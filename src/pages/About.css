@@ -41,18 +41,11 @@
   top: 1.5rem;
   background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
   position: relative;
-}
-
-.glowing-line::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--accent-color);
-  filter: blur(4px);
-  animation: glow 2s infinite;
+  box-shadow: 0 0 10px var(--accent-color),
+              0 0 20px var(--accent-color),
+              0 0 30px var(--accent-color),
+              0 0 40px var(--accent-color);
+  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 .about-title {

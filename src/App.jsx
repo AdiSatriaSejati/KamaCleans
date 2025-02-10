@@ -7,6 +7,7 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
+import Footer from './components/footer/Footer';
 import './App.css';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         <section id="services-section"><Services /></section>
         <section id="gallery-section"><Gallery /></section>
         <section id="contact-section"><Contact /></section>
+        <Footer />
       </div>
     </DarkModeProvider>
   );
