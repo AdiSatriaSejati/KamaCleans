@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDarkMode } from '../../context/darkModeContext';
 import './Loading.css';
-import logo from '../../../public/images/logo-dark.webp';
 
 const Loading = () => {
+  const { isDarkMode } = useDarkMode();
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(timer);
+          return 100;
+        }
+        return prevProgress + 1;
+      });
+    }, 20); // Setiap 20ms progress bertambah 1%
+
+    return () => clearInterval(timer);
+  }, []);
+  
   return (
-    <div className="loader">
-      <img src={logo} alt="KamaCleans" width="208" height="208" />
-      <p>Loading... Please wait</p>
-      <div className="progress"></div>
+    <div className={`loader ${isDarkMode ? 'dark' : 'light'}`}>
+      <img 
+        src={isDarkMode ? '/images/logo-light.webp' : '/images/logo-dark.webp'} 
+        alt="KamaCleans" 
+        width="208" 
+        height="208" 
+      />
+      <p>Loading... {progress}%</p>
+      <div className="progress-container">
+        <div 
+          className="progress-bar" 
+          style={{ width: `${progress}%` }}
+        />
+      </div>
     </div>
   );
 };
