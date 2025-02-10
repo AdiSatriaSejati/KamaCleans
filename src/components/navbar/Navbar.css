@@ -237,6 +237,7 @@
 }
 
 .logo-container {
+  width: 10%;
   display: flex;
   align-items: center;
   gap: 1.5rem;

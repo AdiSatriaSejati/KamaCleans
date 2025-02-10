@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import Loading from './components/loading/Loading';
 import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
-import Loading from './components/loading/Loading';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
