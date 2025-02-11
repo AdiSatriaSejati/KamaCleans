@@ -4,7 +4,7 @@ import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
 import Home from './pages/Home';
 import About from './pages/About/About';
-import Services from './pages/Services';
+import Services from './pages/Services/Services';
 import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/footer/Footer';
