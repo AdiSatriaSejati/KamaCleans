@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FadeContainer, popUp } from '../utils/FramerMotionVariants';
+import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
 import './Gallery.css';
 
 const Gallery = () => {
@@ -19,6 +19,37 @@ const Gallery = () => {
       { id: 7, src: '/images/gallery/shoes/7.jpg', category: 'shoes' },
       { id: 8, src: '/images/gallery/shoes/8.jpg', category: 'shoes' },
       { id: 9, src: '/images/gallery/shoes/9.jpg', category: 'shoes' },
+      { id: 10, src: '/images/gallery/shoes/10.jpg', category: 'shoes' },
+      { id: 11, src: '/images/gallery/shoes/11.jpg', category: 'shoes' },
+      { id: 12, src: '/images/gallery/shoes/12.jpg', category: 'shoes' },
+      { id: 13, src: '/images/gallery/shoes/13.jpg', category: 'shoes' },
+      { id: 14, src: '/images/gallery/shoes/14.jpg', category: 'shoes' },
+      { id: 15, src: '/images/gallery/shoes/15.jpg', category: 'shoes' },
+      { id: 16, src: '/images/gallery/shoes/16.jpg', category: 'shoes' },
+      { id: 17, src: '/images/gallery/shoes/17.jpg', category: 'shoes' },
+      { id: 18, src: '/images/gallery/shoes/18.jpg', category: 'shoes' },
+      { id: 19, src: '/images/gallery/shoes/19.jpg', category: 'shoes' },
+      { id: 20, src: '/images/gallery/shoes/20.jpg', category: 'shoes' },
+      { id: 21, src: '/images/gallery/shoes/21.jpg', category: 'shoes' },
+      { id: 22, src: '/images/gallery/shoes/22.jpg', category: 'shoes' },
+      { id: 23, src: '/images/gallery/shoes/23.jpg', category: 'shoes' },
+      { id: 24, src: '/images/gallery/shoes/24.jpg', category: 'shoes' },
+      { id: 25, src: '/images/gallery/shoes/25.jpg', category: 'shoes' },
+      { id: 26, src: '/images/gallery/shoes/26.jpg', category: 'shoes' },
+      { id: 27, src: '/images/gallery/shoes/27.jpg', category: 'shoes' },
+      { id: 28, src: '/images/gallery/shoes/28.jpg', category: 'shoes' },
+      { id: 29, src: '/images/gallery/shoes/29.jpg', category: 'shoes' },
+      { id: 30, src: '/images/gallery/shoes/30.jpg', category: 'shoes' },
+      { id: 31, src: '/images/gallery/shoes/31.jpg', category: 'shoes' },
+
+
+      { id: 1000, src: '/images/gallery/shoes/1000.jpg', category: 'shoes' },
+      { id: 1001, src: '/images/gallery/shoes/1001.jpg', category: 'shoes' },
+      { id: 1002, src: '/images/gallery/shoes/1002.jpg', category: 'shoes' },
+      { id: 1003, src: '/images/gallery/shoes/1003.jpg', category: 'shoes' },
+      { id: 1004, src: '/images/gallery/shoes/1004.jpg', category: 'shoes' },
+      { id: 1005, src: '/images/gallery/shoes/1005.jpg', category: 'shoes' },
+      { id: 1006, src: '/images/gallery/shoes/1006.jpg', category: 'shoes' },
     ],
     helmets: [
     ],

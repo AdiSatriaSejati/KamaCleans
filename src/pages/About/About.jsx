@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 import './About.css';
 
 // Lazy load components
-const Testimonials = lazy(() => import('../components/testimonials/Testimonials'));
+const Testimonials = lazy(() => import('../../components/testimonials/Testimonials'));
 
 // Loading placeholder component
 const LoadingPlaceholder = () => (
@@ -22,7 +22,7 @@ const About = () => {
     const initSlicebox = async () => {
       try {
         const $ = window.jQuery;
-        await import('../utils/jquery.slicebox');
+        await import('../../utils/jquery.slicebox');
         
         const slicebox = $(sliderRef.current).slicebox({
           orientation: 'r',
