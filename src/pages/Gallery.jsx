@@ -10,22 +10,19 @@ const Gallery = () => {
 
   const images = {
     shoes: [
-      { id: 1, src: '/images/slider/1.webp', category: 'shoes' },
-      { id: 2, src: '/images/slider/2.webp', category: 'shoes' },
-      { id: 3, src: '/images/slider/3.webp', category: 'shoes' },
-      { id: 4, src: '/images/slider/1.webp', category: 'shoes' },
-      { id: 5, src: '/images/slider/2.webp', category: 'shoes' },
-      { id: 6, src: '/images/slider/3.webp', category: 'shoes' },
+      { id: 1, src: '/images/gallery/shoes/1.jpg', category: 'shoes' },
+      { id: 2, src: '/images/gallery/shoes/2.jpg', category: 'shoes' },
+      { id: 3, src: '/images/gallery/shoes/3.jpg', category: 'shoes' },
+      { id: 4, src: '/images/gallery/shoes/4.jpg', category: 'shoes' },
+      { id: 5, src: '/images/gallery/shoes/5.jpg', category: 'shoes' },
+      { id: 6, src: '/images/gallery/shoes/6.jpg', category: 'shoes' },
+      { id: 7, src: '/images/gallery/shoes/7.jpg', category: 'shoes' },
+      { id: 8, src: '/images/gallery/shoes/8.jpg', category: 'shoes' },
+      { id: 9, src: '/images/gallery/shoes/9.jpg', category: 'shoes' },
     ],
     helmets: [
-      { id: 7, src: '/images/slider/1.webp', category: 'helmets' },
-      { id: 8, src: '/images/slider/2.webp', category: 'helmets' },
-      { id: 9, src: '/images/slider/3.webp', category: 'helmets' },
     ],
     caps: [
-      { id: 10, src: '/images/slider/1.webp', category: 'caps' },
-      { id: 11, src: '/images/slider/2.webp', category: 'caps' },
-      { id: 12, src: '/images/slider/3.webp', category: 'caps' },
     ]
   };
 

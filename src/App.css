@@ -67,12 +67,17 @@ body {
   text-align: center;
   justify-content: center;
 }
+#gallery-section{
+  background-color: var(--background);
+  z-index: 3;
+  position: relative;
+}
 
 #home-section,
 #about-section,
 #services-section,
 #location-section,
-#gallery-section,
+
 #contact-section {
   background-color: var(--background);
   z-index: 2;
