@@ -146,10 +146,10 @@ const Navbar = () => {
           {navOpen && (
             <motion.div
               className={`mobile-nav ${isHeroVisible ? 'hero-visible' : ''}`}
-              initial={{ opacity: 0, x: '100%' }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
+              initial={{ opacity: 0, x: '-100%' }}
+              animate={{ opacity: 1, x: 1 }}
+              exit={{ opacity: 0, x: '-100%' }}
+              transition={{ type: 'spring', stiffness: 100, damping: 10 }}
             >
               <motion.div 
                 className="mobile-nav-links"

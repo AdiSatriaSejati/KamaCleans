@@ -7,90 +7,159 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 2em;
+    gap: 7em;
     font-size: 12px;
     background: var(--background);
     color: var(--text-primary);
     transition: all 0.3s ease;
-  }
-  
-  .loader p {
+}
+
+/* Logo container dengan efek glow */
+.logo-container {
+    position: relative;
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: radial-gradient(circle at center, 
+        rgba(74, 144, 226, 0.2) 0%, 
+        transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loader p {
     font-size: 1rem;
     letter-spacing: 2px;
     font-weight: 500;
-  }
-  
-  .progress-container {
+    animation: fadeInOut 2s ease-in-out infinite;
+}
+
+.progress-container {
     position: absolute;
-    top: 80%;
+    top: 75%;
     width: 50%;
-    height: 2px;
-    background: rgba(var(--text-primary-rgb), 0.2);
-    border-radius: 4px;
+    height: 3px;
+    background: rgba(var(--text-primary-rgb), 0.1);
+    border-radius: 10px;
     overflow: hidden;
-  }
-  
-  .progress-bar {
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.2);
+}
+
+.progress-bar {
     height: 100%;
-    background: var(--text-primary);
+    background: linear-gradient(90deg, 
+        var(--text-primary) 0%,
+        var(--background) 50%,
+        var(--text-primary) 100%);
     transition: width 0.2s ease-out;
-  }
-  
-  .loader img {
-    transition: transform 0.3s ease;
-  }
-  
-  .loader img:hover {
-    transform: scale(1.05);
-  }
-  
-  /* Dark mode specific styles */
-  .loader.dark {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+}
+
+/* Animasi */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+@keyframes rotate3D {
+    0%, 100% {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(1000px) rotateY(180deg);
+    }
+}
+
+@keyframes fadeInOut {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Dark mode specific styles */
+.loader.dark {
     background: var(--background);
     color: var(--text-primary);
-  }
-  
-  .loader.dark .progress-bar {
-    background: var(--text-primary);
-  }
-  
-  /* Light mode specific styles */
-  .loader.light {
+}
+
+.loader.dark .progress-bar {
+    background: linear-gradient(90deg, 
+        var(--text-primary) 0%,
+        var(--background) 50%,
+        var(--text-primary) 100%);
+}
+
+/* Light mode specific styles */
+.loader.light {
     background: var(--background);
     color: var(--text-primary);
-  }
-  
-  .loader.light .progress-bar {
-    background: var(--text-primary);
-  }
-  
-  @media screen and (max-width: 768px) {
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .loader {
+        gap: 5em;
+    }
+
     .loader img {
-      width: 128px;
-      height: 128px;
+        width: 128px;
+        height: 128px;
     }
-  
+
     .progress-container {
-      width: 80%;
+        width: 80%;
     }
-  
+
     .loader p {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  }
-  
-  @media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
     .loader img {
-      width: 156px;
-      height: 156px;
+        width: 156px;
+        height: 156px;
     }
-  
+
     .progress-container {
-      width: 70%;
+        width: 70%;
     }
-  }
-  
-  /* Animation for smooth transitions */
-  .loader, .loader * {
+}
+
+/* Smooth transitions */
+.loader, .loader * {
     transition: all 0.3s ease;
-  }
+}

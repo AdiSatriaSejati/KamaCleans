@@ -39,18 +39,18 @@
   height: 2px;
   width: 100px;
   top: 1.5rem;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
   position: relative;
-  box-shadow: 0 0 10px var(--accent-color),
-              0 0 20px var(--accent-color),
-              0 0 30px var(--accent-color),
-              0 0 40px var(--accent-color);
+  box-shadow: 0 0 10px var(--text-primary),
+              0 0 20px var(--text-primary),
+              0 0 30px var(--text-primary),
+              0 0 40px var(--text-primary);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 .about-title {
   font-size: clamp(2rem, 3vw, 3.5rem);
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -95,7 +95,7 @@
 .stat-number {
   font-size: clamp(1.25rem, 2.5vw, 2rem);
   font-weight: bold;
-  color: var(--accent-color);
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
   line-height: 1.2;
 }

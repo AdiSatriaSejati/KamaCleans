@@ -23,7 +23,7 @@
 }
 
 .gradient-sphere:nth-child(1) {
-  background: var(--background);
+  background: var(--text-primary);
   width: 500px;
   height: 500px;
   top: -100px;
@@ -32,7 +32,7 @@
 }
 
 .gradient-sphere:nth-child(2) {
-  background: var(--accent-color);
+  background: var(--text-primary);
   width: 400px;
   height: 400px;
   bottom: -50px;
@@ -45,7 +45,7 @@
   text-align: center;
   margin-bottom: 4rem;
   position: relative;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -55,10 +55,10 @@
   width: 100px;
   margin: 0.5rem auto;
   margin-top: 0.5rem;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
   position: relative;
   border-radius: 4px;
-  box-shadow: 0 0 10px var(--accent-color);
+  box-shadow: 0 0 10px var(--background);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
@@ -103,8 +103,8 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(74, 144, 226, 0.9);
-  color: white;
+  background: var(--text-primary);
+  color: var(--background);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-weight: 600;
@@ -145,14 +145,14 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: var(--text-primary);
   font-weight: bold;
 }
 
 .book-button {
   width: 100%;
-  background: var(--accent-color);
-  color: white;
+  background: var(--text-primary);
+  color: var(--background);
   border: none;
   padding: 1rem;
   border-radius: 10px;
@@ -182,11 +182,11 @@
 @keyframes glow {
   0%, 100% { 
     opacity: 0.5;
-    box-shadow: 0 0 10px var(--accent-color);
+    box-shadow: 0 0 10px var(--text-primary);
   }
   50% { 
     opacity: 1;
-    box-shadow: 0 0 20px var(--accent-color);
+    box-shadow: 0 0 20px var(--text-primary);
   }
 }
 
@@ -209,11 +209,4 @@
   }
 }
 
-/* Dark mode adjustments */
-:root[class="dark"] .service-card {
-  background: rgba(26, 26, 26, 0.5);
-}
 
-:root[class="dark"] .service-price {
-  background: rgba(94, 162, 255, 0.8);
-}

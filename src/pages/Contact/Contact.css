@@ -14,7 +14,7 @@
   text-align: center;
   font-size: clamp(2rem, 3vw, 3.5rem);
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
@@ -27,27 +27,27 @@
   transform: translateX(-50%);
   width: 100px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
   border-radius: 4px;
-  box-shadow: 0 0 10px var(--accent-color),
-              0 0 20px var(--accent-color),
-              0 0 30px var(--accent-color),
-              0 0 40px var(--accent-color);
+  box-shadow: 0 0 10px var(--text-primary),
+              0 0 20px var(--text-primary),
+              0 0 30px var(--text-primary),
+              0 0 40px var(--text-primary);
   animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 5px var(--accent-color),
-                0 0 10px var(--accent-color),
-                0 0 15px var(--accent-color),
-                0 0 20px var(--accent-color);
+    box-shadow: 0 0 5px var(--text-primary),
+                0 0 10px var(--text-primary),
+                0 0 15px var(--text-primary),
+                0 0 20px var(--text-primary);
   }
   to {
-    box-shadow: 0 0 10px var(--accent-color),
-                0 0 20px var(--accent-color),
-                0 0 30px var(--accent-color),
-                0 0 40px var(--accent-color);
+    box-shadow: 0 0 10px var(--text-primary),
+                0 0 20px var(--text-primary),
+                0 0 30px var(--text-primary),
+                0 0 40px var(--text-primary);
   }
 }
 
@@ -82,10 +82,10 @@
 }
 
 .info-icon {
-  background: var(--accent-color);
+  background: var(--text-primary);
   padding: 0.8rem;
   border-radius: 12px;
-  color: white;
+  color: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
