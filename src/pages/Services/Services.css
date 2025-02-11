@@ -1,0 +1,219 @@
+.services-container {
+  background: var(--background);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gradient-sphere {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+
+.gradient-sphere:nth-child(1) {
+  background: var(--accent-color);
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  left: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.gradient-sphere:nth-child(2) {
+  background: var(--accent-color);
+  width: 400px;
+  height: 400px;
+  bottom: -50px;
+  right: -50px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+
+.services-title {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glowing-line-2 {
+  height: 2px;
+  width: 100px;
+  margin: auto;
+  margin-top: 0.5rem;
+  margin-bottom: -2.5rem;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 0 10px var(--accent-color);
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.service-image-container {
+  height: 250px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.service-image-container img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-price {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(74, 144, 226, 0.9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service-content {
+  padding: 2rem;
+}
+
+.service-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.features-list li {
+  padding-left: 1.8rem;
+  position: relative;
+  margin-bottom: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.book-button {
+  width: 100%;
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.book-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% { 
+    opacity: 0.5;
+    box-shadow: 0 0 10px var(--accent-color);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 20px var(--accent-color);
+  }
+}
+
+@media (max-width: 768px) {
+
+    .service-image-container img {
+        width: 250px;
+        height: 250px;
+    }
+  .services-container {
+    padding: 4rem 1rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-image-container {
+    height: 200px;
+  }
+}
+
+/* Dark mode adjustments */
+:root[class="dark"] .service-card {
+  background: rgba(26, 26, 26, 0.5);
+}
+
+:root[class="dark"] .service-price {
+  background: rgba(94, 162, 255, 0.8);
+}
