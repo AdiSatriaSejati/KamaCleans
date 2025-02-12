@@ -66,46 +66,142 @@
     <meta name="geo.country" content="ID">
     <meta name="language" content="Indonesia">
     
-    <!-- Schema.org markup -->
+    <!-- Schema.org markup untuk informasi bisnis -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "KamaCleans",
       "image": "https://kamacleans.vercel.app/images/logo.png",
-      "description": "Jasa laundry premium untuk sepatu, helm, dan topi di Tangerang",
+      "description": "KamaCleans menyediakan layanan laundry premium untuk sepatu, helm, dan topi di Tangerang",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi, Kec. Ps. Kemis",
-        "addressLocality": "Kabupaten Tangerang",
+        "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi",
+        "addressLocality": "Tangerang",
         "addressRegion": "Banten",
         "postalCode": "15560",
         "addressCountry": "ID"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -6.1522433,
-        "longitude": 106.5692818
+        "latitude": -6.152201943834907,
+        "longitude": 106.56910651294285
       },
       "url": "https://kamacleans.vercel.app",
       "telephone": "+6285282866479",
-      "priceRange": "$$",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "00:00",
-        "closes": "23:59"
+      "priceRange": "Rp35.000 - Rp50.000"
+    }
+    </script>
+    
+    <!-- Schema.org markup untuk jam operasional -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday", "Tuesday", "Wednesday", "Thursday",
+        "Friday", "Saturday", "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+    </script>
+    
+    <!-- Schema.org markup untuk rating dan review -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "KamaCleans",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "10",
+        "bestRating": "5",
+        "worstRating": "1"
       },
-      "sameAs": [
-        "https://www.instagram.com/kamacleans/"
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Breezy Breeze"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Overall puas dengan pelayanan disini. Hasil cuci bersih, waktu pengerjaan cepat, pelayanan ramah, dan yang penting affordable price. Good job, keep it up. 🔥",
+          "url": "https://maps.app.goo.gl/Bvyd2yMiQ5jMSzBf8"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "ucokwfs"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Bersih ... cepat like a new... Recommended banget siii 👍",
+          "url": "https://maps.app.goo.gl/6ypvevCgtkYvhCfAA"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Irwan Satryawan"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Bersih bangettttt, recommended banget guysss kamacleans the best",
+          "url": "https://maps.app.goo.gl/qsMtynXdQSihwCpJ9"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Nabila Febriyanti"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Pelayanannya oke, ramah, cepet juga dan bersih juga. Jasa cuci sepatu yang ngoke",
+          "url": "https://g.co/kgs/Y9P5AfM"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Schema.org markup untuk layanan/produk -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "KamaCleans",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Cuci Sepatu",
+          "price": "35000",
+          "priceCurrency": "IDR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cuci Helm",
+          "price": "35000",
+          "priceCurrency": "IDR"
+        },
+        {
+          "@type": "Offer",
+          "name": "Cuci Topi",
+          "price": "15000",
+          "priceCurrency": "IDR"
+        }
       ]
     }
     </script>
