@@ -191,12 +191,12 @@
 .mobile-nav .nav-item:nth-child(5) { animation-delay: 0.5s; }
 
 .mobile-nav.hero-visible .nav-item {
-  color: var(--text-primary);
+  background: rgba(26, 26, 26, 0.50);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-nav.hero-visible .nav-item.active {
-  background: var(--background);
+  background: #1a1a1a;
 }
 
 .nav-shadow {
