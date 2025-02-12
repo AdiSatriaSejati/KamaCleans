@@ -8,6 +8,7 @@ import Services from './pages/Services/Services';
 import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/footer/Footer';
+import ScrollToTop from './components/scrolltotop/ScrollToTop';
 import './App.css';
 
 function App() {
@@ -83,6 +84,7 @@ function App() {
         <section id="gallery-section"><Gallery /></section>
         <section id="contact-section"><Contact /></section>
         <Footer />
+        <ScrollToTop />
       </div>
     </DarkModeProvider>
   );

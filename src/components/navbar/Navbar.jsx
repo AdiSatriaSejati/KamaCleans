@@ -22,54 +22,55 @@ const MusicBoxPlaceholder = () => (
 );
 
 const Navbar = () => {
-  const [navOpen, setNavOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home-section');
-  const { isDarkMode } = useDarkMode();
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-
-  // Fungsi untuk mengecek apakah elemen berada dalam viewport
-  const isElementInViewport = (el) => {
-    const rect = el.getBoundingClientRect();
-    return (
-      rect.top <= (window.innerHeight / 2) &&
-      rect.bottom >= (window.innerHeight / 2)
-    );
-  };
+  const { isDarkMode, changeDarkMode } = useDarkMode();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update scroll state
+      // Check if scrolled
       setIsScrolled(window.scrollY > 50);
-      
-      // Check each section
-      const sections = document.querySelectorAll('section[id]');
-      let foundActive = false;
 
-      sections.forEach(section => {
-        if (isElementInViewport(section)) {
-          const sectionId = section.getAttribute('id');
-          setActiveSection(sectionId);
-          setIsHeroVisible(sectionId === 'home-section');
-          foundActive = true;
+      // Get all sections
+      const sections = navigationRoutes.map(route => {
+        const element = document.getElementById(sectionIds[route]);
+        if (element) {
+          return {
+            id: route.toLowerCase(),
+            top: element.offsetTop - 100,
+            bottom: element.offsetTop + element.offsetHeight - 100
+          };
         }
-      });
+        return null;
+      }).filter(Boolean); // Filter out null values
 
-      // If no section is in viewport, default to last active section
-      if (!foundActive) {
-        const lastSection = Array.from(sections).reduce((prev, current) => {
-          return (prev.offsetTop > current.offsetTop) ? prev : current;
-        });
-        setActiveSection(lastSection.getAttribute('id'));
-        setIsHeroVisible(lastSection.getAttribute('id') === 'home-section');
+      // Check if hero section is visible
+      const heroSection = document.getElementById('home-section');
+      if (heroSection) {
+        setIsHeroVisible(
+          window.scrollY < (heroSection.offsetTop + heroSection.offsetHeight - 100)
+        );
+      }
+
+      // Find active section
+      if (sections.length > 0) {
+        const currentPosition = window.scrollY + window.innerHeight / 2;
+        const activeSection = sections.reduce((acc, section) => {
+          if (currentPosition >= section.top && currentPosition <= section.bottom) {
+            return section.id;
+          }
+          return acc;
+        }, 'home'); // Provide 'home' as initial value
+
+        setActiveSection(activeSection);
       }
     };
 
-    // Add scroll listener
     window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
-    
+    handleScroll(); // Call once on mount
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -78,8 +79,8 @@ const Navbar = () => {
     const section = document.getElementById(sectionId);
     
     if (section) {
-      if (navOpen) {
-        setNavOpen(false);
+      if (isOpen) {
+        setIsOpen(false);
       }
       
       const yOffset = -50;
@@ -101,8 +102,8 @@ const Navbar = () => {
       <div className="nav-content">
         {/* Hamburger Menu */}
         <button 
-          className={`hamburger ${navOpen ? 'active' : ''}`} 
-          onClick={() => setNavOpen(!navOpen)}
+          className={`hamburger ${isOpen ? 'active' : ''}`} 
+          onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle navigation"
         >
           <span className={isHeroVisible ? 'light-span' : 'dark-span'}></span>
@@ -143,7 +144,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <AnimatePresence>
-          {navOpen && (
+          {isOpen && (
             <motion.div
               className={`mobile-nav ${isHeroVisible ? 'hero-visible' : ''}`}
               initial={{ opacity: 0, x: '-100%' }}

@@ -23,7 +23,7 @@
 }
 
 .gradient-sphere:nth-child(1) {
-  background: var(--text-primary);
+  background: var(--card-bg);
   width: 500px;
   height: 500px;
   top: -100px;
@@ -32,7 +32,7 @@
 }
 
 .gradient-sphere:nth-child(2) {
-  background: var(--text-primary);
+  background: var(--card-bg);
   width: 400px;
   height: 400px;
   bottom: -50px;
