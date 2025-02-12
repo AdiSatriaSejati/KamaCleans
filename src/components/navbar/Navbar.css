@@ -20,7 +20,7 @@
 
 .navbar.on-hero .nav-item,
 .navbar.on-hero .Mode {
-  color: #ffffff;
+  color: #fff !important;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
