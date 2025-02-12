@@ -5,14 +5,20 @@
     transform: translate(-50%, -50%);
     width: min(90%, 1200px);
     z-index: 35;
+    will-change: transform;
   }
   
   .animated-text-container svg {
     width: 100%;
     margin: 0 auto;
-    display: block;
+    font-family: 'Open Sans', Impact, sans-serif;
+    font-weight: 800;
     text-transform: uppercase;
-    font: 100 clamp(2em, 8vw, 5em)/1 'Open Sans', Impact;
+    letter-spacing: 0.5em;
+    font-size: clamp(2em, 10vw, 12em);
+    font-display: swap;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   .text-copy--stroke {
@@ -26,10 +32,26 @@
     transform: translate(0.06em, 0.06em);
   }
   
+  .text--line {
+    font-size: clamp(2em, 10vw, 12em);
+    font-family: 'Open Sans', Impact, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    fill: none;
+    stroke: var(--text-primary);
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+    animation: stroke 6s forwards;
+    will-change: stroke-dashoffset;
+  }
+  
   .r-fill {
-    fill: url("#p-circles");
+    fill: var(--text-primary);
     transform-origin: 50% 50%;
-    animation: rotate 30s infinite linear;
+    transform: scale(0);
+    animation: scale 4s forwards cubic-bezier(0.77, 0, 0.175, 1);
+    will-change: transform;
   }
   
   .c-ring {

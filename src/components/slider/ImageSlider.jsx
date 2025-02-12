@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './ImageSlider.css';
-import AnimatedText from '../animatedtext/AnimatedText';
 
 
 const ImageSlider = () => {
@@ -95,7 +94,6 @@ const ImageSlider = () => {
             zIndex: index === current ? 30 : index === next ? 20 : 10
           }}
         >
-          <AnimatedText />
           <div className="slide-content">
             <h1>{slide.heading}</h1>
           </div>
