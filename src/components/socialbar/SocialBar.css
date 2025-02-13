@@ -21,17 +21,21 @@
   }
   
   .social-bar__item:hover {
-    transform: translate(-15px);
     opacity: 0.9;
+    transform: translate(-15px);
   }
   
   .social-bar__instagram {
-    background-color: #e4405f;
+    background-color: #E4405F;
+    color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
   }
 
   .social-bar__whatsapp {
     background-color: #25D366;
+    color: #000000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
 }
 

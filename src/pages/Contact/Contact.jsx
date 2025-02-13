@@ -88,7 +88,7 @@ const Contact = () => {
               >
                 <div className="info-icon">{info.icon}</div>
                 <div className="info-content">
-                  <h3>{info.title}</h3>
+                  <h3 className="info-title">{info.title}</h3>
                   {info.link ? (
                     <a href={info.link}>{info.content}</a>
                   ) : (
@@ -133,6 +133,8 @@ const Contact = () => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="KamaCleans Location Map"
+              aria-label="Map showing KamaCleans location"
             />
           </motion.div>
         </motion.div>

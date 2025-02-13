@@ -83,22 +83,34 @@ const Testimonials = () => {
           </AnimatePresence>
 
           <div className="slider-controls">
-            <button onClick={prevSlide} className="control-btn prev">
-              <svg viewBox="0 0 24 24">
+            <button 
+              onClick={prevSlide} 
+              className="control-btn prev"
+              aria-label="Previous testimonial"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
               </svg>
             </button>
+            
             <div className="slider-dots">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
                   className={`dot ${index === currentIndex ? 'active' : ''}`}
                   onClick={() => setCurrentIndex(index)}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-current={index === currentIndex ? 'true' : 'false'}
                 />
               ))}
             </div>
-            <button onClick={nextSlide} className="control-btn next">
-              <svg viewBox="0 0 24 24">
+            
+            <button 
+              onClick={nextSlide} 
+              className="control-btn next"
+              aria-label="Next testimonial"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
               </svg>
             </button>

@@ -71,7 +71,7 @@ const ServiceCard = ({ service, index }) => {
       </div>
       
       <div className="service-content">
-        <h3>{service.title}</h3>
+        <h3 className="service-title">{service.title}</h3>
         <p className="description">{service.description}</p>
         
         <ul className="features-list">

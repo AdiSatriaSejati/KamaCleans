@@ -44,24 +44,6 @@ function App() {
     // Initial update
     updateFaviconAndTitle();
 
-    // Tambahkan preload untuk gambar kritikal
-    const preloadImages = [
-      '/images/logo-dark.webp',
-      '/images/logo-light.webp',
-      '/images/slider/1.webp',
-      '/images/slider/2.webp',
-      '/images/slider/3.webp',
-      '/images/slider/effect-sprite-2.png',
-      '/images/slider/effect-sprite.png',
-      '/images/about.jpg'
-      // ... gambar kritikal lainnya
-    ];
-    
-    preloadImages.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-
     // Cleanup
     return () => {
       clearTimeout(timer);
@@ -78,11 +60,11 @@ function App() {
     <DarkModeProvider>
       <div className="App">
         <Navbar />
-        <section id="home-section"><Home /></section>
-        <section id="about-section"><About /></section>
-        <section id="services-section"><Services /></section>
-        <section id="gallery-section"><Gallery /></section>
-        <section id="contact-section"><Contact /></section>
+        <section id="home-section" aria-label="Home"><Home /></section>
+        <section id="about-section" aria-label="About"><About /></section>
+        <section id="services-section" aria-label="Services"><Services /></section>
+        <section id="gallery-section" aria-label="Gallery"><Gallery /></section>
+        <section id="contact-section" aria-label="Contact"><Contact /></section>
         <Footer />
         <ScrollToTop />
       </div>
