@@ -96,7 +96,11 @@
 
 .float-image {
   position: absolute;
-  max-width: 300px;
+  aspect-ratio: 1;
+  width: clamp(200px, 30vw, 400px);
+  height: auto;
+  object-fit: contain;
+  will-change: transform;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
 }
 
@@ -104,6 +108,8 @@
   top: 20%;
   left: 5%;
   animation: float 6s ease-in-out infinite;
+  min-height: 200px;
+  aspect-ratio: 1;
 }
 
 .helmet {
@@ -285,12 +291,13 @@
   }
 
   .float-image {
-    max-width: 175px;
+    width: clamp(150px, 25vw, 300px);
   }
 
   .shoes {
     top: 25%;
     left: 0;
+    min-height: 150px;
   }
 
   .helmet {
@@ -366,5 +373,25 @@
   .scroll-indicator {
     bottom: 1rem;
   }
+}
+
+/* Preload animation styles */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.image-placeholder {
+  background: linear-gradient(90deg, 
+    var(--background) 25%, 
+    var(--card-bg) 50%, 
+    var(--background) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
