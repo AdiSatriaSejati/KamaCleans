@@ -130,6 +130,11 @@ const Home = () => {
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          width="400"
+          height="400"
         />
         <motion.img 
           src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQucG5nIiwiaWF0IjoxNzM5NDc2MTU4LCJleHAiOjE3NzEwMTIxNTh9.ReGU_hVOgPRHbzuGwsDPl6aRcf1eH6Lmj_Ux_H_KWCw"
@@ -138,6 +143,8 @@ const Home = () => {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
+          loading="lazy"
+          decoding="async"
         />
         <motion.img 
           src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLnBuZyIsImlhdCI6MTczOTQ3NjE5MiwiZXhwIjoxNzcxMDEyMTkyfQ.47thY0sxvta29RxEr9R2g-7cuqLfaIGSC7pueUV6bn0"

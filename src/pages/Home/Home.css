@@ -95,9 +95,17 @@
 }
 
 .float-image {
-  position: absolute;
-  max-width: 300px;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+  aspect-ratio: 1;
+  width: clamp(200px, 30vw, 400px);
+  height: auto;
+  object-fit: contain;
+  will-change: transform;
+}
+
+/* Reservasi space untuk gambar */
+.float-image.shoes {
+  min-height: 200px;
+  aspect-ratio: 1;
 }
 
 .shoes {
@@ -285,7 +293,11 @@
   }
 
   .float-image {
-    max-width: 175px;
+    width: clamp(150px, 25vw, 300px);
+  }
+  
+  .float-image.shoes {
+    min-height: 150px;
   }
 
   .shoes {
@@ -366,5 +378,36 @@
   .scroll-indicator {
     bottom: 1rem;
   }
+}
+
+/* Optimasi untuk mobile */
+@media (max-width: 768px) {
+  .float-image {
+    width: clamp(150px, 25vw, 300px);
+  }
+  
+  .float-image.shoes {
+    min-height: 150px;
+  }
+}
+
+/* Preload animation styles */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.image-placeholder {
+  background: linear-gradient(90deg, 
+    var(--background) 25%, 
+    var(--card-bg) 50%, 
+    var(--background) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
