@@ -144,11 +144,11 @@ const About = () => {
                 height: '100%',
                 opacity: isSliderLoading ? 0 : 1
               }}>
-                <li><img src="/images/about.jpg" alt="image1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="/images/about.jpg" alt="image2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="/images/about.jpg" alt="image3" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="/images/about.jpg" alt="image4" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="/images/about.jpg" alt="image5" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image3" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image4" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image5" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
               </ul>
             </div>
           </motion.div>

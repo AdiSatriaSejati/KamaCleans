@@ -14,7 +14,7 @@ const services = [
       "Pewangi premium",
       "Perawatan visor khusus"
     ],
-    image: "/images/services/helmet.png"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQucG5nIiwiaWF0IjoxNzM5NDc0NDI3LCJleHAiOjE3NzEwMTA0Mjd9.BhsRJxpcoxhYAU0-J2NmV2JpWeM1uAh6USSAtAud50E"
   },
   {
     title: "CUCI SEPATU",
@@ -26,7 +26,7 @@ const services = [
       "Pewangi premium",
       "Treatment khusus material"
     ],
-    image: "/images/services/shoes.png"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy5wbmciLCJpYXQiOjE3Mzk0NzQ0NjQsImV4cCI6MTc3MTAxMDQ2NH0.mRSmnZ-mArouYGmBdMoxO8tJGNAWRv3XiLJVY3hMdJY"
   },
   {
     title: "CUCI TOPI",
@@ -38,7 +38,7 @@ const services = [
       "Pewangi premium",
       "Menjaga bentuk original"
     ],
-    image: "/images/services/caps.png"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLnBuZyIsImlhdCI6MTczOTQ3NDQ4MCwiZXhwIjoxNzcxMDEwNDgwfQ.kcQA5sYct64UNcqvLYBooT13Jb19v-7Np9yDJPvHHIM"
   }
 ];
 

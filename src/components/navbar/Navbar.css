@@ -20,16 +20,19 @@
 
 .navbar.on-hero .nav-item,
 .navbar.on-hero .Mode {
-  color: #fff !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px var(--background);
 }
 
 .nav-content {
-  max-width: 100%;
-  margin: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 auto;
+  transition: all 0.3s ease;
 }
 
 .nav-links {
@@ -42,7 +45,7 @@
   border: none;
   padding: 0.5rem 2rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease;
@@ -73,7 +76,7 @@
 }
 
 .navbar.on-hero .nav-controls {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .hamburger {
@@ -113,7 +116,7 @@
 }
 
 .light-span {
-  background: #ffffff !important;
+  background: var(--text-primary) !important;
 }
 
 .mobile-nav {
@@ -191,12 +194,14 @@
 .mobile-nav .nav-item:nth-child(5) { animation-delay: 0.5s; }
 
 .mobile-nav.hero-visible .nav-item {
-  background: rgba(26, 26, 26, 0.50);
+  background: var(--navbar-bg);
+  color: var(--text-primary);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-nav.hero-visible .nav-item.active {
-  background: #1a1a1a;
+  background: var(--text-primary);
+  color: var(--background);
 }
 
 .nav-shadow {
@@ -208,9 +213,8 @@
 .nav-container {
   width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  z-index: 51;
 }
 
 .logo-container {
@@ -233,9 +237,6 @@
   object-fit: contain;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-.navbar.on-hero .nav-logo {
-  filter: brightness(0) invert(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .main-content {
@@ -334,11 +335,7 @@
   }
 
   .navbar.on-hero .hamburger.active span {
-    background-color: #ffffff !important;
-  }
-
-  .mobile-nav.hero-visible .nav-item {
-    color: var(--text-secondary);
+    background-color: var(--text-primary) !important;
   }
   
   .navbar.on-hero .mobile-nav {
@@ -366,5 +363,11 @@
 
   .nav-controls {
     gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .nav-content {
+    padding: 0 0;
   }
 }

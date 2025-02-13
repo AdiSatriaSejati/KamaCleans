@@ -225,3 +225,52 @@
   .gallery-container.loading {
     opacity: 0.7;
   }
+  
+  .load-more-btn {
+    display: block;
+    margin: 2rem auto;
+    padding: 0.8rem 2rem;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .load-more-btn:hover {
+    background: var(--text-primary);
+    color: var(--background);
+    transform: translateY(-2px);
+  }
+  
+  .load-more-btn:active {
+    transform: translateY(0);
+  }
+  
+  /* Animasi untuk gallery items baru */
+  .gallery-item {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .load-more-btn {
+      padding: 0.6rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
