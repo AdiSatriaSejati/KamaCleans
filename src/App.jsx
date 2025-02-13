@@ -9,6 +9,7 @@ import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 function App() {
@@ -57,18 +58,26 @@ function App() {
   }
 
   return (
-    <DarkModeProvider>
-      <div className="App">
-        <Navbar />
-        <section id="home-section" aria-label="Home"><Home /></section>
-        <section id="about-section" aria-label="About"><About /></section>
-        <section id="services-section" aria-label="Services"><Services /></section>
-        <section id="gallery-section" aria-label="Gallery"><Gallery /></section>
-        <section id="contact-section" aria-label="Contact"><Contact /></section>
-        <Footer />
-        <ScrollToTop />
-      </div>
-    </DarkModeProvider>
+    <ErrorBoundary>
+      <DarkModeProvider>
+        <div className="App" role="main">
+          <Navbar />
+          <main id="main-content">
+            <section id="home-section" aria-label="Home">
+              <ErrorBoundary>
+                <Home />
+              </ErrorBoundary>
+            </section>
+            <section id="about-section" aria-label="About"><About /></section>
+            <section id="services-section" aria-label="Services"><Services /></section>
+            <section id="gallery-section" aria-label="Gallery"><Gallery /></section>
+            <section id="contact-section" aria-label="Contact"><Contact /></section>
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </DarkModeProvider>
+    </ErrorBoundary>
   );
 }
 

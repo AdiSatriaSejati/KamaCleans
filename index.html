@@ -228,9 +228,14 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-VZ7PJGJZ08', {
+          'anonymize_ip': true,
           'page_title': 'KamaCleans',
           'page_location': window.location.href,
-          'page_path': window.location.pathname
+          'page_path': window.location.pathname,
+          'cookie_flags': 'SameSite=None;Secure',
+          'cookie_domain': 'auto',
+          'cookie_expires': 0,
+          'send_page_view': false
         });
     </script>
     <meta name="google-site-verification" content="NKKLusZ18vX-geeQxZ9pQiZsujxiORIh_NJABYMMfYs">

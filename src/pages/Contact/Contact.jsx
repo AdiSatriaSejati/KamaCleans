@@ -63,13 +63,13 @@ const Contact = () => {
         animate="visible"
         variants={staggerContainer}
       >
-        <motion.h1 
+        <motion.h2 
           className="contact-title"
           variants={fadeInUp}
         >
           Contact Us
           <div className="glowing-line-4"></div>
-        </motion.h1>
+        </motion.h2>
 
         <motion.div 
           className="contact-grid"
