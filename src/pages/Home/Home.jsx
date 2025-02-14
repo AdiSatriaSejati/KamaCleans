@@ -124,7 +124,7 @@ const Home = () => {
 
       <div className="floating-images">
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMwNzUxLCJleHAiOjE3NzEwNjY3NTF9.rDdyFtXYhMTrSMm2gNFmNT4uG7ksDV1csTzH4bMk_9U"
+          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy5qcGciLCJpYXQiOjE3Mzk1MzE1MjUsImV4cCI6MTc3MTA2NzUyNX0.HHuc0S1P83pr-VXPhM6dsex69PEFuuu66brkHgbWkvE"
           alt="Shoes"
           className="float-image shoes"
           initial={{ opacity: 0, x: -100 }}
@@ -137,7 +137,7 @@ const Home = () => {
           height="400"
         />
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMTE2MywiZXhwIjoxNzcxMDY3MTYzfQ.ddLHLGav_0oAdANxj8ftM5wlH7EQWpK2nrGpj9Iu3gc"
+          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQuanBnIiwiaWF0IjoxNzM5NTMxNDk3LCJleHAiOjE3NzEwNjc0OTd9.elBvVtO-S1hH1AcOYqmv6h3_W3E2M5XWzkbJVU91Z_I"
           alt="Helmet"
           className="float-image helmet"
           initial={{ opacity: 0, y: 100 }}
@@ -147,7 +147,7 @@ const Home = () => {
           decoding="async"
         />
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk1MzA2MDcsImV4cCI6MTc3MTA2NjYwN30.Iv6QPPKHVD4H7EeNxTZBSwOqhj01TrpttaXccFdzQgg"
+          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLmpwZyIsImlhdCI6MTczOTUzMTQ2NiwiZXhwIjoxNzcxMDY3NDY2fQ.qHnx6qLEvlG3YE7UICkOvIvrYn_fNo-ElvE1UojJaKI"
           alt="Cap"
           className="float-image cap"
           initial={{ opacity: 0, x: 100 }}
