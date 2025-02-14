@@ -14,7 +14,7 @@ const services = [
       "Pewangi premium",
       "Perawatan visor khusus"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQucG5nIiwiaWF0IjoxNzM5NDc0NDI3LCJleHAiOjE3NzEwMTA0Mjd9.BhsRJxpcoxhYAU0-J2NmV2JpWeM1uAh6USSAtAud50E"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMDcxNywiZXhwIjoxNzcxMDY2NzE3fQ.QSTnBGxDEp1GKq3snJtWAxDzYHcSePxLe3VWhaB6KRw"
   },
   {
     title: "CUCI SEPATU",
@@ -26,7 +26,7 @@ const services = [
       "Pewangi premium",
       "Treatment khusus material"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy5wbmciLCJpYXQiOjE3Mzk0NzQ0NjQsImV4cCI6MTc3MTAxMDQ2NH0.mRSmnZ-mArouYGmBdMoxO8tJGNAWRv3XiLJVY3hMdJY"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMwNzUxLCJleHAiOjE3NzEwNjY3NTF9.rDdyFtXYhMTrSMm2gNFmNT4uG7ksDV1csTzH4bMk_9U"
   },
   {
     title: "CUCI TOPI",
@@ -38,7 +38,7 @@ const services = [
       "Pewangi premium",
       "Menjaga bentuk original"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLnBuZyIsImlhdCI6MTczOTQ3NDQ4MCwiZXhwIjoxNzcxMDEwNDgwfQ.kcQA5sYct64UNcqvLYBooT13Jb19v-7Np9yDJPvHHIM"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk1MzA2MDcsImV4cCI6MTc3MTA2NjYwN30.Iv6QPPKHVD4H7EeNxTZBSwOqhj01TrpttaXccFdzQgg"
   }
 ];
 
