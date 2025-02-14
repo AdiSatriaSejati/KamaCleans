@@ -12,7 +12,7 @@
   
   .social-bar__item {
     padding: 10px 25px 10px 10px;
-    color: white;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,14 +27,12 @@
   
   .social-bar__instagram {
     background-color: #e1306c;
-    color: #000000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
   }
 
   .social-bar__whatsapp {
     background-color: #25d366;
-    color: #000000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
 }

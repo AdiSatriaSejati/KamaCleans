@@ -117,39 +117,31 @@ const About = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="slider-placeholder" style={{ 
-              width: '100%', 
-              paddingTop: '100%', 
-              position: 'relative', 
-              background: 'var(--background)',
-              borderRadius: '20px',
-              overflow: 'hidden'
-            }}>
-              {isSliderLoading && (
-                <div className="loading-placeholder" style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)'
-                }}>
-                  <div className="spinner"></div>
-                  <span>Loading Slider...</span>
+            <div className="slider-wrapper">
+              <div className="slider-placeholder">
+                <div className="sb-perspective">
+                  <ul className="sb-slider">
+                    <li>
+                      <img 
+                        src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg" 
+                        alt="About KamaCleans 1" 
+                      />
+                    </li>
+                    <li>
+                      <img 
+                        src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg" 
+                        alt="About KamaCleans 2" 
+                      />
+                    </li>
+                    <li>
+                      <img 
+                        src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg" 
+                        alt="About KamaCleans 3" 
+                      />
+                    </li>
+                  </ul>
                 </div>
-              )}
-              <ul ref={sliderRef} className="sb-slider" style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                opacity: isSliderLoading ? 0 : 1
-              }}>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image3" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image4" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC5qcGciLCJpYXQiOjE3Mzk0NzQ2MTIsImV4cCI6MTc3MTAxMDYxMn0.eA-P_jAlJ6lT8w-ZH1VTlhPQ3zHAG_pQxEMon9Lr5mQ" alt="image5" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-              </ul>
+              </div>
             </div>
           </motion.div>
         </div>
