@@ -9,8 +9,6 @@ import {
   popUp,
 } from '../../utils/FramerMotionVariants';
 import './Navbar.css';
-import logoDark from '/images/logo-dark.webp';
-import logoLight from '/images/logo-light.webp';
 import { useDarkMode } from '../../context/darkModeContext';
 
 // Lazy load MusicBox karena tidak selalu dibutuhkan segera
@@ -113,7 +111,7 @@ const Navbar = () => {
 
           {/* Logo */}
           <motion.img 
-            src={isDarkMode ? logoLight : logoDark} 
+            src={isDarkMode ? 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk1NDUxNzMsImV4cCI6MTc3MTA4MTE3M30.mLBjBtimomTc-zCrTdb-PavoJ2PPq4D8_TzaKMjm9gc' : 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTU0NTE0MywiZXhwIjoxNzcxMDgxMTQzfQ.5ZkZOJEeg6xa2P49IoGpXljMPKLk-dJiAf8FLa4g-Fg'} 
             alt="KamaCleans" 
             className="nav-logo"
             onClick={() => scrollToSection('Home')}
