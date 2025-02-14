@@ -137,7 +137,7 @@ const Home = () => {
           height="400"
         />
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMDcxNywiZXhwIjoxNzcxMDY2NzE3fQ.QSTnBGxDEp1GKq3snJtWAxDzYHcSePxLe3VWhaB6KRws_Ux_H_KWCw"
+          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMTE2MywiZXhwIjoxNzcxMDY3MTYzfQ.ddLHLGav_0oAdANxj8ftM5wlH7EQWpK2nrGpj9Iu3gc"
           alt="Helmet"
           className="float-image helmet"
           initial={{ opacity: 0, y: 100 }}
