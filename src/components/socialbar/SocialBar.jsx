@@ -16,7 +16,6 @@ const SocialBar = () => {
           <IconBrandInstagram 
             stroke={2} 
             size={30} 
-            color="white"
             aria-hidden="true"
           />
         </div>
@@ -31,7 +30,6 @@ const SocialBar = () => {
           <IconBrandWhatsapp 
             stroke={2} 
             size={30} 
-            color="white"
             aria-hidden="true"
           />
         </div>
