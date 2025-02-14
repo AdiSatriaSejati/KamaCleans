@@ -26,14 +26,14 @@
   }
   
   .social-bar__instagram {
-    background-color: #AC1638;
-    color: #FFFFFF;
+    background-color: #e1306c;
+    color: #000000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
   }
 
   .social-bar__whatsapp {
-    background-color: #006130;
+    background-color: #25d366;
     color: #000000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     border-radius: 8px 0 0 8px;
