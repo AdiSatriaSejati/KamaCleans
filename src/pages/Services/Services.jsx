@@ -102,6 +102,21 @@ const ServiceCard = ({ service, index }) => {
 };
 
 const Services = () => {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // ... existing scroll logic ...
+    };
+
+    // Menambahkan passive event listener untuk scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="services-container">
       <div className="services-background">

@@ -50,6 +50,19 @@ const About = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // ... existing scroll logic ...
+    };
+
+    // Menambahkan passive event listener untuk scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="page-container about-container">
       <section className="about-section">

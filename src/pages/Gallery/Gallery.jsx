@@ -90,6 +90,19 @@ const Gallery = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      // ... existing scroll logic ...
+    };
+
+    // Menambahkan passive event listener untuk scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="page-container gallery-container">
       <motion.h1 

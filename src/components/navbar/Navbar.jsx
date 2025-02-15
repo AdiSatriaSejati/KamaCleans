@@ -63,12 +63,12 @@ const Navbar = () => {
       }
     };
 
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll);
-    // Initial check
-    handleScroll();
+    // Menambahkan passive event listener untuk scroll
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const scrollToSection = (route) => {

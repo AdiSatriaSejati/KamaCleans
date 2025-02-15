@@ -16,8 +16,12 @@ const ScrollToTop = () => {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    // Menambahkan passive event listener untuk scroll
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
   }, []);
 
   // Smooth scroll to top
