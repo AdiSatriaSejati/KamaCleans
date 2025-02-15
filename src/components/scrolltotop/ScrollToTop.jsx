@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ScrollToTop.css';
+import { addPassiveEventListener } from '../../utils/utils';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,12 +17,9 @@ const ScrollToTop = () => {
       }
     };
 
-    // Menambahkan passive event listener untuk scroll
-    window.addEventListener('scroll', toggleVisibility, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', toggleVisibility);
-    };
+    const cleanup = addPassiveEventListener(window, 'scroll', toggleVisibility);
+    
+    return cleanup;
   }, []);
 
   // Smooth scroll to top

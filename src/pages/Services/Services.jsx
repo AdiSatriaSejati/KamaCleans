@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
 import './Services.css';
+import { addPassiveEventListener } from '../../utils/utils';
 
 const services = [
   {
@@ -109,12 +110,9 @@ const Services = () => {
       // ... existing scroll logic ...
     };
 
-    // Menambahkan passive event listener untuk scroll
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const cleanup = addPassiveEventListener(window, 'scroll', handleScroll);
+    
+    return cleanup;
   }, []);
 
   return (

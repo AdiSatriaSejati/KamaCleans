@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { navigationRoutes, sectionIds } from '../../utils/utils';
+import { navigationRoutes, sectionIds, addPassiveEventListener } from '../../utils/utils';
 import {
   FadeContainer,
   hamFastFadeContainer,
@@ -63,12 +63,10 @@ const Navbar = () => {
       }
     };
 
-    // Menambahkan passive event listener untuk scroll
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Menggunakan utility untuk menambahkan passive event listener
+    const cleanup = addPassiveEventListener(window, 'scroll', handleScroll);
     
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return cleanup;
   }, []);
 
   const scrollToSection = (route) => {

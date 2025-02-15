@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
+import { addPassiveEventListener } from '../../utils/utils';
 import './Gallery.css';
 
 const Gallery = () => {
@@ -95,12 +96,9 @@ const Gallery = () => {
       // ... existing scroll logic ...
     };
 
-    // Menambahkan passive event listener untuk scroll
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const cleanup = addPassiveEventListener(window, 'scroll', handleScroll);
+    
+    return cleanup;
   }, []);
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import './About.css';
+import { addPassiveEventListener } from '../../utils/utils';
 
 // Lazy load components
 const Testimonials = lazy(() => import('../../components/testimonials/Testimonials'));
@@ -55,12 +56,9 @@ const About = () => {
       // ... existing scroll logic ...
     };
 
-    // Menambahkan passive event listener untuk scroll
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    const cleanup = addPassiveEventListener(window, 'scroll', handleScroll);
+    
+    return cleanup;
   }, []);
 
   return (
