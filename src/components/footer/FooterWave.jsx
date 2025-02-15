@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useFrame, extend } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 import * as THREE from 'three';
-import { vertexShader, fragmentShader } from '../../shaders/footer/shaders';
+import { vertexShader, fragmentShader } from '../../utils/shaders';
 
 const WaveMaterial = shaderMaterial(
   {

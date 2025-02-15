@@ -10,21 +10,21 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion'],
+          maps: ['google-maps']
         }
       },
     },
     cssCodeSplit: true,
-    chunkSizeWarningLimit: 500,
+    chunkSizeWarningLimit: 1000,
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true,
-      },
+        drop_debugger: true
+      }
     },
   },
   server: {
