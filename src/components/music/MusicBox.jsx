@@ -15,6 +15,7 @@ const LoadingPlaceholder = () => (
 );
 
 const MusicBox = () => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,12 @@ const MusicBox = () => {
   const sourceRef = useRef(null);
   const gainNodeRef = useRef(null);
   const analyserRef = useRef(null);
+  const audioRef = useRef(null);
+
+  // Lazy load audio dengan format yang lebih ringan
+  const audioSources = {
+    mp3: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NTQ0MTUzLCJleHAiOjE3NzEwODAxNTN9.k_4nV9eOX9f8LyzznU1K1BQMlOAsybGG8XhVqFX'
+  };
 
   useEffect(() => {
     const initAudio = async () => {
@@ -89,6 +96,33 @@ const MusicBox = () => {
       document.removeEventListener('click', handleGlobalClick);
     };
   }, [isReady]);
+
+  useEffect(() => {
+    const loadAudio = () => {
+      const audio = new Audio();
+      audio.preload = 'none'; // Prevent automatic loading
+
+      // Load audio only when user interacts
+      const handleInteraction = () => {
+        if (!isLoaded) {
+          audio.src = audioSources.mp3;
+          audio.load();
+          setIsLoaded(true);
+          document.removeEventListener('click', handleInteraction);
+        }
+      };
+
+      document.addEventListener('click', handleInteraction);
+      audioRef.current = audio;
+
+      return () => {
+        document.removeEventListener('click', handleInteraction);
+        audio.pause();
+      };
+    };
+
+    loadAudio();
+  }, []);
 
   const togglePlay = (e) => {
     e.stopPropagation();
