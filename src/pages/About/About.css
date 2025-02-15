@@ -122,13 +122,16 @@
 .sb-slider {
   margin: 0 !important;
   padding: 0;
-  list-style-type: none;
+  list-style: none;
   position: relative;
   height: auto !important;
+  display: flex;
 }
 
 .sb-slider > li {
   transform-origin: 50% 50%;
+  position: relative;
+  list-style-type: none;
 }
 
 .sb-slider li {
@@ -158,6 +161,7 @@
 
 .sb-perspective {
   position: relative;
+  display: block;
 }
 
 .sb-perspective > div {
@@ -172,6 +176,17 @@
   position: absolute;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+}
+
+/* Tambahkan style untuk meningkatkan aksesibilitas */
+.sb-slider:focus-within {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.sb-slider li:focus-within {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
 }
 
 @media (max-width: 968px) {

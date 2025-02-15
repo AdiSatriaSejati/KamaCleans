@@ -136,7 +136,7 @@ const About = () => {
                   <span>Loading Slider...</span>
                 </div>
               )}
-              <ul ref={sliderRef} className="sb-slider" style={{
+              <ul ref={sliderRef} className="sb-slider" role="list" aria-label="Galeri foto KamaCleans" style={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
@@ -144,11 +144,41 @@ const About = () => {
                 height: '100%',
                 opacity: isSliderLoading ? 0 : 1
               }}>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" alt="About-KamaCleans-1" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" alt="About-KamaCleans-2" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" alt="About-KamaCleans-3" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" alt="About-KamaCleans-4" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
-                <li><img src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" alt="About-KamaCleans-5" style={{ objectFit: 'cover', width: '100%', height: '100%' }}/></li>
+                <li role="listitem">
+                  <img 
+                    src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" 
+                    alt="Tampilan layanan pembersihan KamaCleans - Gambar 1" 
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                </li>
+                <li role="listitem">
+                  <img 
+                    src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" 
+                    alt="Tampilan layanan pembersihan KamaCleans - Gambar 2" 
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                </li>
+                <li role="listitem">
+                  <img 
+                    src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" 
+                    alt="Tampilan layanan pembersihan KamaCleans - Gambar 3" 
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                </li>
+                <li role="listitem">
+                  <img 
+                    src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" 
+                    alt="Tampilan layanan pembersihan KamaCleans - Gambar 4" 
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                </li>
+                <li role="listitem">
+                  <img 
+                    src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC53ZWJwIiwiaWF0IjoxNzM5NTMyNTgzLCJleHAiOjE3NzEwNjg1ODN9.yHYgOe2WMqoqrrWL2XQNc5lOnq8JvqKsoKGNS6QZPDk" 
+                    alt="Tampilan layanan pembersihan KamaCleans - Gambar 5" 
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  />
+                </li>
               </ul>
             </div>
           </motion.div>
