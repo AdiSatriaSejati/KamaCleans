@@ -66,12 +66,6 @@ const ServiceCard = ({ service, index }) => {
           src={service.image} 
           alt={service.title}
           style={{ y }}
-          width={400}
-          height={400}
-          loading="lazy"
-          decoding="async"
-          srcSet={`${service.image} 300w, ${service.image} 600w, ${service.image} 900w`}
-          sizes="(max-width: 768px) 300px, (max-width: 1200px) 600px, 900px"
         />
         <div className="service-price">Rp {service.price}</div>
       </div>

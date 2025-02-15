@@ -55,25 +55,6 @@ const Contact = () => {
     }
   };
 
-  const loadGoogleMaps = () => {
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${YOUR_API_KEY}&libraries=places`;
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        loadGoogleMaps();
-      }
-    });
-    
-    observer.observe(mapRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="page-container contact-container">
       <motion.div 

@@ -89,8 +89,3 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--text-primary) var(--background);
 }
-
-.animated-element {
-  will-change: transform;
-  transform: translateZ(0);
-}
