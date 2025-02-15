@@ -30,13 +30,13 @@ const Contact = () => {
       icon: <IconBrandWhatsapp size={32} />,
       name: "WhatsApp",
       link: "https://api.whatsapp.com/send?phone=6285282866479",
-      color: "#25D366"
+      color: "#25d366"
     },
     {
       icon: <IconBrandInstagram size={32} />,
       name: "Instagram",
       link: "https://www.instagram.com/kamacleans/",
-      color: "#E4405F"
+      color: "#e1306c"
     }
   ];
 
