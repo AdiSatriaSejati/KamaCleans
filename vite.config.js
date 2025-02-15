@@ -10,20 +10,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor': [
-            'react',
-            'react-dom',
-            'react-router-dom'
-          ],
-          'maps': ['@react-google-maps/api'],
-          'animations': [
-            'framer-motion',
-            '@react-spring/three',
-            '@react-three/drei',
-            '@react-three/fiber'
-          ],
-          'analytics': []
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
         }
       },
     },
@@ -34,7 +24,6 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug']
       },
     },
   },
