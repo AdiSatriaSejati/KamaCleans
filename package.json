@@ -30,6 +30,7 @@
     "three": "^0.172.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.26.9",
     "@eslint/js": "^9.17.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",

@@ -220,6 +220,39 @@
         });
     </script>
     <meta name="google-site-verification" content="NKKLusZ18vX-geeQxZ9pQiZsujxiORIh_NJABYMMfYs">
+    <!-- Polyfill untuk passive event listeners -->
+    <script>
+      // Deteksi dukungan passive event listeners
+      let passiveSupported = false;
+      try {
+        const options = {
+          get passive() {
+            passiveSupported = true;
+            return false;
+          }
+        };
+        window.addEventListener("test", null, options);
+        window.removeEventListener("test", null, options);
+      } catch(err) {
+        passiveSupported = false;
+      }
+
+      // Patch addEventListener
+      if (!passiveSupported) {
+        const originalAddEventListener = EventTarget.prototype.addEventListener;
+        EventTarget.prototype.addEventListener = function(type, listener, options) {
+          let useCapture = false;
+          let passive = false;
+          if (typeof options === 'object') {
+            useCapture = options.capture || false;
+            passive = options.passive || false;
+          } else {
+            useCapture = options || false;
+          }
+          originalAddEventListener.call(this, type, listener, useCapture);
+        };
+      }
+    </script>
 </head>
 <body>
   <!-- Lazy load Google Tag Manager -->

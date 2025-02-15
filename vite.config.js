@@ -1,41 +1,25 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { visualizer } from 'rollup-plugin-visualizer'
 
 export default defineConfig({
-  plugins: [react(), visualizer({
-    open: true,
-    gzipSize: true
-  })],
+  plugins: [react()],
   build: {
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion', '@react-three/drei', '@react-three/fiber']
         }
-      },
+      }
     },
-    cssCodeSplit: true,
-    chunkSizeWarningLimit: 500,
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
-  },
-  server: {
-    headers: {
-      'Cache-Control': 'public, max-age=31536000',
-    },
-    hmr: {
-      overlay: true,
-    },
-    watch: {
-      usePolling: true,
+        drop_console: true
+      }
     }
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
+  }
 })

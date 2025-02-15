@@ -1,0 +1,9 @@
+{
+  "plugins": [
+    ["@babel/plugin-transform-runtime"],
+    ["transform-event-listeners", {
+      "passive": true,
+      "events": ["scroll", "touchstart", "touchmove", "wheel"]
+    }]
+  ]
+} 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ScrollToTop.css';
-import { addPassiveEventListener } from '../../utils/utils';
+import { addPassiveEventListener } from '../../utils/eventUtils';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
