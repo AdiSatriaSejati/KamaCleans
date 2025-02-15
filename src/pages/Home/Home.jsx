@@ -5,6 +5,11 @@ import SocialBar from '../../components/socialbar/SocialBar';
 import './Home.css';
 
 const Home = () => {
+  // Base URL untuk gambar
+  const shoesUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMyMTM5LCJleHAiOjE3NzEwNjgxMzl9.FXI_MBbC6vQ2E4hCIFPpAU97eaky6oFqvHZHpmXc4rA";
+  const helmetUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTYzOTkxNiwiZXhwIjoxNzcxMTc1OTE2fQ.nBvbYCUWS9wesJO2vybsrdUJOSXsDVnP2WjjdSzNH88";
+  const capsUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk2Mzk0ODAsImV4cCI6MTc3MTE3NTQ4MH0.Lm010spLKFBA7s8wWD5H39NcCqej8V9s_A9zgTGQe4s";
+  
   return (
     <div className="home-container">
       <div className="hero-section">
@@ -120,8 +125,9 @@ const Home = () => {
       </div>
 
       <div className="floating-images">
+        {/* Shoes Image */}
         <img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMyMTM5LCJleHAiOjE3NzEwNjgxMzl9.FXI_MBbC6vQ2E4hCIFPpAU97eaky6oFqvHZHpmXc4rA"
+          src={shoesUrl}
           alt="Shoes"
           className="float-image shoes animate-float-left"
           loading="eager"
@@ -129,9 +135,12 @@ const Home = () => {
           fetchpriority="high"
           width="400"
           height="400"
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
+
+        {/* Helmet Image */}
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMjExMiwiZXhwIjoxNzcxMDY4MTEyfQ.5etuoR_CalsWWIEYUince3_aOOo1H1Bp88JIdVpYc-8"
+          src={helmetUrl}
           alt="Helmet"
           className="float-image helmet"
           initial={{ opacity: 0, y: 100 }}
@@ -139,14 +148,24 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 1 }}
           loading="lazy"
           decoding="async"
+          width="400"
+          height="400"
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
+
+        {/* Cap Image */}
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk1MzIwODAsImV4cCI6MTc3MTA2ODA4MH0.lxebtInOOCfxNXJ3XSWi1rKtvyUmM3FXcxaSnTzgS6g"
+          src={capsUrl}
           alt="Cap"
           className="float-image cap"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
+          loading="lazy"
+          decoding="async"
+          width="400"
+          height="400"
+          style={{ maxWidth: '100%', height: 'auto' }}
         />
       </div>
 
