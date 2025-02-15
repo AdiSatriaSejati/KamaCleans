@@ -31,5 +31,11 @@ export default defineConfig({
     headers: {
       'Cache-Control': 'public, max-age=31536000',
     },
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      usePolling: true,
+    }
   },
 })
