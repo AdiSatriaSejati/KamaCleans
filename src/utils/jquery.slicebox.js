@@ -28,7 +28,19 @@
 
 	$special = $event.special.debouncedresize = {
 		setup: function() {
-			$( this ).on( "resize", $special.handler );
+			let passiveSupported = false;
+			try {
+				const opts = Object.defineProperty({}, 'passive', {
+					get: function() {
+						passiveSupported = true;
+						return true;
+					}
+				});
+				window.addEventListener("test", null, opts);
+			} catch (e) {}
+
+			const options = passiveSupported ? { passive: true } : false;
+			$( this ).on( "resize", $special.handler, options );
 		},
 		teardown: function() {
 			$( this ).off( "resize", $special.handler );
@@ -142,10 +154,25 @@
 		if ( !$images.length ) {
 			doneLoading();
 		} else {
+			let passiveSupported = false;
+			try {
+				const opts = Object.defineProperty({}, 'passive', {
+					get: function() {
+						passiveSupported = true;
+						return true;
+					}
+				});
+				window.addEventListener("test", null, opts);
+			} catch (e) {}
+
+			const eventOptions = passiveSupported ? { passive: true } : false;
+
 			$images.bind( 'load.imagesLoaded error.imagesLoaded', function( event ){
 				// trigger imgLoaded
 				imgLoaded( event.target, event.type === 'error' );
-			}).each( function( i, el ) {
+			}, eventOptions);
+
+			$images.each( function( i, el ) {
 				var src = el.src;
 
 				// find out if this image has been already checked for status
