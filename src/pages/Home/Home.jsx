@@ -9,14 +9,11 @@ const Home = () => {
     <div className="home-container">
       <div className="hero-section">
         <div className="hero-content">
-          <motion.h1 
+          <h1 
             className="hero-title"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
           >
             Premium Cleaning Service
-          </motion.h1>
+          </h1>
           
           <motion.p
             className="hero-subtitle"
@@ -123,13 +120,10 @@ const Home = () => {
       </div>
 
       <div className="floating-images">
-        <motion.img 
+        <img 
           src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMyMTM5LCJleHAiOjE3NzEwNjgxMzl9.FXI_MBbC6vQ2E4hCIFPpAU97eaky6oFqvHZHpmXc4rA"
           alt="Shoes"
-          className="float-image shoes"
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          className="float-image shoes animate-float-left"
           loading="eager"
           decoding="async"
           fetchpriority="high"

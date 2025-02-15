@@ -29,6 +29,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: fadeInDown 0.8s ease-out forwards;
+  will-change: transform;
+  contain: content;
 }
 
 .hero-subtitle {
@@ -92,6 +95,8 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+  content-visibility: auto;
+  contain-intrinsic-size: 400px;
 }
 
 .float-image {
@@ -293,22 +298,6 @@
   .float-image {
     width: clamp(150px, 25vw, 300px);
   }
-
-  .shoes {
-    top: 25%;
-    left: 0;
-    min-height: 150px;
-  }
-
-  .helmet {
-    top: 30%;
-    right: 0;
-  }
-
-  .cap {
-    top: 0;
-    left: 50%;
-  }
   
   .trust-badges {
     gap: 1rem;
@@ -393,5 +382,69 @@
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+}
+
+/* Optimasi performa animasi */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi untuk gambar tanpa Framer Motion */
+.animate-float-left {
+  animation: floatLeft 0.8s ease-out 0.8s forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+@keyframes floatLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Optimasi untuk mobile */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  
+  .floating-images img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .shoes {
+    top: 20%;
+    left: -10%;
+  }
+
+  .helmet {
+    top: 50%;
+    right: 0;
+  }
+
+  .cap {
+    top: 20%;
+    left: 45%;
+  }
+}
+
+/* Optimasi font loading */
+@font-face {
+  font-family: 'YourMainFont';
+  font-display: swap;
+  /* ... other font properties ... */
 }
 
