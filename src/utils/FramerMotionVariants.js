@@ -9,11 +9,10 @@ export const FadeContainer = {
   visible: {
     opacity: 1,
     transition: { 
-      delayChildren: 0, 
-      staggerChildren: 0.1,
+      duration: 0.3,
       ...touchConfig 
     }
-  },
+  }
 };
 
 export const hamFastFadeContainer = {
@@ -42,7 +41,8 @@ export const popUp = {
     scale: 1,
     transition: {
       type: "spring",
+      duration: 0.3,
       ...touchConfig
     }
-  },
+  }
 };
