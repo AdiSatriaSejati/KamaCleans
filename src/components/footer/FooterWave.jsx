@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useFrame, extend } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -25,6 +25,21 @@ const FooterWave = () => {
       materialRef.current.uTime = state.clock.elapsedTime;
     }
   });
+
+  useEffect(() => {
+    const handleTouch = () => {
+      // ... touch handling logic
+    };
+
+    // Tambahkan passive option untuk touch events
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
+    };
+  }, []);
 
   return (
     <mesh ref={meshRef} rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
