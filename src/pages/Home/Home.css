@@ -284,10 +284,6 @@
 }
 
 @media screen and (max-width: 767px) {
-  .hero-section {
-    padding: 0 1rem;
-  }
-
   .hero-info {
     width: 100%;
     gap: 1rem;
