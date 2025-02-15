@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import Loading from './components/loading/Loading';
 import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
@@ -10,13 +9,10 @@ import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
-import { initializeAnalytics } from './utils/analytics';
 import './App.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
-  const analytics = initializeAnalytics();
 
   useEffect(() => {
     // Loading timer
@@ -55,17 +51,6 @@ function App() {
       document.documentElement.removeEventListener('change-theme', updateFaviconAndTitle);
     };
   }, []);
-
-  useEffect(() => {
-    // Track pageviews only when needed
-    const handleRouteChange = () => {
-      if (process.env.NODE_ENV === 'production') {
-        analytics.trackPageview(location.pathname);
-      }
-    };
-
-    handleRouteChange();
-  }, [location]);
 
   if (loading) {
     return <Loading />;
