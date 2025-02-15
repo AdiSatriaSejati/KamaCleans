@@ -1,8 +1,18 @@
+export const touchConfig = {
+  touchStart: { passive: true },
+  touchMove: { passive: true },
+  touchEnd: { passive: true }
+};
+
 export const FadeContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { delayChildren: 0, staggerChildren: 0.1 },
+    transition: { 
+      delayChildren: 0, 
+      staggerChildren: 0.1,
+      ...touchConfig 
+    }
   },
 };
 
@@ -10,10 +20,10 @@ export const hamFastFadeContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      delayChildren: 0,
-      staggerChildren: 0.1,
-    },
+    transition: { 
+      duration: 0.15,
+      ...touchConfig 
+    }
   },
 };
 
@@ -32,6 +42,7 @@ export const popUp = {
     scale: 1,
     transition: {
       type: "spring",
-    },
+      ...touchConfig
+    }
   },
 };

@@ -101,6 +101,21 @@ const Gallery = () => {
     return cleanup;
   }, []);
 
+  // Handle touch events dengan passive
+  useEffect(() => {
+    const handleTouch = () => {
+      // ... touch handling logic
+    };
+
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
+    };
+  }, []);
+
   return (
     <div className="page-container gallery-container">
       <motion.h1 

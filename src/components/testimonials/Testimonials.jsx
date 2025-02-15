@@ -24,6 +24,21 @@ const Testimonials = () => {
     return () => clearInterval(autoplayRef.current);
   }, [isAutoplay]);
 
+  useEffect(() => {
+    const handleTouch = () => {
+      // ... touch handling logic
+    };
+
+    // Tambahkan passive option untuk touch events
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    window.addEventListener('touchmove', handleTouch, { passive: true });
+    
+    return () => {
+      window.removeEventListener('touchstart', handleTouch);
+      window.removeEventListener('touchmove', handleTouch);
+    };
+  }, []);
+
   return (
     <div className="testimonials-container">
       <motion.div 
