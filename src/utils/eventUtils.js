@@ -1,5 +1,5 @@
 // Deteksi dukungan passive event listeners
-export const supportsPassive = () => {
+export const supportsPassiveEvents = () => {
   let passiveSupported = false;
 
   try {
@@ -21,9 +21,7 @@ export const supportsPassive = () => {
 
 // Helper untuk menambahkan event listener dengan passive support
 export const addPassiveEventListener = (element, eventName, callback) => {
-  const options = supportsPassive() ? { passive: true } : false;
+  const options = supportsPassiveEvents() ? { passive: true } : false;
   element.addEventListener(eventName, callback, options);
   return () => element.removeEventListener(eventName, callback, options);
-};
-
-export const passiveEvents = ['scroll', 'touchstart', 'touchmove', 'wheel']; 
+}; 

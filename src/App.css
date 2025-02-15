@@ -34,9 +34,8 @@ body {
 }
 
 .App {
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
+  padding-top: 0;
+  height: 100vh;
 }
 
 .App > section {

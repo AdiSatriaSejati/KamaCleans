@@ -1,32 +1,20 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { 
-  BrowserRouter, 
-  createRoutesFromElements,
-  createBrowserRouter,
-  RouterProvider,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { DarkModeProvider } from './context/darkModeContext'
 import App from './App'
 
-// Konfigurasi future flags untuk React Router
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="*" element={<App />} />
-  ),
-  {
-    future: {
-      v7_startTransition: true,
-      v7_relativeSplatPath: true
-    }
-  }
-);
+// Disable StrictMode in production
+const Root = process.env.NODE_ENV === 'production' ? 
+  ({ children }) => children : 
+  StrictMode;
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <Root>
     <DarkModeProvider>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </DarkModeProvider>
-  </StrictMode>
+  </Root>
 )

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ScrollToTop.css';
-import { addPassiveEventListener, supportsPassive } from '../../utils/eventUtils';
+import { addPassiveEventListener } from '../../utils/eventUtils';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,9 +19,7 @@ const ScrollToTop = () => {
 
     const cleanup = addPassiveEventListener(window, 'scroll', toggleVisibility);
     
-    return () => {
-      if (cleanup) cleanup();
-    };
+    return cleanup;
   }, []);
 
   // Smooth scroll to top
@@ -38,17 +36,14 @@ const ScrollToTop = () => {
         <motion.button
           className="scroll-top-btn"
           onClick={scrollToTop}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label="Scroll to top"
         >
           <svg 
             viewBox="0 0 24 24" 
-            width="24" 
-            height="24" 
             className="scroll-icon"
           >
             <motion.path
