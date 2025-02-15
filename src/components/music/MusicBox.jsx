@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import './MusicBox.css';
 
-// Lazy load audio file
-const audioURL = 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NTQ0MTUzLCJleHAiOjE3NzEwODAxNTN9.k_4nV9eOX9f8LyzznU1K1BQMlOAsybGG8XhVqFXbM-Y';
+// Ganti URL ke versi yang sudah dioptimasi
+const audioURL = 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NjI4NDU0LCJleHAiOjE3NzExNjQ0NTR9.wzqFkFtxBw7XeNrm-b2ljmRu2ORPY3jMxEcQ9oXOPO0';
 
 // Loading placeholder
 const LoadingPlaceholder = () => (
@@ -15,7 +15,6 @@ const LoadingPlaceholder = () => (
 );
 
 const MusicBox = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,17 +22,25 @@ const MusicBox = () => {
   const sourceRef = useRef(null);
   const gainNodeRef = useRef(null);
   const analyserRef = useRef(null);
-  const audioRef = useRef(null);
-
-  // Lazy load audio dengan format yang lebih ringan
-  const audioSources = {
-    mp3: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NTQ0MTUzLCJleHAiOjE3NzEwODAxNTN9.k_4nV9eOX9f8LyzznU1K1BQMlOAsybGG8XhVqFX'
-  };
+  const audioBufferRef = useRef(null);
 
   useEffect(() => {
-    const initAudio = async () => {
-      try {
-        setIsLoading(true);
+    // Lazy load audio hanya ketika user berinteraksi
+    const handleFirstInteraction = () => {
+      initAudio();
+      document.removeEventListener('click', handleFirstInteraction);
+    };
+
+    document.addEventListener('click', handleFirstInteraction);
+    return () => document.removeEventListener('click', handleFirstInteraction);
+  }, []);
+
+  const initAudio = async () => {
+    try {
+      setIsLoading(true);
+      
+      // Inisialisasi Audio Context hanya ketika diperlukan
+      if (!audioContextRef.current) {
         audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
         
         // Buat nodes
@@ -50,79 +57,28 @@ const MusicBox = () => {
         // Hubungkan nodes
         gainNodeRef.current.connect(analyserRef.current);
         analyserRef.current.connect(audioContextRef.current.destination);
+      }
 
-        // Lazy load audio file
+      // Load audio hanya jika belum di-cache
+      if (!audioBufferRef.current) {
         const response = await fetch(audioURL);
         const arrayBuffer = await response.arrayBuffer();
-        const audioBuffer = await audioContextRef.current.decodeAudioData(arrayBuffer);
-
-        // Buat source
-        sourceRef.current = audioContextRef.current.createBufferSource();
-        sourceRef.current.buffer = audioBuffer;
-        sourceRef.current.loop = true;
-        sourceRef.current.connect(gainNodeRef.current);
-
-        setIsReady(true);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error initializing audio:', error);
-        setIsLoading(false);
+        audioBufferRef.current = await audioContextRef.current.decodeAudioData(arrayBuffer);
       }
-    };
 
-    initAudio();
+      // Buat source baru
+      sourceRef.current = audioContextRef.current.createBufferSource();
+      sourceRef.current.buffer = audioBufferRef.current;
+      sourceRef.current.loop = true;
+      sourceRef.current.connect(gainNodeRef.current);
 
-    return () => {
-      if (sourceRef.current) sourceRef.current.stop();
-      if (audioContextRef.current) audioContextRef.current.close();
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleGlobalClick = async () => {
-      if (isReady && audioContextRef.current.state === 'suspended') {
-        await audioContextRef.current.resume();
-        sourceRef.current.start();
-        gainNodeRef.current.gain.value = 0.45;
-        setIsPlaying(true);
-        
-        document.removeEventListener('click', handleGlobalClick);
-      }
-    };
-
-    document.addEventListener('click', handleGlobalClick);
-
-    return () => {
-      document.removeEventListener('click', handleGlobalClick);
-    };
-  }, [isReady]);
-
-  useEffect(() => {
-    const loadAudio = () => {
-      const audio = new Audio();
-      audio.preload = 'none'; // Prevent automatic loading
-
-      // Load audio only when user interacts
-      const handleInteraction = () => {
-        if (!isLoaded) {
-          audio.src = audioSources.mp3;
-          audio.load();
-          setIsLoaded(true);
-          document.removeEventListener('click', handleInteraction);
-        }
-      };
-
-      document.addEventListener('click', handleInteraction);
-      audioRef.current = audio;
-
-      return () => {
-        document.removeEventListener('click', handleInteraction);
-        audio.pause();
-      };
-    };
-
-    loadAudio();
-  }, []);
+      setIsReady(true);
+      setIsLoading(false);
+    } catch (error) {
+      console.error('Error initializing audio:', error);
+      setIsLoading(false);
+    }
+  };
 
   const togglePlay = (e) => {
     e.stopPropagation();
@@ -146,6 +102,9 @@ const MusicBox = () => {
         <div 
           className={`mhMusicBars ${isPlaying ? 'active' : ''}`} 
           onClick={togglePlay}
+          role="button"
+          aria-label="Toggle music"
+          tabIndex={0}
         >
           <span></span>
           <span></span>
