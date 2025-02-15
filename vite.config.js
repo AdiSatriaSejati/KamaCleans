@@ -1,73 +1,25 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { visualizer } from 'rollup-plugin-visualizer'
-import { splitVendorChunkPlugin } from 'vite'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    splitVendorChunkPlugin(),
-    visualizer({
-      open: true,
-      gzipSize: true,
-      brotliSize: true
-    })
-  ],
+  plugins: [react()],
   build: {
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          // Memisahkan chunks berdasarkan package
-          if (id.includes('node_modules')) {
-            if (id.includes('framer-motion')) return 'framer-motion'
-            if (id.includes('react-three') || id.includes('three')) return 'three'
-            if (id.includes('react')) return 'react-vendor'
-            return 'vendor' // other dependencies
-          }
-          // Memisahkan chunks berdasarkan fitur
-          if (id.includes('/components/')) return 'components'
-          if (id.includes('/pages/')) return 'pages'
-          if (id.includes('/utils/')) return 'utils'
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion', '@react-three/drei', '@react-three/fiber']
         }
       }
     },
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 2
-      },
-      mangle: {
-        safari10: true
-      },
-      format: {
-        comments: false
+        drop_console: true
       }
-    },
-    target: 'esnext',
-    cssCodeSplit: true,
-    sourcemap: false,
-    chunkSizeWarningLimit: 500,
-    assetsInlineLimit: 4096
+    }
   },
   optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      'framer-motion',
-      '@react-three/fiber',
-      '@react-three/drei'
-    ],
-    exclude: ['@react-three/postprocessing']
-  },
-  esbuild: {
-    legalComments: 'none',
-    treeShaking: true,
-    minifyIdentifiers: true,
-    minifySyntax: true,
-    minifyWhitespace: true
+    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
   }
 })
