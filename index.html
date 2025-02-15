@@ -1,19 +1,51 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- Lazy load Google Tag Manager -->
+    <!-- Optimized Google Tag Manager -->
     <script>
-    window.addEventListener('load', function() {
-      // Delay GTM loading
-      setTimeout(function() {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TR846M9M');
-      }, 3000); // Delay 3 detik
-    });
+    // Fungsi untuk menginisialisasi GTM
+    function initGTM() {
+      if (window.gtmInitialized) return;
+      window.gtmInitialized = true;
+      
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s);
+        j.async=true;
+        j.defer=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-TR846M9M');
+    }
+
+    // Load GTM hanya ketika user berinteraksi atau setelah load
+    function setupGTMLoader() {
+      // Jika user berinteraksi, load GTM
+      ['click', 'scroll', 'touchstart'].forEach(function(evt) {
+        window.addEventListener(evt, function() {
+          initGTM();
+        }, { once: true });
+      });
+
+      // Backup: Load GTM setelah semua konten penting dimuat
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          setTimeout(initGTM, 5000);
+        });
+      } else {
+        setTimeout(initGTM, 5000);
+      }
+    }
+
+    // Setup loader setelah page load
+    window.addEventListener('load', setupGTMLoader);
     </script>
+
+    <!-- Preconnect untuk GTM domain -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -234,10 +266,11 @@
     <meta name="google-site-verification" content="NKKLusZ18vX-geeQxZ9pQiZsujxiORIh_NJABYMMfYs">
 </head>
 <body>
-    <!-- Lazy load Google Tag Manager (noscript) -->
+    <!-- Optimized GTM noscript -->
     <noscript>
       <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR846M9M"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      height="0" width="0" style="display:none;visibility:hidden"
+      loading="lazy"></iframe>
     </noscript>
     
     <noscript>Anda perlu mengaktifkan JavaScript untuk menjalankan aplikasi ini.</noscript>
