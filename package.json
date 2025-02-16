@@ -6,12 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run optimize-images && vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "host": "vite --host",
-    "deploy": "gh-pages -d build",
-    "optimize-images": "node scripts/optimize-images.js"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
