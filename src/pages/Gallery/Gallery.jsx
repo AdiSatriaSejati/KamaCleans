@@ -2,11 +2,17 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
 import { addPassiveEventListener } from '../../utils/utils';
+import { hasConsent, setCookie, getCookie } from '../../utils/cookieUtils';
 import './Gallery.css';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [category, setCategory] = useState('all');
+  const [category, setCategory] = useState(() => {
+    if (hasConsent('PREFERENCES')) {
+      return getCookie('gallery_category') || 'all';
+    }
+    return 'all';
+  });
   const [visibleImages, setVisibleImages] = useState(6); // Jumlah gambar yang ditampilkan awal
   const containerRef = useRef(null);
 
@@ -115,6 +121,13 @@ const Gallery = () => {
       window.removeEventListener('touchmove', handleTouch);
     };
   }, []);
+
+  const changeCategory = (newCategory) => {
+    setCategory(newCategory);
+    if (hasConsent('PREFERENCES')) {
+      setCookie('gallery_category', newCategory);
+    }
+  };
 
   return (
     <div className="page-container gallery-container">

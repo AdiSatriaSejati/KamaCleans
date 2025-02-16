@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
 import './Services.css';
 import { addPassiveEventListener } from '../../utils/utils';
+import { trackServiceClick } from '../../utils/analytics';
 
 const services = [
   {
@@ -53,6 +54,10 @@ const ServiceCard = ({ service, index }) => {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
+  const handleClick = () => {
+    trackServiceClick(service.title);
+  };
+
   return (
     <motion.div
       ref={cardRef}
@@ -61,6 +66,7 @@ const ServiceCard = ({ service, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
+      onClick={handleClick}
     >
       <div className="service-image-container">
         <motion.img 

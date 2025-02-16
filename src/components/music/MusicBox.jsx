@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import './MusicBox.css';
+import { hasConsent, setCookie, getCookie } from '../../utils/cookieUtils';
 
 // Lazy load audio file
 const audioURL = 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NTQ0MTUzLCJleHAiOjE3NzEwODAxNTN9.k_4nV9eOX9f8LyzznU1K1BQMlOAsybGG8XhVqFXbM-Y';
@@ -15,7 +16,12 @@ const LoadingPlaceholder = () => (
 );
 
 const MusicBox = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(() => {
+    if (hasConsent('PREFERENCES')) {
+      return getCookie('music_preference') === 'playing';
+    }
+    return false;
+  });
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const audioContextRef = useRef(null);
@@ -90,17 +96,11 @@ const MusicBox = () => {
     };
   }, [isReady]);
 
-  const togglePlay = (e) => {
-    e.stopPropagation();
-    
-    if (!isReady) return;
-
-    if (gainNodeRef.current.gain.value === 0) {
-      gainNodeRef.current.gain.value = 0.45;
-      setIsPlaying(true);
-    } else {
-      gainNodeRef.current.gain.value = 0;
-      setIsPlaying(false);
+  const togglePlay = () => {
+    const newState = !isPlaying;
+    setIsPlaying(newState);
+    if (hasConsent('PREFERENCES')) {
+      setCookie('music_preference', newState ? 'playing' : 'paused');
     }
   };
 

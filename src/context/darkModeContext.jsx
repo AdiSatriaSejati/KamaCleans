@@ -1,9 +1,16 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { hasConsent, setCookie, getCookie, COOKIE_NAMES } from '../utils/cookieUtils';
 
 const DarkModeContext = createContext();
 
 export function DarkModeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    if (hasConsent('PREFERENCES')) {
+      const savedMode = getCookie('theme_preference');
+      if (savedMode) return savedMode === 'dark';
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   useEffect(() => {
     // Deteksi preferensi sistem
@@ -36,9 +43,11 @@ export function DarkModeProvider({ children }) {
     };
   }, []);
 
-  // Hapus fungsi manual change karena kita hanya mengikuti sistem
-  const changeDarkMode = () => {
-    console.warn('Manual dark mode change is disabled. System preference is used instead.');
+  const changeDarkMode = (value) => {
+    setIsDarkMode(value);
+    if (hasConsent('PREFERENCES')) {
+      setCookie('theme_preference', value ? 'dark' : 'light');
+    }
   };
 
   return (
