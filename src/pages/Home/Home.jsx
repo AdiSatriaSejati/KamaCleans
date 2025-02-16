@@ -1,10 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { IconMapPin, IconClock, IconBrandWhatsapp } from '@tabler/icons-react';
 import SocialBar from '../../components/socialbar/SocialBar';
+import { optimizeImage } from '../../utils/imageUtils';
 import './Home.css';
 
 const Home = () => {
+  const [optimizedImages, setOptimizedImages] = useState({
+    shoes: '',
+    helmet: '',
+    cap: ''
+  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadOptimizedImages = async () => {
+      try {
+        setIsLoading(true);
+        const shoesUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NjkzOTE5LCJleHAiOjE3NzEyMjk5MTl9.eGDaueZFOsCzVFYjehTkNa6reujaaOhsskUj07Uu3k0";
+        const helmetUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTY5MzkxMiwiZXhwIjoxNzcxMjI5OTEyfQ.AoPy9fdjq9IOtfTAXjBWru_uE4uulS9bWSTZWGKUQUo";
+        const capUrl = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk2OTM4NTMsImV4cCI6MTc3MTIyOTg1M30.ufYLI1UCRcm-47wO4uVzb_PTx-n3zIx-MmgJU2UkLcA";
+
+        // Optimize images in parallel
+        const [shoes, helmet, cap] = await Promise.all([
+          optimizeImage(shoesUrl, 400, 400),
+          optimizeImage(helmetUrl, 400, 400),
+          optimizeImage(capUrl, 400, 400)
+        ]);
+
+        setOptimizedImages({ shoes, helmet, cap });
+      } catch (error) {
+        console.error('Error loading images:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadOptimizedImages();
+  }, []);
+
+  if (isLoading) {
+    return <div className="loading-placeholder">Loading...</div>;
+  }
+
   return (
     <div className="home-container">
       <div className="hero-section">
@@ -121,28 +159,34 @@ const Home = () => {
 
       <div className="floating-images">
         <img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NjY1OTA1LCJleHAiOjE3NzEyMDE5MDV9.bqV-Cbh5o-QurK4Vb3F3ao7J_5qpHS9I1HkHbx9yEms"
+          src={optimizedImages.shoes}
           alt="Shoes"
           className="float-image shoes animate-float-left"
-          loading="eager"
-          decoding="async"
           width="400"
           height="400"
+          loading="eager"
+          decoding="async"
         />
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTY2NTg4NSwiZXhwIjoxNzcxMjAxODg1fQ.S_MMoO3O0xZ1eL-nrxw1S9A5nxwIonjQnaO7n-IxzKs"
+          src={optimizedImages.helmet}
           alt="Helmet"
           className="float-image helmet"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1 }}
-          loading="lazy"
-          decoding="async"
         />
         <motion.img 
-          src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk2NjU4NzIsImV4cCI6MTc3MTIwMTg3Mn0.qrFj718Jjy2MkMtZmazhXZQnloyS5skiNRKWKH8qFyU"
+          src={optimizedImages.cap}
           alt="Cap"
           className="float-image cap"
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}

@@ -101,12 +101,15 @@
 
 .float-image {
   position: absolute;
-  aspect-ratio: 1;
-  max-width: 400px;
-  height: auto;
+  transition: all 0.3s ease-in-out;
+  width: 400px;
+  height: 400px;
   object-fit: contain;
-  will-change: transform;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+  opacity: 0;
+}
+
+.float-image.loaded {
+  opacity: 1;
 }
 
 .shoes {
@@ -435,6 +438,11 @@
     top: 20%;
     left: 45%;
   }
+
+  .float-image {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 /* Optimasi font loading */
@@ -442,5 +450,20 @@
   font-family: 'YourMainFont';
   font-display: swap;
   /* ... other font properties ... */
+}
+
+/* Loading state */
+.float-image.loading {
+  filter: blur(10px);
+  transform: scale(1.1);
+}
+
+.loading-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background: var(--background);
+  color: var(--text-primary);
 }
 
