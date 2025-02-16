@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { IconBrandWhatsapp, IconBrandInstagram, IconMapPin, IconClock, IconPhone } from '@tabler/icons-react';
-import { trackFormSubmission } from '../../utils/analytics';
 import './Contact.css';
 
 // Lazy load Google Maps component
@@ -34,15 +33,13 @@ const Contact = () => {
       icon: <IconBrandWhatsapp size={32} />,
       name: "WhatsApp",
       link: "https://api.whatsapp.com/send?phone=6285282866479",
-      color: "#0f8038",
-      onClick: () => trackFormSubmission('whatsapp_contact')
+      color: "#0f8038"
     },
     {
       icon: <IconBrandInstagram size={32} />,
       name: "Instagram",
       link: "https://www.instagram.com/kamacleans/",
-      color: "#d12e4c",
-      onClick: () => trackFormSubmission('instagram_contact')
+      color: "#d12e4c"
     }
   ];
 
@@ -118,7 +115,6 @@ const Contact = () => {
                   style={{ backgroundColor: social.color }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={social.onClick}
                 >
                   {social.icon}
                   <span>{social.name}</span>

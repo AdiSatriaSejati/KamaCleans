@@ -9,7 +9,6 @@ import Gallery from './pages/Gallery/Gallery';
 import Contact from './pages/Contact/Contact';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
-import CookieConsentBanner from './components/cookie/CookieConsent';
 import './App.css';
 
 function App() {
@@ -68,7 +67,6 @@ function App() {
         <section id="contact-section" aria-label="Contact"><Contact /></section>
         <Footer />
         <ScrollToTop />
-        <CookieConsentBanner />
       </div>
     </DarkModeProvider>
   );
