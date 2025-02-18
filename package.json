@@ -13,12 +13,14 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@firebase/database": "^1.0.12",
     "@popperjs/core": "^2.11.8",
     "@react-spring/three": "^9.7.5",
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.14",
     "@tabler/icons": "^3.29.0",
     "@tabler/icons-react": "^3.29.0",
+    "firebase": "^11.3.1",
     "framer-motion": "^12.4.2",
     "gsap": "^3.12.7",
     "react": "^18.3.1",

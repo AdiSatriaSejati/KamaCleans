@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { IconMapPin, IconClock, IconBrandWhatsapp } from '@tabler/icons-react';
 import SocialBar from '../../components/socialbar/SocialBar';
+
 import './Home.css';
 
 const Home = () => {
