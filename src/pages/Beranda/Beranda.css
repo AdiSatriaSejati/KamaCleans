@@ -1,0 +1,183 @@
+.beranda-container {
+  min-height: auto;
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+  padding:4rem 1rem;
+}
+
+.hero-content {
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container img {
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+}
+
+.hero-text {
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero-text h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: var(--text-secondary);
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.cta-button {
+  background: var(--text-primary);
+  color: var(--background);
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.hero-features {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+  color: var(--text-secondary);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: 2rem;
+  }
+
+  .logo-container {
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-container img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .cta-button {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .hero-features {
+    display: none;
+  }
+}
+
+/* Khusus untuk smartphone kecil */
+@media screen and (max-width: 320px) {
+  .beranda-container {
+    padding: 0.5rem;
+    padding-top: 4rem;
+    min-height: 568px;
+    justify-content: flex-start;
+  }
+
+  .hero-content {
+    margin-top: 1rem;
+  }
+
+  .logo-container {
+    margin-bottom: 1rem;
+  }
+
+  .logo-container img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero-text {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text p {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    line-height: 1.4;
+  }
+
+  .cta-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Hover Effects */
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature:hover {
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.feature:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+.dark .cta-button {
+  background: var(--text-primary);
+  color: var(--background);
+}

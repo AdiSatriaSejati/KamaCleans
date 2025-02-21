@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { IconBrandWhatsapp } from '@tabler/icons-react';
-import './Services.css';
+import './Layanan.css';
 import { addPassiveEventListener } from '../../utils/utils';
 
-const services = [
+const layanan = [
   {
     title: "CUCI HELM",
     price: "35.000,00",
@@ -102,7 +102,7 @@ const ServiceCard = ({ service, index }) => {
   );
 };
 
-const Services = () => {
+const Layanan = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -116,24 +116,24 @@ const Services = () => {
   }, []);
 
   return (
-    <div className="services-container">
-      <div className="services-background">
+    <div className="layanan-container">
+      <div className="layanan-background">
         <div className="gradient-sphere"></div>
         <div className="gradient-sphere"></div>
       </div>
 
       <motion.h1 
-        className="services-title"
+        className="layanan-title"
         initial={{ opacity: 0, y: -50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Our Services
+        Layanan
         <div className="glowing-line-2"></div>
       </motion.h1>
 
-      <div className="services-grid">
-        {services.map((service, index) => (
+      <div className="layanan-grid">
+        {layanan.map((service, index) => (
           <ServiceCard 
             key={service.title} 
             service={service} 
@@ -145,4 +145,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Layanan;

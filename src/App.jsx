@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import Loading from './components/loading/Loading';
 import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Services from './pages/Services/Services';
-import Gallery from './pages/Gallery/Gallery';
-import Contact from './pages/Contact/Contact';
+import Beranda from './pages/Beranda/Beranda';
+import Tentang from './pages/Tentang/Tentang';
+import Layanan from './pages/Layanan/Layanan';
+import Galeri from './pages/Galeri/Galeri';
+import Kontak from './pages/Kontak/Kontak';
 import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
 import OnlineTracker from './components/OnlineTracking/OnlineTracker';
+import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
 function App() {
@@ -59,17 +60,19 @@ function App() {
 
   return (
     <DarkModeProvider>
-      <div className="App">
-        <Navbar />
-        <section id="home-section" aria-label="Home"><Home /></section>
-        <section id="about-section" aria-label="About"><About /></section>
-        <section id="services-section" aria-label="Services"><Services /></section>
-        <section id="gallery-section" aria-label="Gallery"><Gallery /></section>
-        <section id="contact-section" aria-label="Contact"><Contact /></section>
-        <Footer />
-        <ScrollToTop />
-        <OnlineTracker />
-      </div>
+      <AuthProvider>
+        <div className="App">
+          <Navbar />
+          <section id="beranda-section" aria-label="Beranda"><Beranda /></section>
+          <section id="tentang-section" aria-label="Tentang Kama"><Tentang /></section>
+          <section id="layanan-section" aria-label="Layanan"><Layanan /></section>
+          <section id="galeri-section" aria-label="Galeri"><Galeri /></section>
+          <section id="kontak-section" aria-label="Kontak"><Kontak /></section>
+          <Footer />
+          <ScrollToTop />
+          <OnlineTracker />
+        </div>
+      </AuthProvider>
     </DarkModeProvider>
   );
 }

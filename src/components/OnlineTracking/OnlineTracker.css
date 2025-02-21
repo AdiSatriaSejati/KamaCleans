@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 0.5rem; /* Jarak dari bawah */
     right: 0;
-    z-index: 1000; /* Pastikan berada di atas elemen lain */
+    z-index: 4; /* Pastikan berada di atas elemen lain */
 }
 
 .tracker-container {
@@ -51,7 +51,8 @@
 /* Responsive */
 @media (max-width: 768px) {
     .online-tracker{
-        top: 3.25rem;
+        bottom: 6.5rem;
+        right: 0.2rem;
     }
     .tracker-container {
         padding: 8px 12px;

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { IconBrandWhatsapp, IconBrandInstagram, IconMapPin, IconClock, IconPhone } from '@tabler/icons-react';
-import './Contact.css';
+import './Kontak.css';
 
 // Lazy load Google Maps component
 const GoogleMap = lazy(() => import('../../components/GoogleMap'));
 
-const Contact = () => {
+const Kontak = () => {
   const mapRef = useRef(null);
 
-  const contactInfo = [
+  const kontakInfo = [
     {
       icon: <IconPhone size={24} />,
       title: "Telepon",
@@ -19,7 +19,7 @@ const Contact = () => {
     {
       icon: <IconClock size={24} />,
       title: "Jam Operasional",
-      content: "Senin - Minggu: 00:00 - 23:59"
+      content: "Senin - Minggu: 10:00 - 19:00"
     },
     {
       icon: <IconMapPin size={24} />,
@@ -59,30 +59,30 @@ const Contact = () => {
   };
 
   return (
-    <div className="page-container contact-container">
+    <div className="kontak-container">
       <motion.div 
-        className="contact-content"
+        className="kontak-content"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
       >
         <motion.h2 
-          className="contact-title"
+          className="kontak-title"
           variants={fadeInUp}
         >
-          Contact Us
+          Kontak Kami
           <div className="glowing-line-4"></div>
         </motion.h2>
 
         <motion.div 
-          className="contact-grid"
+          className="kontak-grid"
           variants={staggerContainer}
         >
           <motion.div 
-            className="contact-info"
+            className="kontak-info"
             variants={fadeInUp}
           >
-            {contactInfo.map((info, index) => (
+            {kontakInfo.map((info, index) => (
               <motion.div 
                 key={index}
                 className="info-card"
@@ -139,4 +139,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Kontak;

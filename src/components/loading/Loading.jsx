@@ -44,7 +44,7 @@ const Loading = () => {
         fetchpriority="high"
         decoding="sync"
       />
-      <p>Loading... {progress}%</p>
+      <p>Memuat... {progress}%</p>
       <div className="progress-container">
         <div 
           className="progress-bar" 

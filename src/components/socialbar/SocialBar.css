@@ -1,8 +1,9 @@
 /* Add new social bar styles */
 .social-bar {
     position: fixed;
+    display:inline-table;
     right: -15px;
-    top: 30%;
+    margin: -31.5rem 0;
     transform: translateY(-50%);
     z-index: 40;
     border-radius: 8px 0 0 8px;
@@ -12,6 +13,9 @@
   
   .social-bar__item {
     padding: 10px 25px 10px 10px;
+    width: 25px;
+    height: 25px;
+    position: relative;
     color: #ffffff;
     display: flex;
     align-items: center;
@@ -43,8 +47,27 @@
   }
 }
 
-@media screen and (max-width: 767px) {
-  .social-bar {
-    display: none;
+@media screen and (max-width: 320px){
+  .social-bar{
+    box-shadow:none;
+    padding-top: 7%;
   }
+}
+
+@media screen and (max-width: 767px){
+  .social-bar{
+    top: 560.25px;
+  }
+
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .social-bar{
+    top: 575px;
+  }
+}
+@media screen and (max-width: 1280px){
+  .social-bar{
+    transform: translateY(-7px);
+  }
+
 }

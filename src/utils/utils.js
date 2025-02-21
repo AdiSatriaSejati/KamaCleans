@@ -1,17 +1,17 @@
 export const navigationRoutes = [
-  "Home",
-  "About",
-  "Services",
-  "Gallery",
-  "Contact"
+  "Beranda",
+  "Tentang Kama",
+  "Layanan",
+  "Galeri",
+  "Kontak"
 ];
 
 export const sectionIds = {
-  "Home": "home-section",
-  "About": "about-section", 
-  "Services": "services-section",
-  "Gallery": "gallery-section",
-  "Contact": "contact-section"
+  "Beranda": "beranda-section",
+  "Tentang Kama": "tentang-section", 
+  "Layanan": "layanan-section",
+  "Galeri": "galeri-section",
+  "Kontak": "kontak-section"
 };
 
 // Utility untuk mengecek dukungan passive event listeners

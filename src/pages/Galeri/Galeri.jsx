@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
 import { addPassiveEventListener } from '../../utils/utils';
-import './Gallery.css';
+import './Galeri.css';
 
-const Gallery = () => {
+const Galeri = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [category, setCategory] = useState('all');
   const [visibleImages, setVisibleImages] = useState(6); // Jumlah gambar yang ditampilkan awal
@@ -116,16 +116,37 @@ const Gallery = () => {
     };
   }, []);
 
+  // Fungsi untuk mengoptimalkan loading gambar
+  const optimizeImage = (src, width = 720) => {
+    // Menambahkan parameter resize ke URL Supabase
+    const baseUrl = src.split('?')[0];
+    const token = src.split('?')[1];
+    return `${baseUrl}?width=${width}&${token}`;
+  };
+
+  // Preload gambar
+  useEffect(() => {
+    const preloadImages = (imagesToPreload) => {
+      imagesToPreload.forEach(image => {
+        const img = new Image();
+        img.src = optimizeImage(image.src);
+      });
+    };
+
+    // Preload beberapa gambar pertama
+    preloadImages(images.shoes.slice(0, 6));
+  }, []);
+
   return (
-    <div className="page-container gallery-container">
+    <div className="galeri-container">
       <motion.h1 
-        className="gallery-title"
+        className="galeri-title"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="glowing-line-2"></div>
-        Our Gallery
+        Galeri Kami
       </motion.h1>
 
       <motion.div 
@@ -185,7 +206,7 @@ const Gallery = () => {
       </motion.div>
 
       <motion.div 
-        className="gallery-grid" 
+        className="galeri-grid" 
         ref={containerRef}
         variants={FadeContainer}
         initial="hidden"
@@ -194,16 +215,22 @@ const Gallery = () => {
         {displayedImages.map((image) => (
           <motion.div
             key={image.id}
-            className="gallery-item"
+            className="galeri-item"
             variants={popUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleImageClick(image)}
           >
             <img 
-              src={image.src} 
-              alt={`Gallery item ${image.id}`}
+              src={optimizeImage(image.src)}
+              alt={`Galeri item ${image.id}`}
               loading="lazy"
+              width="720"
+              height="1280"
+              onError={(e) => {
+                e.target.onerror = null;
+                e.target.src = image.src; // Fallback ke original jika optimisasi gagal
+              }}
             />
           </motion.div>
         ))}
@@ -241,7 +268,7 @@ const Gallery = () => {
               <button className="close-button" onClick={closeModal}>×</button>
               <img 
                 src={selectedImage.src} 
-                alt={`Gallery item ${selectedImage.id}`}
+                alt={`Galeri item ${selectedImage.id}`}
               />
             </motion.div>
           </motion.div>
@@ -251,4 +278,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Galeri;

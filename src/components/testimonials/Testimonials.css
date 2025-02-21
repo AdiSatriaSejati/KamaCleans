@@ -1,11 +1,13 @@
 /* Container Layout */
 .testimonials-container {
+  background: var(--background);
+  min-height: auto;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  padding: 1.5rem;
+  margin-bottom: -7.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
 .testimonials-content {
@@ -92,6 +94,7 @@
 }
 
 .google-maps-link:hover {
+  color: var(--background);
   background: var(--text-secondary);
 }
 
@@ -227,7 +230,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .testimonials-content {
     padding: 1rem;
   }
@@ -247,5 +250,6 @@
 
   .slider-controls {
     margin-top: 1rem;
+    gap: 0.8rem;
   }
 }
