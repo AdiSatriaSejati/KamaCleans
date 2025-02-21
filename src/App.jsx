@@ -11,6 +11,7 @@ import Footer from './components/footer/Footer';
 import ScrollToTop from './components/scrolltotop/ScrollToTop';
 import OnlineTracker from './components/OnlineTracking/OnlineTracker';
 import { AuthProvider } from './context/AuthContext';
+import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
           <OnlineTracker />
         </div>
       </AuthProvider>
+      <Analytics />
     </DarkModeProvider>
   );
 }

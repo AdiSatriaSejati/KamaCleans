@@ -2,7 +2,7 @@
   "name": "kama-cleans",
   "homepage": "",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +22,7 @@
     "@supabase/supabase-js": "^2.48.1",
     "@tabler/icons": "^3.29.0",
     "@tabler/icons-react": "^3.29.0",
+    "@vercel/analytics": "^1.5.0",
     "firebase": "^11.3.1",
     "framer-motion": "^12.4.2",
     "gsap": "^3.12.7",
