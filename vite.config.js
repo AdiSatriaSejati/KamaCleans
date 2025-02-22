@@ -7,25 +7,41 @@ export default defineConfig({
     'process.env': process.env
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          animations: ['framer-motion', '@react-three/drei', '@react-three/fiber']
+          'react-vendor': ['react', 'react-dom'],
+          'router': ['react-router-dom'],
+          'motion': ['framer-motion'],
+          'three-core': ['three'],
+          'three-extras': ['@react-three/drei', '@react-three/fiber'],
+          'firebase': ['firebase/app', 'firebase/auth', 'firebase/database'],
+          'supabase': ['@supabase/supabase-js'],
+          'utils': [
+            '@tabler/icons-react',
+            'react-toggle-dark-mode',
+            'react-type-animation'
+          ]
         }
       }
     },
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true
+        drop_console: true,
+        drop_debugger: true
       }
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom', 'framer-motion']
-  },
-  esbuild: {
-    jsxInject: `import React from 'react'`
+    include: [
+      'react', 
+      'react-dom', 
+      'react-router-dom', 
+      'framer-motion',
+      '@react-three/drei',
+      '@react-three/fiber'
+    ]
   }
 })
