@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { 
     getDatabase, 
@@ -9,163 +9,93 @@ import {
     serverTimestamp,
     query,
     orderByChild,
-    enableIndexedDbPersistence
 } from 'firebase/database';
 import './OnlineTracker.css';
 
 const CLEANUP_INTERVAL = 5000; // 5 detik
 const SESSION_TIMEOUT = 30000; // 30 detik (reduced for testing)
 
+// Konfigurasi Firebase dari environment variables
+const firebaseConfig = {
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+};
+
+// Inisialisasi Firebase App
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
 const OnlineTracker = () => {
     const [onlineUsers, setOnlineUsers] = useState(0);
     const [connectionError, setConnectionError] = useState(false);
 
     useEffect(() => {
-        let userRef;
-        let onlineRef;
-        let unsubscribe;
-        let cleanupInterval;
-        let activeInterval;
+        const cachedCount = localStorage.getItem('onlineUsersCount');
+        if (cachedCount) {
+            setOnlineUsers(parseInt(cachedCount));
+        }
 
-        const initFirebase = async () => {
-            try {
-                // Initialize Firebase with import.meta.env instead of process.env
-                const app = initializeApp({
-                    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-                    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-                    databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-                    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-                    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-                    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-                    appId: import.meta.env.VITE_FIREBASE_APP_ID
-                });
+        try {
+            const onlineRef = ref(database, 'online');
+            const userCountRef = ref(database, 'userCount');
+            const connectedRef = ref(database, '.info/connected');
 
-                const db = getDatabase(app);
-                
-                // Enable offline persistence
-                enableIndexedDbPersistence(db).catch((err) => {
-                    if (err.code === 'failed-precondition') {
-                        console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
-                    } else if (err.code === 'unimplemented') {
-                        console.warn('The current browser doesn\'t support persistence.');
-                    }
-                });
-
-                // Gunakan sessionStorage untuk menyimpan userId
-                let userId = sessionStorage.getItem('userId');
-                if (!userId) {
-                    userId = `user-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-                    sessionStorage.setItem('userId', userId);
-                }
-
-                userRef = ref(db, `users/${userId}`);
-                onlineRef = ref(db, 'users');
-
-                // Set user online dengan timestamp
-                await set(userRef, {
-                    timestamp: serverTimestamp(),
-                    lastActive: Date.now()
-                });
-
-                // Update lastActive setiap interval
-                const updateLastActive = async () => {
-                    try {
-                        await set(userRef, {
-                            timestamp: serverTimestamp(),
-                            lastActive: Date.now()
-                        });
-                    } catch (error) {
-                        console.error('Error updating lastActive:', error);
-                    }
-                };
-
-                // Cleanup inactive users
-                const cleanupInactiveUsers = async () => {
-                    const usersQuery = query(onlineRef, orderByChild('lastActive'));
-                    onValue(usersQuery, async (snapshot) => {
-                        if (snapshot.exists()) {
-                            const now = Date.now();
-                            const users = snapshot.val();
-                            let activeCount = 0;
-
-                            for (const [key, user] of Object.entries(users)) {
-                                if (now - user.lastActive > SESSION_TIMEOUT) {
-                                    // Remove inactive user
-                                    await remove(ref(db, `users/${key}`));
-                                } else {
-                                    activeCount++;
-                                }
-                            }
-                            setOnlineUsers(activeCount);
-                        } else {
-                            setOnlineUsers(0);
-                        }
-                    }, {
-                        onlyOnce: true
+            onValue(connectedRef, (snap) => {
+                if (snap.val()) {
+                    const userRef = ref(database, `online/${Date.now()}`);
+                    set(userRef, {
+                        timestamp: serverTimestamp(),
+                        lastActive: Date.now()
                     });
-                };
+                    set(ref(database, `online/${userRef.key}/disconnectedAt`), serverTimestamp());
+                }
+            });
 
-                // Set intervals for updates
-                activeInterval = setInterval(updateLastActive, CLEANUP_INTERVAL);
-                cleanupInterval = setInterval(cleanupInactiveUsers, CLEANUP_INTERVAL);
+            onValue(userCountRef, (snapshot) => {
+                const count = snapshot.val() || 0;
+                setOnlineUsers(count);
+                localStorage.setItem('onlineUsersCount', count.toString());
+            });
 
-                // Initial cleanup and count
-                await cleanupInactiveUsers();
-
-                // Listen for changes
-                unsubscribe = onValue(onlineRef, (snapshot) => {
-                    if (snapshot.exists()) {
-                        const now = Date.now();
-                        const users = snapshot.val();
-                        const activeUsers = Object.values(users).filter(
-                            user => now - user.lastActive <= SESSION_TIMEOUT
-                        );
-                        setOnlineUsers(activeUsers.length);
-                        setConnectionError(false);
-                    } else {
-                        setOnlineUsers(0);
-                    }
-                }, (error) => {
-                    console.error('Database error:', error);
-                    setConnectionError(true);
+            // Perbaikan pada bagian cleanup
+            const cleanup = setInterval(() => {
+                const now = Date.now();
+                const activeUsersQuery = query(onlineRef, orderByChild('lastActive'));
+                
+                // Menggunakan onValue sebagai pengganti .on
+                onValue(activeUsersQuery, (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                        const userData = childSnapshot.val();
+                        if (now - userData.lastActive > SESSION_TIMEOUT) {
+                            remove(ref(database, `online/${childSnapshot.key}`));
+                        }
+                    });
                 });
+            }, CLEANUP_INTERVAL);
 
-                // Cleanup on page unload
-                window.addEventListener('beforeunload', async () => {
-                    await remove(userRef);
-                });
+            return () => {
+                clearInterval(cleanup);
+                // Membersihkan listeners saat komponen unmount
+                onValue(connectedRef, () => {});
+                onValue(userCountRef, () => {});
+            };
 
-            } catch (error) {
-                console.error('Firebase init error:', error);
-                setConnectionError(true);
-            }
-        };
-
-        initFirebase();
-
-        // Cleanup
-        return () => {
-            if (unsubscribe) {
-                unsubscribe();
-            }
-            if (cleanupInterval) {
-                clearInterval(cleanupInterval);
-            }
-            if (activeInterval) {
-                clearInterval(activeInterval);
-            }
-            if (userRef) {
-                remove(userRef).catch(console.error);
-            }
-        };
+        } catch (error) {
+            console.error('Firebase connection error:', error);
+            setConnectionError(true);
+        }
     }, []);
 
-    if (connectionError) {
-        return null;
-    }
+    if (connectionError) return null;
 
     return (
-        <div className="online-tracker">
+        <div className="online-tracker" style={{ position: 'relative' }}>
             <div className="tracker-container">
                 <div className="online-count">
                     <span className="pulse"></span>
