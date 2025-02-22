@@ -51,18 +51,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-.glowing-line-2 {
-  height: 2px;
-  width: 100px;
-  margin: 0.5rem auto;
-  margin-top: 0.5rem;
-  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
-  position: relative;
-  border-radius: 4px;
-  box-shadow: 0 0 10px var(--background);
-  animation: glow 1.5s ease-in-out infinite alternate;
-}
-
 .layanan-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

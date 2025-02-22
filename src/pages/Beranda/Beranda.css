@@ -1,54 +1,56 @@
 .beranda-container {
-  min-height: auto;
+  min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--background);
-  padding:4rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .hero-content {
+  max-width: 1200px;
   width: 100%;
   text-align: center;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .logo-container {
+  width: 250px;
+  height: 250px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  will-change: transform;
 }
 
 .logo-container img {
-  width: 250px;
-  height: 250px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.1));
+  will-change: transform;
 }
 
 .hero-text {
-  width: 100%;
-  max-width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .hero-text h1 {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
 .hero-text p {
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--text-secondary);
-  margin: 0 auto 2rem;
   line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
 .cta-button {
@@ -85,80 +87,39 @@
   transition: all 0.3s ease;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero-content {
-    margin-top: 2rem;
-  }
+/* Preload optimization */
+.beranda-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background);
+  z-index: -1;
+}
 
-  .logo-container {
-    margin-bottom: 1.5rem;
-  }
-
+/* Performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
   .logo-container img {
-    width: 180px;
-    height: 180px;
+    transition: transform 0.3s ease;
   }
+}
 
-  .hero-text h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero-text p {
-    font-size: 0.9rem;
-    padding: 0 1rem;
-  }
-
-  .cta-button {
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-  }
-
+@media screen and (max-width: 767px) {
   .hero-features {
     display: none;
   }
 }
 
-/* Khusus untuk smartphone kecil */
-@media screen and (max-width: 320px) {
-  .beranda-container {
-    padding: 0.5rem;
-    padding-top: 4rem;
-    min-height: 568px;
-    justify-content: flex-start;
-  }
-
+@media screen and (max-width: 768px) {
   .hero-content {
-    margin-top: 1rem;
+    gap: 1.5rem;
   }
 
   .logo-container {
-    margin-bottom: 1rem;
-  }
-
-  .logo-container img {
-    width: 140px;
-    height: 140px;
-  }
-
-  .hero-text {
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-text h1 {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-  }
-
-  .hero-text p {
-    font-size: 0.8rem;
-    padding: 0 0.5rem;
-    line-height: 1.4;
-  }
-
-  .cta-button {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.9rem;
+    width: 200px;
+    height: 200px;
   }
 }
 

@@ -145,7 +145,7 @@ const Galeri = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="glowing-line-2"></div>
+        <div className="glowing-line"></div>
         Galeri Kami
       </motion.h1>
 

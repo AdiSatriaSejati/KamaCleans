@@ -24,22 +24,6 @@
   position: relative;
 }
 
-.glowing-line-4 {
-  position: relative;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--text-primary), transparent);
-  border-radius: 4px;
-  box-shadow: 0 0 10px var(--text-primary),
-              0 0 20px var(--text-primary),
-              0 0 30px var(--text-primary),
-              0 0 40px var(--text-primary);
-  animation: glow 1.5s ease-in-out infinite alternate;
-}
-
 @keyframes glow {
   from {
     box-shadow: 0 0 5px var(--text-primary),

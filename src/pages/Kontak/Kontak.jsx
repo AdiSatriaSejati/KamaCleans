@@ -71,7 +71,7 @@ const Kontak = () => {
           variants={fadeInUp}
         >
           Kontak Kami
-          <div className="glowing-line-4"></div>
+          <div className="glowing-line"></div>
         </motion.h2>
 
         <motion.div 

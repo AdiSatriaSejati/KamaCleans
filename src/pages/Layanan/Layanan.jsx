@@ -128,8 +128,8 @@ const Layanan = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        Layanan
-        <div className="glowing-line-2"></div>
+        Layanan Kami
+        <div className="glowing-line"></div>
       </motion.h1>
 
       <div className="layanan-grid">
