@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { IconMapPin, IconClock, IconBrandWhatsapp } from '@tabler/icons-react';
 import SocialBar from '../../components/socialbar/SocialBar';
@@ -8,16 +8,6 @@ import './Beranda.css';
 
 const Beranda = () => {
   const { isDarkMode } = useDarkMode();
-  const [imageLoaded, setImageLoaded] = useState(false);
-  
-  // Preload image
-  useEffect(() => {
-    const img = new Image();
-    img.src = isDarkMode ? 
-      "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E" :
-      "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0";
-    img.onload = () => setImageLoaded(true);
-  }, [isDarkMode]);
   
   const handleScrollToLayanan = (e) => {
     e.preventDefault();
@@ -40,9 +30,9 @@ const Beranda = () => {
       <div className="hero-content">
         <motion.div 
           className="logo-container"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: imageLoaded ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
           <img
             src={isDarkMode ? 
@@ -52,19 +42,24 @@ const Beranda = () => {
             alt="KamaCleans Logo"
             width="250"
             height="250"
-            loading="eager"
-            decoding="async"
-            fetchpriority="high"
           />
         </motion.div>
 
         <motion.div 
           className="hero-text"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h1>LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
+          <motion.h1 
+            className="hero-title"
+            style={{ 
+              fontFamily: 'var(--font-system)',
+              fontDisplay: 'swap'
+            }}
+          >
+            KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL
+          </motion.h1>
           <p>KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA</p>
           
           <motion.button 

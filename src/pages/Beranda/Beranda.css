@@ -6,6 +6,8 @@
   justify-content: center;
   background: var(--background);
   padding: 2rem 1rem;
+  font-family: var(--font-system);
+  text-rendering: optimizeLegibility;
 }
 
 .hero-content {
@@ -41,9 +43,15 @@
 .hero-text h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: -4rem;
   color: var(--text-primary);
   line-height: 1.2;
+  font-family: var(--font-system);
+  font-display: swap;
+  min-height: 2.5em;
+  will-change: transform;
+  transform: translateZ(0);
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 .hero-text p {

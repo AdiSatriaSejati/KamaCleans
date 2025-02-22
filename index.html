@@ -318,6 +318,30 @@
         type="image/webp"
         fetchpriority="high"
     />
+    
+    <!-- Preload critical fonts -->
+    <link 
+      rel="preload" 
+      href="/fonts/system-ui.woff2" 
+      as="font" 
+      type="font/woff2" 
+      crossorigin
+    />
+    
+    <!-- Preconnect ke domain penting -->
+    <link rel="preconnect" href="https://synxalrnnjegqzaxydis.supabase.co" />
+    
+    <!-- Font display strategy -->
+    <style>
+      /* Fallback font metrics yang mirip dengan font utama */
+      @font-face {
+        font-family: 'system-ui';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('system-ui');
+      }
+    </style>
 </head>
 <body>
   <!-- Lazy load Google Tag Manager -->
