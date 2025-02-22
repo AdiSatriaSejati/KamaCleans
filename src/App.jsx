@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Loading from './components/loading/Loading';
 import { DarkModeProvider } from './context/darkModeContext';
 import Navbar from './components/navbar/Navbar';
 import Beranda from './pages/Beranda/Beranda';
-import Tentang from './pages/Tentang/Tentang';
-import Layanan from './pages/Layanan/Layanan';
-import Galeri from './pages/Galeri/Galeri';
-import Kontak from './pages/Kontak/Kontak';
-import Footer from './components/footer/Footer';
-import ScrollToTop from './components/scrolltotop/ScrollToTop';
-import OnlineTracker from './components/OnlineTracking/OnlineTracker';
 import { AuthProvider } from './context/AuthContext';
 import { Analytics } from "@vercel/analytics/react";
+import Footer from './components/footer/Footer';
 import './App.css';
+
+// Lazy load halaman yang tidak dibutuhkan di awal
+const Tentang = lazy(() => import('./pages/Tentang/Tentang'));
+const Layanan = lazy(() => import('./pages/Layanan/Layanan')); 
+const Galeri = lazy(() => import('./pages/Galeri/Galeri'));
+const Kontak = lazy(() => import('./pages/Kontak/Kontak'));
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -64,14 +64,16 @@ function App() {
       <AuthProvider>
         <div className="App">
           <Navbar />
-          <section id="beranda-section" aria-label="Beranda"><Beranda /></section>
-          <section id="tentang-section" aria-label="Tentang Kama"><Tentang /></section>
-          <section id="layanan-section" aria-label="Layanan"><Layanan /></section>
-          <section id="galeri-section" aria-label="Galeri"><Galeri /></section>
-          <section id="kontak-section" aria-label="Kontak"><Kontak /></section>
+          <section id="beranda-section"><Beranda /></section>
+          
+          <Suspense fallback={<Loading />}>
+            <section id="tentang-section"><Tentang /></section>
+            <section id="layanan-section"><Layanan /></section>
+            <section id="galeri-section"><Galeri /></section>
+            <section id="kontak-section"><Kontak /></section>
+          </Suspense>
+
           <Footer />
-          <ScrollToTop />
-          <OnlineTracker />
         </div>
       </AuthProvider>
       <Analytics />
