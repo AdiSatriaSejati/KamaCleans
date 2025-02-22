@@ -5,6 +5,8 @@ import Navbar from './components/navbar/Navbar';
 import Beranda from './pages/Beranda/Beranda';
 import { AuthProvider } from './context/AuthContext';
 import { Analytics } from "@vercel/analytics/react";
+import ScrollToTop from './components/scrolltotop/ScrollToTop';
+import OnlineTracker from './components/OnlineTracking/OnlineTracker';
 import Footer from './components/footer/Footer';
 import './App.css';
 
@@ -72,7 +74,8 @@ function App() {
             <section id="galeri-section"><Galeri /></section>
             <section id="kontak-section"><Kontak /></section>
           </Suspense>
-
+          <ScrollToTop />
+          <OnlineTracker />
           <Footer />
         </div>
       </AuthProvider>
