@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, lazy, Suspense } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useFrame, extend } from '@react-three/fiber';
 import { shaderMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -16,9 +16,7 @@ const WaveMaterial = shaderMaterial(
 
 extend({ WaveMaterial });
 
-const FooterWave = lazy(() => import('./FooterWave'));
-
-const FooterWaveComponent = () => {
+const FooterWave = () => {
   const meshRef = useRef();
   const materialRef = useRef();
 
@@ -51,4 +49,4 @@ const FooterWaveComponent = () => {
   );
 };
 
-export default FooterWaveComponent; 
+export default FooterWave; 

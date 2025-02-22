@@ -10,21 +10,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-core': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'animation': ['framer-motion'],
-          'three': ['three', '@react-three/fiber', '@react-three/drei'],
-          'firebase': ['firebase/app', 'firebase/database'],
-          'supabase': ['@supabase/supabase-js']
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion', '@react-three/drei', '@react-three/fiber']
         }
       }
     },
     minify: 'terser',
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
+        drop_console: true
       }
     }
   },

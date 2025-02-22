@@ -46,14 +46,3 @@ export const popUp = {
     }
   }
 };
-
-export const loadAnimations = async () => {
-  const { motion } = await import('framer-motion');
-  return {
-    FadeContainer: {
-      hidden: { opacity: 0 },
-      visible: { opacity: 1 }
-    }
-    // ... animasi lainnya
-  };
-};

@@ -6,12 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode production",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "host": "vite --host",
-    "deploy": "gh-pages -d build",
-    "analyze": "source-map-explorer 'dist/assets/*.js'"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@firebase/database": "^1.0.12",
@@ -34,8 +33,7 @@
     "react-toggle-dark-mode": "^1.1.1",
     "react-type-animation": "^3.2.0",
     "rollup-plugin-visualizer": "^5.14.0",
-    "three": "^0.172.0",
-    "source-map-explorer": "^2.5.3"
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.26.9",
