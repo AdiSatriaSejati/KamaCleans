@@ -194,7 +194,7 @@ const Login = ({ isOpen, onClose }) => {
                       className="github-login-btn"
                       onClick={handleGithubSignIn}
                     >
-                      <IconBrandGithub size={20}  />
+                      <IconBrandGithub size={20} />
                       <span>Lanjutkan dengan GitHub</span>
                     </button>
                   </div>
