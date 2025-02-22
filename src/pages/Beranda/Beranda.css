@@ -15,10 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 200px;
-  will-change: transform;
-  transform: translateZ(0);
-  contain: layout paint style;
 }
 
 .logo-container {
@@ -40,18 +36,6 @@
 .hero-text {
   max-width: 100%;
   margin: 0 auto;
-}
-
-.hero-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  color: var(--text-primary);
-  content-visibility: auto;
-  contain: layout paint;
 }
 
 .hero-text h1 {

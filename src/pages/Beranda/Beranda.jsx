@@ -52,16 +52,7 @@ const Beranda = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           <h1>LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
-          <motion.p
-            className="hero-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            loading="eager"
-            fetchpriority="high"
-          >
-            KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA
-          </motion.p>
+          <p>KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA</p>
           
           <motion.button 
             onClick={handleScrollToLayanan}

@@ -8,7 +8,8 @@ import {
     remove,
     serverTimestamp,
     query,
-    orderByChild 
+    orderByChild,
+    enableIndexedDbPersistence
 } from 'firebase/database';
 import './OnlineTracker.css';
 
@@ -41,6 +42,15 @@ const OnlineTracker = () => {
 
                 const db = getDatabase(app);
                 
+                // Enable offline persistence
+                enableIndexedDbPersistence(db).catch((err) => {
+                    if (err.code === 'failed-precondition') {
+                        console.warn('Multiple tabs open, persistence can only be enabled in one tab at a time.');
+                    } else if (err.code === 'unimplemented') {
+                        console.warn('The current browser doesn\'t support persistence.');
+                    }
+                });
+
                 // Gunakan sessionStorage untuk menyimpan userId
                 let userId = sessionStorage.getItem('userId');
                 if (!userId) {
