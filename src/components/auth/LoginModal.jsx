@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
-import { useDarkMode } from '../../context/darkModeContext'
 import { IconBrandGoogle, IconBrandGithub, IconUser } from '@tabler/icons-react'
 import './Login.css'
 
 const Login = ({ isOpen, onClose }) => {
-  const { isDarkMode } = useDarkMode()
   const [identifier, setIdentifier] = useState('')
   const [otp, setOtp] = useState('')
   const [showOtpInput, setShowOtpInput] = useState(false)
