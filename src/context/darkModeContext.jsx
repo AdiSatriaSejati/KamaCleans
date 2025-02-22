@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const DarkModeContext = createContext();
+const DarkModeContext = createContext({
+  isDarkMode: false,
+  changeDarkMode: () => {}
+});
 
 export function DarkModeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -28,11 +31,11 @@ export function DarkModeProvider({ children }) {
     updateTheme(mediaQuery);
 
     // Listen untuk perubahan preferensi sistem
-    mediaQuery.addEventListener('change', updateTheme);
+    mediaQuery.addListener(updateTheme);
 
     // Cleanup
     return () => {
-      mediaQuery.removeEventListener('change', updateTheme);
+      mediaQuery.removeListener(updateTheme);
     };
   }, []);
 
@@ -48,10 +51,10 @@ export function DarkModeProvider({ children }) {
   );
 }
 
-export const useDarkMode = () => {
+export function useDarkMode() {
   const context = useContext(DarkModeContext);
   if (!context) {
     throw new Error('useDarkMode must be used within a DarkModeProvider');
   }
   return context;
-};
+}
