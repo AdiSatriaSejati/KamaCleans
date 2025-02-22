@@ -319,29 +319,19 @@
         fetchpriority="high"
     />
     
-    <!-- Preload critical fonts -->
-    <link 
-      rel="preload" 
-      href="/fonts/system-ui.woff2" 
-      as="font" 
-      type="font/woff2" 
-      crossorigin
-    />
+    <!-- Tambahkan preload untuk critical content -->
+    <link rel="preload" as="fetch" href="/api/critical-data" crossorigin="anonymous">
     
-    <!-- Preconnect ke domain penting -->
-    <link rel="preconnect" href="https://synxalrnnjegqzaxydis.supabase.co" />
+    <!-- Tambahkan preconnect untuk domain penting -->
+    <link rel="preconnect" href="https://synxalrnnjegqzaxydis.supabase.co">
     
-    <!-- Font display strategy -->
-    <style>
-      /* Fallback font metrics yang mirip dengan font utama */
-      @font-face {
-        font-family: 'system-ui';
-        font-style: normal;
-        font-weight: 400;
-        font-display: swap;
-        src: local('system-ui');
-      }
-    </style>
+    <!-- Prioritaskan CSS utama -->
+    <link rel="preload" href="/src/App.css" as="style">
+    <link rel="preload" href="/src/pages/Beranda/Beranda.css" as="style">
+    
+    <!-- Tambahkan hint untuk browser -->
+    <meta name="rendermode" content="static">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 </head>
 <body>
   <!-- Lazy load Google Tag Manager -->
