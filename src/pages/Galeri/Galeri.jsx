@@ -4,7 +4,7 @@ import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
 import { addPassiveEventListener } from '../../utils/utils';
 import './Galeri.css';
 
-const Galeri = () => {
+const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [category, setCategory] = useState('all');
   const [visibleImages, setVisibleImages] = useState(6); // Jumlah gambar yang ditampilkan awal
@@ -116,37 +116,16 @@ const Galeri = () => {
     };
   }, []);
 
-  // Fungsi untuk mengoptimalkan loading gambar
-  const optimizeImage = (src, width = 720) => {
-    // Menambahkan parameter resize ke URL Supabase
-    const baseUrl = src.split('?')[0];
-    const token = src.split('?')[1];
-    return `${baseUrl}?width=${width}&${token}`;
-  };
-
-  // Preload gambar
-  useEffect(() => {
-    const preloadImages = (imagesToPreload) => {
-      imagesToPreload.forEach(image => {
-        const img = new Image();
-        img.src = optimizeImage(image.src);
-      });
-    };
-
-    // Preload beberapa gambar pertama
-    preloadImages(images.shoes.slice(0, 6));
-  }, []);
-
   return (
-    <div className="galeri-container">
+    <div className="page-container galeri-container">
       <motion.h1 
-        className="galeri-title"
+        className="gallery-title"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
         <div className="glowing-line"></div>
-        Galeri Kami
+        Our Gallery
       </motion.h1>
 
       <motion.div 
@@ -206,7 +185,7 @@ const Galeri = () => {
       </motion.div>
 
       <motion.div 
-        className="galeri-grid" 
+        className="gallery-grid" 
         ref={containerRef}
         variants={FadeContainer}
         initial="hidden"
@@ -215,22 +194,16 @@ const Galeri = () => {
         {displayedImages.map((image) => (
           <motion.div
             key={image.id}
-            className="galeri-item"
+            className="gallery-item"
             variants={popUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => handleImageClick(image)}
           >
             <img 
-              src={optimizeImage(image.src)}
-              alt={`Galeri item ${image.id}`}
+              src={image.src} 
+              alt={`Gallery item ${image.id}`}
               loading="lazy"
-              width="720"
-              height="1280"
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = image.src; // Fallback ke original jika optimisasi gagal
-              }}
             />
           </motion.div>
         ))}
@@ -268,7 +241,7 @@ const Galeri = () => {
               <button className="close-button" onClick={closeModal}>×</button>
               <img 
                 src={selectedImage.src} 
-                alt={`Galeri item ${selectedImage.id}`}
+                alt={`Gallery item ${selectedImage.id}`}
               />
             </motion.div>
           </motion.div>
@@ -278,4 +251,4 @@ const Galeri = () => {
   );
 };
 
-export default Galeri;
+export default Gallery;

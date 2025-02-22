@@ -1,286 +1,276 @@
-.galeri-container {
-    background: var(--background);
-    min-height: auto;
-    position: relative;
-    overflow: visible;
-    padding: 1rem 0;
-  }
-  
-  .galeri-title {
-    font-size: clamp(2rem, 3vw, 3.5rem);
-    background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    margin-bottom: 2rem;
-    position: relative;
-  }
-  
-  .category-filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .filter-btn {
-    padding: 0.5rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    background: var(--card-bg);
-    color: var(--text-primary);
-    cursor: pointer;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .filter-btn.active {
-    background: var(--text-primary);
-    color: var(--background);
-  }
-  
-  .galeri-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 1rem;
-    min-height: auto;
-    align-content: flex-start;
-    position: relative;
-    transition: height 0.3s ease;
-  }
-  
-  .galeri-item {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1;
-    background: var(--card-bg);
-    box-shadow: 0 0 100px var(--card-bg);
-    height: 100%;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    animation: fadeIn 0.3s ease forwards;
-  }
-  
-  .galeri-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .galeri-item:hover img {
-    transform: scale(1.1);
-  }
-  
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
-  }
-  
-  .modal-content {
-    position: relative;
-    max-width: 90vw;
-    max-height: 90vh;
-    border-radius: 15px;
-    top: 2rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem 0;
-  }
-  
-  .modal-content img {
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: calc(85vh - 70px); /* Kurangi tinggi navbar */
-    object-fit: contain;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 0.5rem;
-    left: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-  
-  .close-button:hover {
-    background: rgba(0, 0, 0, 0.8);
-    transform: scale(1.1);
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .load-more-btn {
-      padding: 0.6rem 1.5rem;
-      font-size: 0.9rem;
-    }
+.gallery-container {
+  background: var(--background);
+  min-height: auto;
+  position: relative;
+  flex-direction: column;
+  overflow: visible;
+}
 
-    .galeri-grid {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 1rem;
-      padding: 0.5rem;
-    }
-  
-    .filter-btn {
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
-    }
-    .modal-content {
-      width: auto;
-      padding: 1rem 1rem;
-    }
+.gallery-title {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  background: linear-gradient(45deg, var(--text-primary), var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-btn.active {
+  background: var(--text-primary);
+  color: var(--background);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  min-height: auto;
+  align-content: flex-start;
+  position: relative;
+  transition: height 0.3s ease;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1;
+  background: var(--card-bg);
+  box-shadow: 0 0 100px var(--card-bg);
+  height: 100%;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 15px;
+  top: 2rem;
+  overflow: hidden;
+}
+
+.modal-content img {
+  max-width: 100%;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: var(--text-primary);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+    min-height: 50vh;
   }
-  
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .galeri-grid {
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    .modal-content {
-      width: auto;
-      padding: 1rem 1rem;
-    }
+
+  .filter-btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
   }
-  
-  /* Animation untuk loading images */
-  .galeri-item {
-    position: relative;
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    min-height: 55vh;
   }
-  
-  .galeri-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
-    animation: loading 1.5s infinite;
+}
+
+/* Animation untuk loading images */
+.gallery-item {
+  position: relative;
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
+  100% {
+    transform: translateX(100%);
   }
-  
-  .galeri-item.loaded::before {
-    display: none;
-  } 
-  
-  /* Tambahan Animation untuk transisi grid */
-  .galeri-grid {
-    transition: height 0.3s ease;
-  }
-  
-  .galeri-item {
-    animation: fadeIn 0.3s ease forwards;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* Tambahan untuk animasi smooth saat pergantian kategori */
-  .galeri-grid {
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .galeri-item {
+}
+
+.gallery-item.loaded::before {
+  display: none;
+} 
+
+/* Tambahan Animation untuk transisi grid */
+.gallery-grid {
+  transition: height 0.3s ease;
+}
+
+.gallery-item {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    transform: translateY(20px);
   }
-  
-  /* Tambahan untuk mencegah flash content */
-  .galeri-container {
+  to {
     opacity: 1;
-    transition: opacity 0.3s ease;
-  }
-  
-  .galeri-container.loading {
-    opacity: 0.7;
-  }
-  
-  .load-more-btn {
-    display: block;
-    margin: 2rem auto;
-    padding: 0.8rem 2rem;
-    background: var(--card-bg);
-    color: var(--text-primary);
-    border: none;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .load-more-btn:hover {
-    background: var(--text-primary);
-    color: var(--background);
-    transform: translateY(-2px);
-  }
-  
-  .load-more-btn:active {
     transform: translateY(0);
   }
-  
-  /* Animasi untuk galeri items baru */
-  .galeri-item {
+}
+
+/* Tambahan untuk animasi smooth saat pergantian kategori */
+.gallery-grid {
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-item {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Tambahan untuk mencegah flash content */
+.gallery-container {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-container.loading {
+  opacity: 0.7;
+}
+
+.load-more-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 0.8rem 2rem;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.load-more-btn:hover {
+  background: var(--text-primary);
+  color: var(--background);
+  transform: translateY(-2px);
+}
+
+.load-more-btn:active {
+  transform: translateY(0);
+}
+
+/* Animasi untuk gallery items baru */
+.gallery-item {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
+    transform: translateY(20px);
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .load-more-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}

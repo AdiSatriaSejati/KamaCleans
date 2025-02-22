@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
 import { IconBrandGoogle, IconBrandGithub, IconUser } from '@tabler/icons-react'
-import './LoginModal.css'
+import './Login.css'
 
-const LoginModal = ({ isOpen, onClose }) => {
+const Login = ({ isOpen, onClose }) => {
   const [identifier, setIdentifier] = useState('')
   const [otp, setOtp] = useState('')
   const [showOtpInput, setShowOtpInput] = useState(false)
@@ -100,7 +100,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
       if (result.error) throw new Error(result.error)
       
-      onClose() // Tutup modal jika berhasil
+      onClose()
     } catch (error) {
       setError(error.message || 'Kode OTP tidak valid')
     }
@@ -131,22 +131,22 @@ const LoginModal = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div 
-          className="modal-overlay"
+          className="wallpaper-login"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div 
-            className="modal-content"
+            className="konten-login"
             initial={{ scale: 0.8, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 20 }}
             onClick={e => e.stopPropagation()}
           >
-            <div className="modal-header">
-              <h2>Masuk ke KamaCleans</h2>
-              <button className="close-button" onClick={onClose}>&times;</button>
+            <div className="kepala-login">
+              <button className="tombol-tutup" onClick={onClose}>&times;</button>
+              <h2>Masuk</h2>
             </div>
 
             {error && <div className="error-message">{error}</div>}
@@ -194,7 +194,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                       className="github-login-btn"
                       onClick={handleGithubSignIn}
                     >
-                      <IconBrandGithub size={20} />
+                      <IconBrandGithub size={20}  />
                       <span>Lanjutkan dengan GitHub</span>
                     </button>
                   </div>
@@ -219,7 +219,7 @@ const LoginModal = ({ isOpen, onClose }) => {
                   </button>
                   <button 
                     type="button" 
-                    className="back-button"
+                    className="tombol-tutup"
                     onClick={() => {
                       setShowOtpInput(false)
                       setIsEmailOtp(false)
@@ -238,4 +238,4 @@ const LoginModal = ({ isOpen, onClose }) => {
   )
 }
 
-export default LoginModal 
+export default Login

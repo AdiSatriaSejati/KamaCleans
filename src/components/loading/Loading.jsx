@@ -5,18 +5,31 @@ import './Loading.css';
 const Loading = () => {
   const { isDarkMode } = useDarkMode();
   const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const logoLight = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E";
   const logoDark = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0";
 
   useEffect(() => {
-    // Preload both logo images
-    const preloadImages = () => {
-      const lightImg = new Image();
-      const darkImg = new Image();
-      
-      lightImg.src = logoLight;
-      darkImg.src = logoDark;
+    // Preload images dengan Promise.all
+    const preloadImages = async () => {
+      const images = [logoLight, logoDark];
+      try {
+        await Promise.all(
+          images.map(src => {
+            return new Promise((resolve, reject) => {
+              const img = new Image();
+              img.src = src;
+              img.onload = resolve;
+              img.onerror = reject;
+            });
+          })
+        );
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error preloading images:', error);
+        setIsLoading(false);
+      }
     };
     
     preloadImages();
@@ -41,7 +54,7 @@ const Loading = () => {
         alt="KamaCleans" 
         width="208" 
         height="208"
-        fetchpriority="high"
+        fetchPriority="high"
         decoding="sync"
       />
       <p>Memuat... {progress}%</p>
