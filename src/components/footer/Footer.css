@@ -2,7 +2,6 @@
   position: relative;
   min-height: auto;
   background: transparent;
-  overflow: hidden;
   z-index: 2;
 }
 
@@ -14,6 +13,7 @@
   height: 100%;
   z-index: -1;
   opacity: 0.8;
+  
 }
 
 .footer-wave-container canvas {
@@ -30,6 +30,7 @@
   justify-content: center;
   height: 100%;
   padding: 2rem;
+  overflow: hidden;
   background: linear-gradient(
     to bottom,
     transparent,

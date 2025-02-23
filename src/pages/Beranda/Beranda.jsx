@@ -74,9 +74,13 @@ const Beranda = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1>LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
-          <p>
-            <strong>KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA</strong>
+          <h1 className="hero-title">LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
+          <p className="hero-description">
+            KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI{' '}
+            <span className="highlight">KUTABUMI</span>,{' '}
+            <span className="highlight">REGENCY</span>, DAN{' '}
+            <span className="highlight">TOMANG</span>{' '}
+            YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA
           </p>
           
           <motion.button 

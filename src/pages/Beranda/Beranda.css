@@ -24,12 +24,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -30px;
   will-change: transform;
 }
 
 .logo-container img {
   width: 100%;
   height: 100%;
+  margin-top: 50px;
   object-fit: contain;
   will-change: transform;
 }
@@ -114,11 +116,15 @@
 }
 
 @media screen and (max-width: 768px) {
+  .beranda-container {
+    margin: -2rem auto;
+  }
   .hero-content {
     gap: 1.5rem;
   }
 
   .logo-container {
+    margin: 0 auto;
     width: 200px;
     height: 200px;
   }
@@ -142,4 +148,176 @@
 .dark .cta-button {
   background: var(--text-primary);
   color: var(--background);
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-display: swap;
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 1rem auto;
+  max-width: 800px;
+  line-height: 1.5;
+  opacity: 0.9;
+  font-display: swap;
+}
+
+.highlight {
+  color: var(--text-primary);
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.3;
+}
+
+/* Optimasi untuk mobile */
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    padding: 0 1rem;
+  }
+
+  .hero-description {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    padding: 0 1rem;
+  }
+}
+
+/* Optimasi untuk tablet */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .hero-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.9vw, 1.15rem);
+  }
+}
+
+/* Optimasi untuk handphone kecil (320x568) */
+@media screen and (max-width: 320px), 
+       screen and (max-height: 568px) {
+  .beranda-container {
+    padding: 1rem 0.5rem;
+    min-height: 100vh;
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+
+  .hero-content {
+    gap: 0;
+  }
+
+  .logo-container {
+    width: 150px;
+    height: 150px;
+    margin-top: 0;
+  }
+
+  .logo-container img {
+    margin-top: 20px;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding: 0;
+  }
+
+  .hero-description {
+    font-size: 0.8rem;
+    padding: 0 0.5rem;
+    margin: 0.5rem auto;
+  }
+
+  .cta-button {
+    display: none;;
+  }
+
+  .hero-features {
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .feature {
+    font-size: 0.8rem;
+  }
+
+  .feature-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .highlight::after {
+    height: 1px;
+  }
+}
+
+/* Tambahan untuk landscape mode pada handphone kecil */
+@media screen and (max-height: 568px) and (orientation: landscape) {
+  .beranda-container {
+    padding: 4rem 0.5rem 1rem;
+  }
+
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .logo-container {
+    width: 120px;
+    height: 120px;
+    margin: 0;
+  }
+
+  .logo-container img {
+    margin-top: 0;
+  }
+
+  .hero-text {
+    text-align: left;
+    flex: 1;
+  }
+
+  .hero-title,
+  .hero-description {
+    text-align: left;
+  }
+
+  .hero-features {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Fix untuk iOS Safari height issue */
+@supports (-webkit-touch-callout: none) {
+  .beranda-container {
+    min-height: -webkit-fill-available;
+  }
 }

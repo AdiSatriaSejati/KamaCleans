@@ -39,14 +39,14 @@ body {
 
 .App {
   padding-top: 0;
-  height: 100vh;
+  height: auto;
+  overflow-x: hidden;
 }
 
 .App > section {
   height: auto;
   scroll-snap-align: start;
   position: relative;
-  overflow-x: hidden;
 }
 
 @media screen and (max-width: 767px) {
