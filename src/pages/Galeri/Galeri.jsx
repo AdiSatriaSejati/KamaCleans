@@ -42,16 +42,7 @@ const Gallery = () => {
       { id: 28, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/28.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzI4LndlYnAiLCJpYXQiOjE3Mzk1NDMwMjMsImV4cCI6MTc3MTA3OTAyM30.met3Ru40SWmUCWrCM5lG52Z0AsXTXmqyW-5oH9bRRjI', category: 'shoes' },
       { id: 29, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/29.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzI5LndlYnAiLCJpYXQiOjE3Mzk1NDMwMzIsImV4cCI6MTc3MTA3OTAzMn0.erFYFdwVdsF8ja_yDCq3hDNukQUqYvY-NSsB_HFEVRs', category: 'shoes' },
       { id: 30, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/30.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzMwLndlYnAiLCJpYXQiOjE3Mzk1NDMxNjgsImV4cCI6MTc3MTA3OTE2OH0.LK4a6156-fyEIUpYnCUEXSMRbMO-Dhi5vJMYZFtsP5c', category: 'shoes' },
-      { id: 31, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/31.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzMxLndlYnAiLCJpYXQiOjE3Mzk1NDMxNzYsImV4cCI6MTc3MTA3OTE3Nn0.vBB-uTuUoFPUhcuIK7vlBraUfmIhdlnVmuBnLgq-YC0', category: 'shoes' },
-
-
-      { id: 1000, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1000.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDAud2VicCIsImlhdCI6MTczOTU0MjQ5NywiZXhwIjoxNzcxMDc4NDk3fQ.IHpv1id_lddcM69ud-O1iojjWtSHHf380GJtyBmcrko', category: 'shoes' },
-      { id: 1001, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1001.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDEud2VicCIsImlhdCI6MTczOTU0MjUxMCwiZXhwIjoxNzcxMDc4NTEwfQ.Eg3XjgLrPzFgc8X9UtjZ1q55KcmsPlHXi6z7IIeLOmg', category: 'shoes' },
-      { id: 1002, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1002.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDIud2VicCIsImlhdCI6MTczOTU0MjUxNiwiZXhwIjoxNzcxMDc4NTE2fQ.xMeRhaHdI9szkbLz2wF85pB5tAEu_glhU6H_msZsqnM', category: 'shoes' },
-      { id: 1003, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1003.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDMud2VicCIsImlhdCI6MTczOTU0MjYwMywiZXhwIjoxNzcxMDc4NjAzfQ._RJAlBWAQ-WhhDY3nkiuIM-b4HjIi3Bh2cs9rvyru-s', category: 'shoes' },
-      { id: 1004, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1004.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDQud2VicCIsImlhdCI6MTczOTU0MjYxMiwiZXhwIjoxNzcxMDc4NjEyfQ.8PobJuj-O99WGnfvQ3m72nSqvKvEaBhAXFBrNak3k7g', category: 'shoes' },
-      { id: 1005, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1005.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDUud2VicCIsImlhdCI6MTczOTU0MjYyMSwiZXhwIjoxNzcxMDc4NjIxfQ.VFjaK27P8TvR5GA-lpUjA4fVFf9XEa4KaPHM1SQY0Nc', category: 'shoes' },
-      { id: 1006, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/1006.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzEwMDYud2VicCIsImlhdCI6MTczOTU0MjYyNywiZXhwIjoxNzcxMDc4NjI3fQ.XJnSVF1G527C83RrTVd-tQR57Ro64dO8EPhnS0zg27A', category: 'shoes' },
+      { id: 31, src: 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/gallery/shoes/31.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9nYWxsZXJ5L3Nob2VzLzMxLndlYnAiLCJpYXQiOjE3Mzk1NDMxNzYsImV4cCI6MTc3MTA3OTE3Nn0.vBB-uTuUoFPUhcuIK7vlBraUfmIhdlnVmuBnLgq-YC0', category: 'shoes' }
     ],
     helmets: [
     ],
@@ -125,7 +116,7 @@ const Gallery = () => {
         transition={{ duration: 0.8 }}
       >
         <div className="glowing-line"></div>
-        Our Gallery
+        Galeri Kami
       </motion.h1>
 
       <motion.div 

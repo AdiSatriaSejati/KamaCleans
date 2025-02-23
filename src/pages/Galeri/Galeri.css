@@ -3,7 +3,7 @@
   min-height: auto;
   position: relative;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .gallery-title {
@@ -113,7 +113,7 @@
   left: 10px;
   background: rgba(0, 0, 0, 0.5);
   border: none;
-  color: var(--text-primary);
+  color: var(--background);
   width: 30px;
   height: 30px;
   border-radius: 50%;

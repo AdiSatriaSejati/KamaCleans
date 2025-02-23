@@ -46,6 +46,7 @@ body {
   height: auto;
   scroll-snap-align: start;
   position: relative;
+  overflow-x: hidden;
 }
 
 @media screen and (max-width: 767px) {
@@ -120,16 +121,3 @@ body {
 img {
   aspect-ratio: attr(width) / attr(height);
 }
-
-/* Tambahkan ini di App.css */
-#root {
-  position: relative;
-}
-
-.app-container {
-  position: relative;
-}
-
-section {
-  position: relative;
-} 
