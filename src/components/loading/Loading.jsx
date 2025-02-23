@@ -54,7 +54,6 @@ const Loading = () => {
         alt="KamaCleans" 
         width="208" 
         height="208"
-        fetchPriority="high"
         decoding="sync"
       />
       <p>Memuat... {progress}%</p>

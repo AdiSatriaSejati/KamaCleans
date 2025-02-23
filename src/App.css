@@ -119,4 +119,17 @@ body {
 /* Prevent layout shift */
 img {
   aspect-ratio: attr(width) / attr(height);
+}
+
+/* Tambahkan ini di App.css */
+#root {
+  position: relative;
+}
+
+.app-container {
+  position: relative;
+}
+
+section {
+  position: relative;
 } 

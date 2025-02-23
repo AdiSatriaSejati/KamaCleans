@@ -24,6 +24,12 @@ export default defineConfig({
             'react-type-animation'
           ]
         }
+      },
+      onwarn(warning, warn) {
+        if (warning.code === 'EVAL' && warning.id?.includes('three-stdlib')) {
+          return;
+        }
+        warn(warning);
       }
     },
     minify: 'terser',

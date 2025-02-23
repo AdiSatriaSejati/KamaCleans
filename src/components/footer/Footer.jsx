@@ -39,28 +39,42 @@ const Footer = () => {
     return () => observer.disconnect();
   }, [isDarkMode]);
 
-  const scrollToHome = (e) => {
-    e.preventDefault();
-    const homeSection = document.getElementById('beranda-section');
-    if (homeSection) {
-      homeSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="footer">
       <div className="footer-wave-container">
-        <Canvas>
+        <Canvas
+          camera={{ position: [0, 2, 5], fov: 45 }}
+          dpr={[1, 2]}
+        >
           <Suspense fallback={null}>
-            <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
             <FooterWave />
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              enableRotate={false}
+              domElement={document.documentElement}
+              makeDefault
+              touches={{
+                one: false,
+                two: false,
+                three: false
+              }}
+              mouseButtons={{
+                LEFT: false,
+                MIDDLE: false,
+                RIGHT: false
+              }}
+            />
           </Suspense>
         </Canvas>
       </div>
-
+      
       <div className="footer-content">
         <a href="#beranda-section" 
-           onClick={scrollToHome} 
+           onClick={(e) => {
+             e.preventDefault();
+             document.getElementById('beranda-section').scrollIntoView({ behavior: 'smooth' });
+           }} 
            className="footer-logo-link"
            aria-label="Scroll to top">
           <img
