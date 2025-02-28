@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    
-    
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L2PPQ5NXGS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L2PPQ5NXGS');
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -251,18 +258,6 @@
       ]
     }
     </script>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VZ7PJGJZ08"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-VZ7PJGJZ08', {
-          'page_title': 'KamaCleans',
-          'page_location': window.location.href,
-          'page_path': window.location.pathname
-        });
-    </script>
     <meta name="google-site-verification" content="NKKLusZ18vX-geeQxZ9pQiZsujxiORIh_NJABYMMfYs">
     <!-- Polyfill untuk passive event listeners -->
     <script>
@@ -319,26 +314,7 @@
         fetchpriority="high"
     />
 </head>
-<body>
-  <!-- Lazy load Google Tag Manager -->
-  <script>
-    window.addEventListener('load', function() {
-      // Delay GTM loading
-      setTimeout(function() {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TR846M9M');
-      }, 3000); // Delay 3 detik
-    });
-    </script>
-    <!-- Lazy load Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TR846M9M"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    
+<body>    
     <noscript>Anda perlu mengaktifkan JavaScript untuk menjalankan aplikasi ini.</noscript>
     <div id="root"></div>
     <script type="module" src="src/main.jsx"></script>
