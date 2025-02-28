@@ -38,3 +38,14 @@ export const addPassiveEventListener = (element, eventName, callback) => {
   element.addEventListener(eventName, callback, options);
   return () => element.removeEventListener(eventName, callback, options);
 };
+
+export const smoothScroll = (targetId, offset = 0) => {
+  const target = document.getElementById(targetId);
+  if (target) {
+    const targetPosition = target.offsetTop - offset;
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+};

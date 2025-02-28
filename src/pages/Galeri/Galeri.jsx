@@ -108,7 +108,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="page-container galeri-container">
+    <div className="galeri-container">
       <motion.h1 
         className="gallery-title"
         initial={{ opacity: 0, y: -50 }}

@@ -14,7 +14,6 @@ const GoogleMap = () => {
       document.body.appendChild(script);
     };
 
-    // Intersection Observer untuk lazy loading
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -40,7 +39,6 @@ const GoogleMap = () => {
         height="100%"
         style={{ border: 0 }}
         allowFullScreen=""
-        loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       />
     </div>

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { IconMapPin, IconClock, IconBrandWhatsapp } from '@tabler/icons-react';
 import SocialBar from '../../components/socialbar/SocialBar';
@@ -9,8 +9,8 @@ import './Beranda.css';
 // Preload gambar
 const preloadImages = () => {
   const images = [
-    "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E",
-    "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0"
+    "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-LIGHT.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtTElHSFQucG5nIiwiaWF0IjoxNzQwNTkwOTMyLCJleHAiOjE3NzIxMjY5MzJ9.BoTMHe0ty4TYgd747hpKBASWZ0VkXOwnWZ5LF9LLEAA",
+    "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEucG5nIiwiaWF0IjoxNzQwNTkwNDY0LCJleHAiOjE3NzIxMjY0NjR9.MZgseaQ5T03ABHAzv3eI447UHgzGrNudbEVe3VpSJOI"
   ];
   
   images.forEach(src => {
@@ -32,14 +32,13 @@ const Beranda = () => {
   const handleScrollToLayanan = (e) => {
     e.preventDefault();
     const layananSection = document.getElementById('layanan-section');
-    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
     
     if (layananSection) {
-      const elementPosition = layananSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+      const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+      const targetPosition = layananSection.offsetTop - navbarHeight;
       
       window.scrollTo({
-        top: offsetPosition,
+        top: targetPosition,
         behavior: 'smooth'
       });
     }
@@ -49,22 +48,20 @@ const Beranda = () => {
     <div className="beranda-container">
       <div className="hero-content">
         <motion.div 
-          className="logo-container"
+          className="logo-beranda"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
           <img
             src={isDarkMode ? 
-              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E" :
-              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0"
+              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-LIGHT.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtTElHSFQucG5nIiwiaWF0IjoxNzQwNTkwOTMyLCJleHAiOjE3NzIxMjY5MzJ9.BoTMHe0ty4TYgd747hpKBASWZ0VkXOwnWZ5LF9LLEAA" :
+              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-DARK.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtREFSSy5wbmciLCJpYXQiOjE3NDA1OTA4MzksImV4cCI6MTc3MjEyNjgzOX0.cgrb473Q_BvGcX5YnfKbRtVCiogmnAHlOpH8aGXUQGo"
             }
             alt="KamaCleans Logo"
-            width="250"
-            height="250"
             loading="eager"
             decoding="async"
-            fetchpriority="high"
+            fetchPriority="high"
           />
         </motion.div>
 

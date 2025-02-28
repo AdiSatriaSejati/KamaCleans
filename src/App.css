@@ -26,6 +26,12 @@
   --effect-login:rgba(255, 255, 255, 0.3);
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -33,20 +39,22 @@ body {
   background-color: var(--background);
   color: var(--text-primary);
   transition: background-color 0.3s ease;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .App {
-  padding-top: 0;
-  height: auto;
-  overflow-x: hidden;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .App > section {
-  height: auto;
-  scroll-snap-align: start;
   position: relative;
+  width: 100%;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 767px) {
@@ -55,25 +63,14 @@ body {
   }
 }
 
-.page-container {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  justify-content: center;
-}
-#galeri-section{
-  background-color: var(--background);
-  z-index: 3;
-  position: relative;
-}
 
 #beranda-section,
 #tentang-section,
 #layanan-section,
+#galeri-section,
 #kontak-section {
   background-color: var(--background);
-  z-index: 2;
+  z-index: 3;
   position: relative;
 }
 
