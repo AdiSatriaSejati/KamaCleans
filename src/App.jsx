@@ -28,7 +28,7 @@ function App() {
       const isDark = document.documentElement.classList.contains('dark');
       
       if (document.visibilityState === "visible") {
-        document.title = "KamaCleans";
+        document.title = "KamaCleans  - Jasa Cuci Sepatu, Helm, dan Topi Terbaik di Tangerang";
         // Menggunakan favicon sesuai mode
         document.querySelector("link[rel='icon']").href = isDark ? "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/favicon-dark.ico?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2Zhdmljb24tZGFyay5pY28iLCJpYXQiOjE3Mzk0NzMyOTIsImV4cCI6MTc3MTAwOTI5Mn0.PJu2hFTFasqIQJTEpIZL8BhmcBEzemoSqjFUheKjbR0" : "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/favicon-light.ico?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2Zhdmljb24tbGlnaHQuaWNvIiwiaWF0IjoxNzM5NDczMzI0LCJleHAiOjE3NzEwMDkzMjR9.vzuHw405qVHkt4Wc9-9OY1wbF9FmShdpoHu6o-eDCoc";
         document.querySelector("link[rel='icon'][sizes='16x16']").href = isDark ? "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/favicon-dark-16x16.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2Zhdmljb24tZGFyay0xNngxNi5wbmciLCJpYXQiOjE3Mzk0NzMzNzQsImV4cCI6MTc3MTAwOTM3NH0.WbtR1pdo-vhnzA2e1l-z4xk2YjTje7Npl4MOEzp3ZNc" : "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/favicon-light-16x16.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2Zhdmljb24tbGlnaHQtMTZ4MTYucG5nIiwiaWF0IjoxNzM5NDczMzYyLCJleHAiOjE3NzEwMDkzNjJ9.XCBcP0TQ193bK3-y4Pjd6SIWdBcEW0Jf56V5A0Udgs4";
