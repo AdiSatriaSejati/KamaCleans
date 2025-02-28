@@ -115,10 +115,10 @@ const Gallery = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="glowing-line"></div>
         Galeri Kami
+        <div className="glowing-line"></div>
       </motion.h1>
-
+      
       <motion.div 
         className="category-filters"
         variants={FadeContainer}

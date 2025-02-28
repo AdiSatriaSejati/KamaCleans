@@ -10,7 +10,7 @@ Allow: /
 # Disallow: /drafts/
 
 # Tentukan lokasi sitemap
-Sitemap: https://kamacleans.vercel.app/sitemap.xml
+Sitemap: https://www.kamacleans.com/sitemap.xml
 
 # Atur crawl-delay jika diperlukan (opsional)
 # Crawl-delay: 10

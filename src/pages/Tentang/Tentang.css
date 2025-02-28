@@ -3,12 +3,13 @@
   min-height: auto;
   position: relative;
   overflow: hidden;
-  padding:1rem 1rem;
+  padding:1rem 1.5rem;
 }
 
 .tentang-content {
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 4rem;
   position: relative;
   z-index: 2;
 }

@@ -180,12 +180,12 @@
 }
 @media (min-width: 768px) and (max-width: 990px) {
   .layanan-container {
-    padding: 0 1rem;
+    padding: auto 1rem;
   }
 }
 @media (max-width: 767px) {
   .layanan-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 }
 
