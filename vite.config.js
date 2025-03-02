@@ -11,12 +11,18 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'firebase': ['firebase/app', 'firebase/database'],
-          'three-core': ['three'],
-          'three-extras': ['@react-three/fiber', '@react-three/drei'],
+          'react-vendor': ['react', 'react-dom'],
+          'router': ['react-router-dom'],
           'motion': ['framer-motion'],
-          'supabase': ['@supabase/supabase-js']
+          'three-core': ['three'],
+          'three-extras': ['@react-three/drei', '@react-three/fiber'],
+          'firebase': ['firebase/app', 'firebase/auth', 'firebase/database'],
+          'supabase': ['@supabase/supabase-js'],
+          'utils': [
+            '@tabler/icons-react',
+            'react-toggle-dark-mode',
+            'react-type-animation'
+          ]
         }
       },
       onwarn(warning, warn) {
@@ -34,16 +40,14 @@ export default defineConfig({
       }
     }
   },
-  experimental: {
-    renderBuiltUrl(filename) {
-      return `/${filename}`
-    }
-  },
   optimizeDeps: {
     include: [
-      'react',
-      'react-dom',
-      'react-router-dom'
+      'react', 
+      'react-dom', 
+      'react-router-dom', 
+      'framer-motion',
+      '@react-three/drei',
+      '@react-three/fiber'
     ]
   }
 })
