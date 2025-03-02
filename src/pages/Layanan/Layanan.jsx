@@ -56,23 +56,23 @@ const ServiceCard = ({ service, index }) => {
   return (
     <motion.div
       ref={cardRef}
-      className="service-card"
+      className="layanan-card"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
     >
-      <div className="service-image-container">
+      <div className="layanan-image-container">
         <motion.img 
           src={service.image} 
           alt={service.title}
           style={{ y }}
         />
-        <div className="service-price">Rp {service.price}</div>
+        <div className="layanan-price">Rp {service.price}</div>
       </div>
       
-      <div className="service-content">
-        <h2 className="service-title">{service.title}</h2>
+      <div className="layanan-content">
+        <h2 className="layanan-title">{service.title}</h2>
         <p className="description">{service.description}</p>
         
         <ul className="features-list">

@@ -110,7 +110,7 @@ const Gallery = () => {
   return (
     <div className="galeri-container">
       <motion.h1 
-        className="gallery-title"
+        className="galeri-title"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -176,7 +176,7 @@ const Gallery = () => {
       </motion.div>
 
       <motion.div 
-        className="gallery-grid" 
+        className="galeri-grid" 
         ref={containerRef}
         variants={FadeContainer}
         initial="hidden"
@@ -185,7 +185,7 @@ const Gallery = () => {
         {displayedImages.map((image) => (
           <motion.div
             key={image.id}
-            className="gallery-item"
+            className="galeri-item"
             variants={popUp}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -193,7 +193,7 @@ const Gallery = () => {
           >
             <img 
               src={image.src} 
-              alt={`Gallery item ${image.id}`}
+              alt={`galeri item ${image.id}`}
               loading="lazy"
             />
           </motion.div>
@@ -232,7 +232,7 @@ const Gallery = () => {
               <button className="close-button" onClick={closeModal}>×</button>
               <img 
                 src={selectedImage.src} 
-                alt={`Gallery item ${selectedImage.id}`}
+                alt={`galeri item ${selectedImage.id}`}
               />
             </motion.div>
           </motion.div>

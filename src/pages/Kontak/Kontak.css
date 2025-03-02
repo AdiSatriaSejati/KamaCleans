@@ -3,9 +3,9 @@
   min-height: auto;
   position: relative;
   overflow: hidden;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-top: -2.1rem;
+  justify-content: center;
+  display: flex;
+  padding: 0 1rem;
 }
 
 .kontak-content {
