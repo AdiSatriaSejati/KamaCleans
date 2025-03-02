@@ -11,18 +11,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'motion': ['framer-motion'],
-          'three-core': ['three'],
-          'three-extras': ['@react-three/drei', '@react-three/fiber'],
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
           'firebase': ['firebase/app', 'firebase/database'],
-          'supabase': ['@supabase/supabase-js'],
-          'utils': [
-            '@tabler/icons-react',
-            'react-toggle-dark-mode',
-            'react-type-animation'
-          ]
+          'three-core': ['three'],
+          'three-extras': ['@react-three/fiber', '@react-three/drei'],
+          'motion': ['framer-motion'],
+          'supabase': ['@supabase/supabase-js']
         }
       },
       onwarn(warning, warn) {
@@ -40,14 +34,16 @@ export default defineConfig({
       }
     }
   },
+  experimental: {
+    renderBuiltUrl(filename) {
+      return `/${filename}`
+    }
+  },
   optimizeDeps: {
     include: [
-      'react', 
-      'react-dom', 
-      'react-router-dom', 
-      'framer-motion',
-      '@react-three/drei',
-      '@react-three/fiber'
+      'react',
+      'react-dom',
+      'react-router-dom'
     ]
   }
 })

@@ -4,6 +4,8 @@
 # Izinkan semua robot pencari untuk mengakses seluruh situs
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
 # Larang akses ke folder atau file tertentu jika diperlukan
 # Disallow: /private/
