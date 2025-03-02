@@ -61,7 +61,7 @@ const Loading = () => {
         <div 
           className="progress-bar" 
           style={{ width: `${progress}%` }}
-        />
+        ></div>
       </div>
     </div>
   );

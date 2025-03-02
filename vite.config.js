@@ -16,7 +16,7 @@ export default defineConfig({
           'motion': ['framer-motion'],
           'three-core': ['three'],
           'three-extras': ['@react-three/drei', '@react-three/fiber'],
-          'firebase': ['firebase/app', 'firebase/auth', 'firebase/database'],
+          'firebase': ['firebase/app', 'firebase/database'],
           'supabase': ['@supabase/supabase-js'],
           'utils': [
             '@tabler/icons-react',
