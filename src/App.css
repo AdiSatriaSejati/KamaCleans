@@ -63,11 +63,15 @@ body {
   }
 }
 
+#galeri-section {
+  z-index: 4;
+  background-color: var(--background);
+  position: relative;
+}
 
 #beranda-section,
 #tentang-section,
 #layanan-section,
-#galeri-section,
 #kontak-section {
   background-color: var(--background);
   z-index: 3;
