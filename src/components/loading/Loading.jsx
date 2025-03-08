@@ -1,19 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDarkMode } from '../../context/darkModeContext';
 import './Loading.css';
+
+// URL gambar dari environment variables atau config
+const LOGO_LIGHT_URL = import.meta.env.VITE_LOGO_LIGHT_URL || 
+  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E";
+const LOGO_DARK_URL = import.meta.env.VITE_LOGO_DARK_URL || 
+  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0";
 
 const Loading = () => {
   const { isDarkMode } = useDarkMode();
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  const logoLight = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E";
-  const logoDark = "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0";
+  const timerRef = useRef(null);
+  const startTimeRef = useRef(Date.now());
 
   useEffect(() => {
     // Preload images dengan Promise.all
     const preloadImages = async () => {
-      const images = [logoLight, logoDark];
+      const images = [LOGO_LIGHT_URL, LOGO_DARK_URL];
       try {
         await Promise.all(
           images.map(src => {
@@ -25,6 +30,11 @@ const Loading = () => {
             });
           })
         );
+        // Deteksi loading cepat dan percepat animasi jika perlu
+        const loadTime = Date.now() - startTimeRef.current;
+        if (loadTime < 500) {
+          setProgress(70); // Mulai dari 70% jika loading cepat
+        }
         setIsLoading(false);
       } catch (error) {
         console.error('Error preloading images:', error);
@@ -34,27 +44,36 @@ const Loading = () => {
     
     preloadImages();
 
-    const timer = setInterval(() => {
+    // Adaptive timer speed berdasarkan performa device
+    const interval = window.navigator.hardwareConcurrency > 4 ? 15 : 25;
+
+    timerRef.current = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
-          clearInterval(timer);
+          clearInterval(timerRef.current);
           return 100;
         }
-        return prevProgress + 1;
+        
+        // Percepat animasi jika sudah tidak loading
+        const increment = !isLoading ? 5 : 1;
+        return Math.min(prevProgress + increment, 100);
       });
-    }, 20);
+    }, interval);
 
-    return () => clearInterval(timer);
-  }, []);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [isLoading]);
   
   return (
     <div className={`loader ${isDarkMode ? 'dark' : 'light'}`}>
       <img 
-        src={isDarkMode ? logoLight : logoDark}
+        src={isDarkMode ? LOGO_LIGHT_URL : LOGO_DARK_URL}
         alt="KamaCleans" 
         width="208" 
         height="208"
-        decoding="sync"
+        decoding="async"
+        loading="eager"
       />
       <p>Memuat... {progress}%</p>
       <div className="progress-container">

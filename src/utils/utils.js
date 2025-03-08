@@ -1,3 +1,6 @@
+// Import fungsi dari eventUtils.js untuk menghindari duplikasi
+import { supportsPassiveEvents as supportsPassive, addPassiveEventListener } from './eventUtils.js';
+
 export const navigationRoutes = [
   "Beranda",
   "Tentang Kama",
@@ -14,30 +17,8 @@ export const sectionIds = {
   "Kontak": "kontak-section"
 };
 
-// Utility untuk mengecek dukungan passive event listeners
-export const supportsPassive = () => {
-  let passiveSupported = false;
-  try {
-    const options = {
-      get passive() {
-        passiveSupported = true;
-        return false;
-      }
-    };
-    window.addEventListener("test", null, options);
-    window.removeEventListener("test", null, options);
-  } catch (err) {
-    passiveSupported = false;
-  }
-  return passiveSupported;
-};
-
-// Utility untuk menambahkan event listener dengan passive support
-export const addPassiveEventListener = (element, eventName, callback) => {
-  const options = supportsPassive() ? { passive: true } : false;
-  element.addEventListener(eventName, callback, options);
-  return () => element.removeEventListener(eventName, callback, options);
-};
+// Re-export fungsi untuk kompatibilitas kode yang sudah ada
+export { supportsPassive, addPassiveEventListener };
 
 export const smoothScroll = (targetId, offset = 0) => {
   const target = document.getElementById(targetId);

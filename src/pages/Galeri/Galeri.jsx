@@ -1,7 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeContainer, popUp } from '../../utils/FramerMotionVariants';
-import { addPassiveEventListener } from '../../utils/utils';
 import './Galeri.css';
 
 const Gallery = () => {
@@ -80,31 +79,6 @@ const Gallery = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // ... existing scroll logic ...
-    };
-
-    const cleanup = addPassiveEventListener(window, 'scroll', handleScroll);
-    
-    return cleanup;
-  }, []);
-
-  // Handle touch events dengan passive
-  useEffect(() => {
-    const handleTouch = () => {
-      // ... touch handling logic
-    };
-
-    window.addEventListener('touchstart', handleTouch, { passive: true });
-    window.addEventListener('touchmove', handleTouch, { passive: true });
-    
-    return () => {
-      window.removeEventListener('touchstart', handleTouch);
-      window.removeEventListener('touchmove', handleTouch);
-    };
   }, []);
 
   return (

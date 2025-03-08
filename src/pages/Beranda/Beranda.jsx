@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { IconMapPin, IconClock, IconBrandWhatsapp } from '@tabler/icons-react';
 import SocialBar from '../../components/socialbar/SocialBar';
 import { useDarkMode } from '../../context/darkModeContext';
+import MetaTags from '../../components/SEO/MetaTags';
 
 import './Beranda.css';
 
@@ -45,69 +46,76 @@ const Beranda = () => {
   };
   
   return (
-    <div className="beranda-container">
-      <div className="hero-content">
-        <motion.div 
-          className="logo-beranda"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <img
-            src={isDarkMode ? 
-              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-LIGHT.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtTElHSFQucG5nIiwiaWF0IjoxNzQwNTkwOTMyLCJleHAiOjE3NzIxMjY5MzJ9.BoTMHe0ty4TYgd747hpKBASWZ0VkXOwnWZ5LF9LLEAA" :
-              "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-DARK.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtREFSSy5wbmciLCJpYXQiOjE3NDA1OTA4MzksImV4cCI6MTc3MjEyNjgzOX0.cgrb473Q_BvGcX5YnfKbRtVCiogmnAHlOpH8aGXUQGo"
-            }
-            alt="KamaCleans Logo"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
-        </motion.div>
-
-        <motion.div 
-          className="hero-text"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h1>LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
-          <p>
-            <strong>KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA</strong>
-          </p>
-          
-          <motion.button 
-            onClick={handleScrollToLayanan}
-            className="cta-button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+    <>
+      <MetaTags
+        title="KamaCleans - Jasa Cuci Sepatu, Helm, Topi Profesional di Tangerang"
+        description="Jasa cuci sepatu, helm, dan topi terpercaya di Tangerang. Deep cleaning profesional dengan harga mulai 35rb. Melayani area Kutabumi, Tomang, dan Regency."
+        keywords="cuci sepatu tangerang, cuci helm tangerang, cuci topi tangerang, laundry sepatu kutabumi, cuci sepatu murah tangerang"
+      />
+      
+      <div className="beranda-container">
+        <div className="hero-content">
+          <motion.div 
+            className="logo-beranda"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            Layanan Kama
-          </motion.button>
-        </motion.div>
+            <img
+              src={isDarkMode ? 
+                "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-LIGHT.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtTElHSFQucG5nIiwiaWF0IjoxNzQwNTkwOTMyLCJleHAiOjE3NzIxMjY5MzJ9.BoTMHe0ty4TYgd747hpKBASWZ0VkXOwnWZ5LF9LLEAA" :
+                "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/KAMA-DARK.png?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL0tBTUEtREFSSy5wbmciLCJpYXQiOjE3NDA1OTA4MzksImV4cCI6MTc3MjEyNjgzOX0.cgrb473Q_BvGcX5YnfKbRtVCiogmnAHlOpH8aGXUQGo"
+              }
+              alt="KamaCleans Logo"
+              loading="eager"
+              decoding="async"
+            />
+          </motion.div>
 
-        <motion.div 
-          className="hero-features"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <div className="feature">
-            <IconMapPin className="feature-icon" aria-hidden="true" />
-            <span>Kutabumi, Tangerang</span>
-          </div>
-          <div className="feature">
-            <IconClock className="feature-icon" aria-hidden="true" />
-            <span>Buka 10:00 - 19:00</span>
-          </div>
-          <div className="feature">
-            <IconBrandWhatsapp className="feature-icon" aria-hidden="true" />
-            <span>+62 852-8286-6479</span>
-          </div>
-        </motion.div>
+          <motion.div 
+            className="hero-text"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <h1>LAYANAN CUCI SEPATU, HELM, DAN TOPI</h1>
+            <p>
+              <strong>KAMACLEANS ADALAH LAYANAN CUCI SEPATU PROFESIONAL DI KUTABUMI, REGENCY, DAN TOMANG YANG SIAP MENJAGA SEPATU ANDA TETAP BERSIH, RAPI, DAN TAHAN LAMA</strong>
+            </p>
+            
+            <motion.button 
+              onClick={handleScrollToLayanan}
+              className="cta-button"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Layanan Kama
+            </motion.button>
+          </motion.div>
+
+          <motion.div 
+            className="hero-features"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <div className="feature">
+              <IconMapPin className="feature-icon" aria-hidden="true" />
+              <span>Kutabumi, Tangerang</span>
+            </div>
+            <div className="feature">
+              <IconClock className="feature-icon" aria-hidden="true" />
+              <span>Buka 10:00 - 19:00</span>
+            </div>
+            <div className="feature">
+              <IconBrandWhatsapp className="feature-icon" aria-hidden="true" />
+              <span>+62 852-8286-6479</span>
+            </div>
+          </motion.div>
+        </div>
+        <SocialBar />
       </div>
-      <SocialBar />
-    </div>
+    </>
   );
 };
 

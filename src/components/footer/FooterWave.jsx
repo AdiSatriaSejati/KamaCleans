@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useDarkMode } from '../../context/darkModeContext';
 import * as THREE from 'three';
@@ -8,9 +8,11 @@ const FooterWave = () => {
   const meshRef = useRef();
   const materialRef = useRef();
   const mousePosition = useRef({ x: 0, y: 0 });
+  const [lastDarkMode, setLastDarkMode] = useState(isDarkMode);
+  const [forceRefresh, setForceRefresh] = useState(0); // State untuk memaksa refresh
   
-  // Membuat geometri yang lebih detail
-  const geometry = new THREE.PlaneGeometry(10, 10, 128, 128);
+  // Membuat geometri yang lebih detail - useMemo untuk menghindari pembuatan ulang
+  const geometry = useMemo(() => new THREE.PlaneGeometry(10, 10, 128, 128), []);
   
   // Custom shader untuk efek gelombang yang lebih smooth
   const vertexShader = `
@@ -89,6 +91,7 @@ const FooterWave = () => {
     }
   `;
 
+  // Mouse move handler
   useEffect(() => {
     const handleMouseMove = (event) => {
       mousePosition.current = {
@@ -101,6 +104,31 @@ const FooterWave = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // Deteksi perubahan mode dan memaksa pembaruan
+  useEffect(() => {
+    if (lastDarkMode !== isDarkMode) {
+      setLastDarkMode(isDarkMode);
+      setForceRefresh(prev => prev + 1); // Increment untuk memicu re-render dengan key baru
+    }
+  }, [isDarkMode, lastDarkMode]);
+
+  // Effect untuk memperbarui warna material saat mode gelap berubah
+  useEffect(() => {
+    if (materialRef.current) {
+      materialRef.current.uniforms.uColorStart.value = isDarkMode 
+        ? new THREE.Color('#1a1a1a')
+        : new THREE.Color('#4A90E2');
+      
+      materialRef.current.uniforms.uColorEnd.value = isDarkMode 
+        ? new THREE.Color('#2a2a2a')
+        : new THREE.Color('#5EA2FF');
+        
+      // Memastikan material ditandai untuk diperbarui
+      materialRef.current.needsUpdate = true;
+    }
+  }, [isDarkMode, forceRefresh]);
+
+  // Animation loop
   useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
@@ -116,27 +144,34 @@ const FooterWave = () => {
     }
   });
 
-  const material = new THREE.ShaderMaterial({
-    vertexShader,
-    fragmentShader,
-    uniforms: {
-      uTime: { value: 0 },
-      uMouse: { value: [0, 0] },
-      uColorStart: { value: isDarkMode ? 
-        new THREE.Color('#1a1a1a') : 
-        new THREE.Color('#4A90E2') 
+  // Gunakan useMemo untuk material agar tidak diperbarui berlebih
+  const material = useMemo(() => {
+    return new THREE.ShaderMaterial({
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        uTime: { value: 0 },
+        uMouse: { value: [0, 0] },
+        uColorStart: { value: isDarkMode 
+          ? new THREE.Color('#1a1a1a') 
+          : new THREE.Color('#4A90E2') 
+        },
+        uColorEnd: { value: isDarkMode 
+          ? new THREE.Color('#2a2a2a') 
+          : new THREE.Color('#5EA2FF') 
+        }
       },
-      uColorEnd: { value: isDarkMode ? 
-        new THREE.Color('#2a2a2a') : 
-        new THREE.Color('#5EA2FF') 
-      }
-    },
-    transparent: true,
-    side: THREE.DoubleSide
-  });
+      transparent: true,
+      side: THREE.DoubleSide
+    });
+  }, [isDarkMode, forceRefresh]); // Perbarui saat mode berubah atau dipaksa refresh
 
   return (
-    <mesh ref={meshRef} geometry={geometry}>
+    <mesh 
+      ref={meshRef} 
+      geometry={geometry}
+      key={`wave-${forceRefresh}`} // Key untuk memaksa React membuat ulang komponen
+    >
       <shaderMaterial ref={materialRef} attach="material" {...material} />
     </mesh>
   );

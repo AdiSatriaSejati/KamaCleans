@@ -5,12 +5,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3000 --open",
     "build": "vite build --mode production",
     "lint": "eslint .",
     "preview": "vite preview",
     "host": "vite --host",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "analyze": "source-map-explorer 'dist/assets/*.js'"
   },
   "dependencies": {
@@ -24,11 +24,13 @@
     "@tabler/icons": "^3.29.0",
     "@tabler/icons-react": "^3.29.0",
     "@vercel/analytics": "^1.5.0",
+    "babel-plugin-transform-event-listeners": "file:./babel-plugin-transform-event-listeners.js",
     "firebase": "^11.3.1",
     "framer-motion": "^12.4.2",
     "gsap": "^3.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.4",
     "react-router-dom": "^7.1.3",
     "react-scroll": "^1.9.2",
     "react-toggle-dark-mode": "^1.1.1",

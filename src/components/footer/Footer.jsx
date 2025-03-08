@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { useDarkMode } from '../../context/darkModeContext';
@@ -8,6 +8,7 @@ import './Footer.css';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { isDarkMode } = useDarkMode();
+  const [canvasKey, setCanvasKey] = useState(0);
 
   // Preload logo yang akan digunakan
   useEffect(() => {
@@ -39,10 +40,16 @@ const Footer = () => {
     return () => observer.disconnect();
   }, [isDarkMode]);
 
+  // Perbarui canvasKey saat mode berubah untuk me-remount Canvas
+  useEffect(() => {
+    setCanvasKey(prev => prev + 1);
+  }, [isDarkMode]);
+
   return (
     <footer className="footer">
       <div className="footer-wave-container">
         <Canvas
+          key={`canvas-${canvasKey}`}
           camera={{ position: [0, 2, 5], fov: 45 }}
           dpr={[1, 2]}
         >

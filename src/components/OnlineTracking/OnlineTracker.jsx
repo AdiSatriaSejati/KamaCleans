@@ -1,57 +1,75 @@
-import React, { useEffect, useState } from 'react';
-import { initializeApp } from 'firebase/app';
+import React, { useEffect, useState, useRef } from 'react';
 import { 
-    getDatabase, 
     ref, 
     onValue, 
     set,
     remove,
-    serverTimestamp,
     query,
     orderByChild 
 } from 'firebase/database';
+import { database } from '../../firebase/firebaseConfig';
 import './OnlineTracker.css';
 
-const CLEANUP_INTERVAL = 5000; // 5 detik
-const SESSION_TIMEOUT = 30000; // 30 detik
+// Interval lebih lama untuk mengurangi operasi tulis
+const CLEANUP_INTERVAL = 15000; // 15 detik
+const SESSION_TIMEOUT = 60000; // 60 detik
+const THROTTLE_TIME = 2000; // 2 detik
+
+// Fungsi throttle untuk mengurangi frekuensi update
+const throttle = (func, delay) => {
+    let lastCall = 0;
+    return function(...args) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+            lastCall = now;
+            return func(...args);
+        }
+    };
+};
 
 const OnlineTracker = () => {
     const [onlineUsers, setOnlineUsers] = useState(0);
-
+    const sessionIdRef = useRef(`session-${Date.now()}-${Math.random().toString(36).substring(2, 9)}`);
+    const userRef = useRef(null);
+    const lastActivityRef = useRef(Date.now());
+    
     useEffect(() => {
-        // Inisialisasi Firebase
-        const app = initializeApp({
-            apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-            authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-            databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-            projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-            storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-            messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-            appId: import.meta.env.VITE_FIREBASE_APP_ID
-        });
-
-        const db = getDatabase(app);
+        // Gunakan database dari config file
+        userRef.current = ref(database, `online_users/${sessionIdRef.current}`);
         
-        // Generate session ID unik untuk setiap kunjungan
-        const sessionId = `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-        const userRef = ref(db, `online_users/${sessionId}`);
-        
-        // Set status pengunjung
-        const updateUserStatus = () => {
-            set(userRef, {
-                timestamp: Date.now(),
-                lastActive: Date.now()
-            });
-        };
+        // Set status pengunjung dengan throttling
+        const updateUserStatus = throttle(() => {
+            const now = Date.now();
+            // Hanya update jika pengguna aktif (throttled)
+            if (now - lastActivityRef.current < SESSION_TIMEOUT) {
+                set(userRef.current, {
+                    timestamp: now,
+                    lastActive: now
+                });
+            }
+        }, THROTTLE_TIME);
 
         // Update status awal
         updateUserStatus();
 
-        // Setup interval untuk update status
+        // Setup interval untuk update status dengan interval lebih lama
         const intervalId = setInterval(updateUserStatus, CLEANUP_INTERVAL);
 
+        // Event listeners untuk mendeteksi aktivitas pengguna
+        const handleUserActivity = throttle(() => {
+            lastActivityRef.current = Date.now();
+            updateUserStatus();
+        }, THROTTLE_TIME);
+
+        // Track aktivitas pengguna
+        window.addEventListener('mousemove', handleUserActivity, { passive: true });
+        window.addEventListener('keydown', handleUserActivity, { passive: true });
+        window.addEventListener('click', handleUserActivity, { passive: true });
+        window.addEventListener('scroll', handleUserActivity, { passive: true });
+        window.addEventListener('touchstart', handleUserActivity, { passive: true });
+
         // Monitor jumlah pengunjung online
-        const onlineRef = ref(db, 'online_users');
+        const onlineRef = ref(database, 'online_users');
         const activeUsersQuery = query(onlineRef, orderByChild('lastActive'));
         
         const unsubscribe = onValue(activeUsersQuery, (snapshot) => {
@@ -72,10 +90,19 @@ const OnlineTracker = () => {
         return () => {
             clearInterval(intervalId);
             unsubscribe();
-            remove(userRef);
+            // Hapus referensi user saat meninggalkan halaman
+            remove(userRef.current);
+            
+            // Hapus event listeners
+            window.removeEventListener('mousemove', handleUserActivity);
+            window.removeEventListener('keydown', handleUserActivity);
+            window.removeEventListener('click', handleUserActivity);
+            window.removeEventListener('scroll', handleUserActivity);
+            window.removeEventListener('touchstart', handleUserActivity);
         };
     }, []);
 
+    // Jika belum ada data, jangan render apa-apa
     if (!onlineUsers) return null;
 
     return (
@@ -90,4 +117,5 @@ const OnlineTracker = () => {
     );
 };
 
+// Gunakan React.memo untuk menghindari render ulang yang tidak perlu
 export default React.memo(OnlineTracker);

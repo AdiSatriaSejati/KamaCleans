@@ -187,19 +187,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "telephone": "+6285282866479",
       "email": "kamacleans@gmail.com",
       "priceRange": "Rp35.000 - Rp50.000",
-      "offers": { 
-        "@type": "AggregateOffer", 
-        "url": "https://www.kamacleans.com", 
-        "priceCurrency": "IDR", 
-        "lowPrice": "15000", 
-        "highPrice": "35000", 
-        "offerCount": "368" },
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "bestRating": "5",
         "worstRating": "1",
-        "ratingCount": "368"
+        "ratingCount": "368",
+        "reviewCount": "368"
       },
       "review": [
         {
@@ -233,44 +227,127 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "reviewBody": "Pelayanan sangat memuaskan, sepatu jadi bersih seperti baru. Harga terjangkau dan pengerjaan cepat."
         }
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Layanan KamaCleans",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Cuci Sepatu",
-              "description": "Deep cleaning sepatu dengan hasil bersih, wangi, dan aman"
-            },
-            "price": "35000",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cuci Sepatu",
+            "description": "Deep cleaning sepatu dengan hasil bersih, wangi, dan aman"
           },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Cuci Helm",
-              "description": "Deep cleaning helm dengan hasil bersih, wangi, dan aman"
-            },
-            "price": "35000",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
+          "price": "35000",
+          "priceCurrency": "IDR",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cuci Helm",
+            "description": "Deep cleaning helm dengan hasil bersih, wangi, dan aman"
           },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Cuci Topi",
-              "description": "Deep cleaning topi dengan hasil bersih, wangi, dan aman"
-            },
-            "price": "15000",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
-          }
-        ]
+          "price": "35000",
+          "priceCurrency": "IDR",
+          "availability": "https://schema.org/InStock"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cuci Topi",
+            "description": "Deep cleaning topi dengan hasil bersih, wangi, dan aman"
+          },
+          "price": "15000",
+          "priceCurrency": "IDR",
+          "availability": "https://schema.org/InStock"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema.org markup untuk produk/layanan utama dengan rating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Jasa Cuci Sepatu KamaCleans",
+      "image": "https://www.kamacleans.com/logo.png",
+      "description": "Layanan deep cleaning sepatu profesional dengan hasil bersih, wangi, dan aman. Melayani area Tangerang dengan pengiriman gratis.",
+      "brand": {
+        "@type": "Brand",
+        "name": "KamaCleans"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": "https://www.kamacleans.com",
+        "priceCurrency": "IDR",
+        "price": "35000",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "368",
+        "reviewCount": "368"
+      },
+      "review": {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Breezy Breeze"
+        },
+        "datePublished": "2024-12-01",
+        "reviewBody": "Overall puas dengan pelayanan disini. Hasil cuci bersih, waktu pengerjaan cepat, pelayanan ramah, dan yang penting affordable price. Good job, keep it up."
+      }
+    }
+    </script>
+
+    <!-- Schema.org markup untuk services dengan rating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Jasa Cuci Sepatu",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "KamaCleans",
+        "priceRange": "Rp15.000 - Rp50.000",
+        "telephone": "+6285282866479",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi",
+          "addressLocality": "Tangerang",
+          "addressRegion": "Banten",
+          "postalCode": "15560",
+          "addressCountry": "ID"
+        }
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Tangerang"
+      },
+      "description": "Layanan cuci sepatu premium dengan teknologi deep cleaning, menghilangkan noda membandel, bau tidak sedap, dan mengembalikan warna asli sepatu Anda.",
+      "offers": {
+        "@type": "Offer",
+        "price": "35000",
+        "priceCurrency": "IDR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "368",
+        "reviewCount": "368"
       }
     }
     </script>

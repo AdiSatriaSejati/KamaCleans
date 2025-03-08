@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const DarkModeContext = createContext();
 
@@ -6,39 +7,57 @@ export function DarkModeProvider({ children }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Deteksi preferensi sistem
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    // Cek apakah ada preferensi yang tersimpan
+    const savedPreference = localStorage.getItem('darkMode');
     
-    // Set mode awal
-    const updateTheme = (e) => {
-      const isDark = e.matches;
+    if (savedPreference !== null) {
+      // Gunakan preferensi yang tersimpan
+      const isDark = savedPreference === 'true';
       setIsDarkMode(isDark);
+      applyTheme(isDark);
+    } else {
+      // Jika tidak ada, gunakan preferensi sistem
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const isDark = mediaQuery.matches;
+      setIsDarkMode(isDark);
+      applyTheme(isDark);
       
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      // Listen untuk perubahan preferensi sistem
+      const updateTheme = (e) => {
+        const isDark = e.matches;
+        setIsDarkMode(isDark);
+        applyTheme(isDark);
+      };
       
-      // Trigger event untuk update favicon
-      document.documentElement.dispatchEvent(new Event('change-theme'));
-    };
-
-    // Set mode awal
-    updateTheme(mediaQuery);
-
-    // Listen untuk perubahan preferensi sistem
-    mediaQuery.addEventListener('change', updateTheme);
-
-    // Cleanup
-    return () => {
-      mediaQuery.removeEventListener('change', updateTheme);
-    };
+      mediaQuery.addEventListener('change', updateTheme);
+      
+      // Cleanup
+      return () => {
+        mediaQuery.removeEventListener('change', updateTheme);
+      };
+    }
   }, []);
 
-  // Hapus fungsi manual change karena kita hanya mengikuti sistem
+  // Fungsi untuk menerapkan tema
+  const applyTheme = (isDark) => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    
+    // Trigger event untuk update favicon dan UI lainnya
+    document.documentElement.dispatchEvent(new Event('change-theme'));
+  };
+
+  // Toggle dark mode
   const changeDarkMode = () => {
-    console.warn('Manual dark mode change is disabled. System preference is used instead.');
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    applyTheme(newMode);
+    
+    // Simpan preferensi
+    localStorage.setItem('darkMode', newMode.toString());
   };
 
   return (
@@ -47,6 +66,10 @@ export function DarkModeProvider({ children }) {
     </DarkModeContext.Provider>
   );
 }
+
+DarkModeProvider.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 export const useDarkMode = () => {
   const context = useContext(DarkModeContext);
