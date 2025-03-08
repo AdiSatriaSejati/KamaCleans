@@ -283,7 +283,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "priceCurrency": "IDR",
         "price": "35000",
         "priceValidUntil": "2025-12-31",
-        "availability": "https://schema.org/InStock"
+        "availability": "https://schema.org/InStock",
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "IDR"
+          },
+          "shippingDestination": {
+            "@type": "DefinedRegion",
+            "addressCountry": "ID",
+            "addressRegion": "Banten",
+            "addressLocality": "Tangerang"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": "0",
+              "maxValue": "1",
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": "1",
+              "maxValue": "2",
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "ID",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": "3",
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
       },
       "aggregateRating": {
         "@type": "AggregateRating",
@@ -311,12 +348,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     </script>
 
+    <!-- Schema.org markup untuk review dengan rating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "itemReviewed": {
+        "@type": "LocalBusiness",
+        "name": "KamaCleans",
+        "image": "https://www.kamacleans.com/logo.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi",
+          "addressLocality": "Tangerang",
+          "addressRegion": "Banten",
+          "postalCode": "15560",
+          "addressCountry": "ID"
+        },
+        "telephone": "+6285282866479",
+        "priceRange": "Rp15.000 - Rp50.000"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Breezy Breeze"
+      },
+      "datePublished": "2024-12-01",
+      "reviewBody": "Overall puas dengan pelayanan disini. Hasil cuci bersih, waktu pengerjaan cepat, pelayanan ramah, dan yang penting affordable price. Good job, keep it up."
+    }
+    </script>
+
+    <!-- Schema.org markup untuk aggregate rating -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "KamaCleans",
+      "image": "https://www.kamacleans.com/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi",
+        "addressLocality": "Tangerang",
+        "addressRegion": "Banten",
+        "postalCode": "15560",
+        "addressCountry": "ID"
+      },
+      "telephone": "+6285282866479",
+      "priceRange": "Rp15.000 - Rp50.000",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "368",
+        "reviewCount": "368"
+      }
+    }
+    </script>
+
     <!-- Schema.org markup untuk services dengan rating -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Service",
       "serviceType": "Jasa Cuci Sepatu",
+      "name": "Jasa Cuci Sepatu Premium",
       "provider": {
         "@type": "LocalBusiness",
         "name": "KamaCleans",
