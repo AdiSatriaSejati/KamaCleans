@@ -389,7 +389,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "KamaCleans",
-      "image": "https://www.kamacleans.com/logo.png",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.kamacleans.com/logo.png",
+        "width": "512",
+        "height": "512"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Jl. Teratai 2 no. 21 rt 07 rw 08 blok b 33, Kutabumi",
@@ -441,15 +446,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "@type": "Offer",
         "price": "35000",
         "priceCurrency": "IDR"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "5.0",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "368",
-        "reviewCount": "368"
       }
+    }
+    </script>
+    
+    <!-- Schema.org markup untuk AggregateRating dengan itemReviewed yang jelas -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AggregateRating",
+      "itemReviewed": {
+        "@type": "Service",
+        "name": "Jasa Cuci Sepatu Premium",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "KamaCleans",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://www.kamacleans.com/logo.png",
+            "width": "512",
+            "height": "512"
+          }
+        }
+      },
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "368",
+      "reviewCount": "368"
     }
     </script>
       
