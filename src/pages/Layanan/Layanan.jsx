@@ -15,7 +15,7 @@ const layanan = [
       "Pewangi premium",
       "Perawatan visor khusus"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTczOTUzMjExMiwiZXhwIjoxNzcxMDY4MTEyfQ.5etuoR_CalsWWIEYUince3_aOOo1H1Bp88JIdVpYc-8"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/helmet.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9oZWxtZXQud2VicCIsImlhdCI6MTc3MTMzMzg4MCwiZXhwIjoxODAyODY5ODgwfQ.Aagwgq14GuLb8LuPcMhP5VhqhjrLc0JK0ILxoplbYaM"
   },
   {
     title: "CUCI SEPATU",
@@ -27,7 +27,7 @@ const layanan = [
       "Pewangi premium",
       "Treatment khusus material"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzM5NTMyMTM5LCJleHAiOjE3NzEwNjgxMzl9.FXI_MBbC6vQ2E4hCIFPpAU97eaky6oFqvHZHpmXc4rA"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/shoes.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9zaG9lcy53ZWJwIiwiaWF0IjoxNzcxMzMzODQ1LCJleHAiOjE4MDI4Njk4NDV9.bdFpZcM9igYjDEDCxiJdXAIHTHcpujWQmLbpypnWb2k"
   },
   {
     title: "CUCI TOPI",
@@ -39,7 +39,7 @@ const layanan = [
       "Pewangi premium",
       "Menjaga bentuk original"
     ],
-    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3Mzk1MzIwODAsImV4cCI6MTc3MTA2ODA4MH0.lxebtInOOCfxNXJ3XSWi1rKtvyUmM3FXcxaSnTzgS6g"
+    image: "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/services/caps.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9zZXJ2aWNlcy9jYXBzLndlYnAiLCJpYXQiOjE3NzEzMzM4ODgsImV4cCI6MTgwMjg2OTg4OH0.Jju9AOleVXRffeBY-yGXMJesZW1WPU35s_y-8S5VkKk"
   }
 ];
 

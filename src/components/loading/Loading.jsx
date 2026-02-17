@@ -4,9 +4,9 @@ import './Loading.css';
 
 // URL gambar dari environment variables atau config
 const LOGO_LIGHT_URL = import.meta.env.VITE_LOGO_LIGHT_URL || 
-  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3Mzk0NzQwMjYsImV4cCI6MTc3MTAxMDAyNn0.obTkNApOTpoYmcQCg3tFEVDEYezbFJJw5Wr_7HDJ37E";
+  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-light.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWxpZ2h0LndlYnAiLCJpYXQiOjE3NzEzMzI5MzUsImV4cCI6MTgwMjg2ODkzNX0.qyWxtfDSweTVBh4ODROboPuZEmGiQzzDOOVQrtQmwhE";
 const LOGO_DARK_URL = import.meta.env.VITE_LOGO_DARK_URL || 
-  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTczOTQ3NDAzNywiZXhwIjoxNzcxMDEwMDM3fQ.iHY1XnWOV2gb8TcHvGkyC17RtyWMcxUvo-1E_m0MwN0";
+  "https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/logo-dark.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9sb2dvLWRhcmsud2VicCIsImlhdCI6MTc3MTMzMjk0OCwiZXhwIjoxODAyODY4OTQ4fQ.GuDWR44Ks3PtIqFm6o47Sa82KRwnqVacXwxVutACotE";
 
 const Loading = () => {
   const { isDarkMode } = useDarkMode();

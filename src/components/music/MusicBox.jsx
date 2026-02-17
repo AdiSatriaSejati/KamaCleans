@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
 import './MusicBox.css';
 
 // Lazy load audio file
-const audioURL = 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzM5NTQ0MTUzLCJleHAiOjE3NzEwODAxNTN9.k_4nV9eOX9f8LyzznU1K1BQMlOAsybGG8XhVqFXbM-Y';
+const audioURL = 'https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/music/music_loop.mp3?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL211c2ljL211c2ljX2xvb3AubXAzIiwiaWF0IjoxNzcxMzMzNDQ1LCJleHAiOjE4MDI4Njk0NDV9.S8sIr2hMYKc6_pF-Lh8vumDLIGJ9mhH4NkxY6uePEf4';
 
 // Loading placeholder
 const LoadingPlaceholder = () => (

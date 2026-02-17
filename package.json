@@ -36,8 +36,8 @@
     "react-toggle-dark-mode": "^1.1.1",
     "react-type-animation": "^3.2.0",
     "rollup-plugin-visualizer": "^5.14.0",
-    "three": "^0.172.0",
-    "source-map-explorer": "^2.5.3"
+    "source-map-explorer": "^2.5.3",
+    "three": "^0.172.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.26.9",
