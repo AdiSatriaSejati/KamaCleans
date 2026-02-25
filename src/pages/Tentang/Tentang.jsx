@@ -83,7 +83,7 @@ const Tentang = () => {
             >
               <div className="image-container">
                 <img 
-                  src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about-kama.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC1rYW1hLndlYnAiLCJpYXQiOjE3NDAwMDkwMTcsImV4cCI6MTc3MTU0NTAxN30.7pj3d276N-9I9ifpU67xDwRuZsoegRnLbIAmE1r1LKE" 
+                  src="https://synxalrnnjegqzaxydis.supabase.co/storage/v1/object/sign/KamaCleans/images/about-kama.webp?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV85MjU2M2I5Yi01NzUxLTRhMzYtOGU3YS0xYWRhYWFmZjMzYTMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJLYW1hQ2xlYW5zL2ltYWdlcy9hYm91dC1rYW1hLndlYnAiLCJpYXQiOjE3NzIwMzE0NzQsImV4cCI6MTgwMzU2NzQ3NH0.A2yMODB6VbaxDC0PeWOO-DqvIy0m2GcnKFxLTxldiJY" 
                   alt="KamaCleans Service"
                   className="tentang-image"
                   loading="lazy"
