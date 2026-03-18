@@ -12,7 +12,7 @@ Disallow: /admin/
 # Disallow: /drafts/
 
 # Tentukan lokasi sitemap
-Sitemap: https://www.kamacleans.com/sitemap.xml
+Sitemap: https://kamacleans.vercel.app/sitemap.xml
 
 # Atur crawl-delay jika diperlukan (opsional)
 # Crawl-delay: 10

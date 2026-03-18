@@ -1,6 +1,6 @@
 {
   "name": "kama-cleans",
-  "homepage": "https://www.kamacleans.com/",
+  "homepage": "https://kamacleans.vercel.app/",
   "private": true,
   "version": "1.0.0",
   "type": "module",

@@ -16,8 +16,8 @@ const MetaTags = ({
   title = "KamaCleans - Jasa Cuci Sepatu, Helm, Topi Terdekat di Tangerang",
   description = "Jasa cuci sepatu, helm, dan topi profesional di Tangerang. Melayani area Kutabumi, Tomang, Regency dengan layanan deep cleaning.",
   keywords = "cuci sepatu tangerang, cuci helm tangerang, cuci topi tangerang, laundry sepatu tangerang",
-  canonicalUrl = "https://www.kamacleans.com/",
-  ogImage = "https://www.kamacleans.com/images/logo.png",
+  canonicalUrl = "https://kamacleans.vercel.app/",
+  ogImage = "https://kamacleans.vercel.app/images/logo.png",
   ogType = "website"
 }) => {
   return (

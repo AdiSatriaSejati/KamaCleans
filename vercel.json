@@ -55,7 +55,7 @@
           "value": "kamacleans.vercel.app"
         }
       ],
-      "destination": "https://www.kamacleans.com/:path*",
+      "destination": "https://kamacleans.vercel.app/:path*",
       "permanent": true
     }
   ],
